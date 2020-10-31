@@ -1,29 +1,17 @@
 var express = require('express');
 var router = express.Router();
-const db = require('../config/config.js') //DB 연결
+const dbTest = require('../config/config.js') //DB 연결
 const passport = require('passport');
 const { isLoggedIn } = require('./middlewares.js');
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  const select = async () => {
-    try {
-      console.log("await 전");
-      await db.query('SELECT * from test.test', (error, rows, fields) => {
-        if (error) throw error;
-        console.log("실행");
-        //res.json(rows);
-        res.render('index', {
-          id: rows[0].id,
-          name: rows[0].name,
-        });
-      });
-      console.log("await 후");
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  select();
+router.get('/', async (req, res, next) => {
+  title = await dbTest('select * from test.test');
+  res.render('index', {
+    title : "소담",
+    id: title[0].id,
+    name: title[0].name,
+  });
 });
 
 router.post("/login", (req, res, next) => {
@@ -42,7 +30,15 @@ router.post("/login", (req, res, next) => {
 var count = 0;
 router.get("/success", isLoggedIn,(req, res, next) => {
   count += 1;
+ 
   res.render("success", {
+    user: req.user,
+    count: count,
+  });
+});
+router.get("/test", isLoggedIn,(req, res, next) => {
+  count += 1;
+  res.render("test", {
     user: req.user,
     count: count,
   });

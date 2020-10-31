@@ -12,3 +12,32 @@
 * DB connection 모듈화
 * DB 정보 env에 담아서 외부에 노출 되지 않게함.
 * gitignore로 env 무시
+
+### 2020-10-30
+* 세션 유지하면서 로그인 유무에 따른 접근 권한 가능 여부 수준의 로그인 구현(로그인이 제일 어려운거 같다..) 
+* Nodejs는 기본적으로 비동기로 로직을 처리하기 때문에 mysql의 쿼리문을 수행하는데 있어서 문제가 있었다.
+* 쿼리문 로직을 완료하기 전에 벌써 다음 로직으로 넘어가서 자꾸 출력값이 null 됨.
+* 결국 mysql2 모듈로 커넥션 풀을 사용하여 async / await를 사용하여 동기처리를 할 수 있도록 모듈을 만듬.(어려워서 미쳐버리는줄..)
+* 비동기 관련해서 만든 모듈 코드
+```
+const mysql = require('mysql2/promise');
+const pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
+});
+const dbTest = async (queries) => {
+    const connection = await pool.getConnection(async conn => conn);
+    try {    
+      const [rows] = await connection.query(queries);
+      connection.release();
+      return rows;
+    } catch (err) {
+      console.log('Query Error');
+      connection.release();
+      return false;
+    }
+  };
+module.exports = dbTest;
+```
