@@ -4,16 +4,4 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    form(action='/login' method='post')
-      | id:
-      br
-      input(type='text' name='id')
-      br
-      |       pw:
-      br
-      input(type='text' name='pw')
-      br
-      br
-      input(type='submit' value='Submit')
-
     block content

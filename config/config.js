@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE
 });
-const dbTest = async (queries) => {
+const dbPool = async (queries) => {
     const connection = await pool.getConnection(async conn => conn);
     try {    
       const [rows] = await connection.query(queries);
@@ -17,4 +17,4 @@ const dbTest = async (queries) => {
       return false;
     }
   };
-module.exports = dbTest;
+module.exports = dbPool;
