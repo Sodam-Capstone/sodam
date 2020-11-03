@@ -4,8 +4,14 @@ const dbPool = require('../config/config.js') //DB 연결
 const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares.js');
 
+
 /* GET home page. */
 router.get('/', async (req, res, next) => {
+  if(req.session.passport){
+    console.log(req.session);
+    console.log(req.session.passport.user);
+    console.log("session이 존재합니다.");
+  }
   title = await dbPool('select * from test.test');
   res.render('index', {
     title : "소담",
@@ -14,29 +20,21 @@ router.get('/', async (req, res, next) => {
   });
 });
 
-// router.post("/login", (req, res, next) => {
-//   console.log("/login 받음");
-//   passport.authenticate("local", (authError, user, info) => { // passport/localStrategy.js를 실행시킵니다.  (1)
-
-//     return req.login(user, loginError => {
-//       if (loginError) {
-//         console.error(loginError);
-//       }
-//     });
-//   })(req, res, next);
-
-//   res.redirect("/success");
-// });
 router.get('/login',isNotLoggedIn,(req,res,next)=>{
   res.render('login');
 })
 router.post('/auth/login', isNotLoggedIn, (req, res, next)=>{
+  /**
+   * 로그인 전략 수행하는 로직
+   */
   passport.authenticate('local', (authError, user, info)=>{
     if(authError){
+      console.log(info);
       console.error(authError);
       return next(authError);
     }
     if(!user){
+      console.log(info);
       return res.redirect('/');
     }
     return req.login(user, (loginError)=>{
