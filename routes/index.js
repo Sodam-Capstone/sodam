@@ -3,6 +3,7 @@ var router = express.Router();
 const dbPool = require('../config/config.js') //DB 연결
 const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares.js');
+var bodyParser = require('body-parser');
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
@@ -71,6 +72,23 @@ router.get("/test", isLoggedIn,(req, res, next) => {
     user: req.user[0].email,
     count: count,
   });
+});
+
+// 회원가입을 위해서 추가
+router.get('/join', function(req, res, next) {
+  res.render("join");
+  console.log("회원가입");
+});
+
+// 데이터 post 확인
+router.post('/sign_up', function(req, res, next) {
+  var name = req.body.name;
+  var email = req.body.email;
+  res.render('sign_up', {
+    name: name,
+    email: email,
+  });
+  console.log("전송");
 });
 
 
