@@ -13,7 +13,7 @@ router.get("/success", isLoggedIn, (req, res, next) => {
     count += 1;
     console.log("req.user :", req.user);
     res.render("index", {
-        user: req.user[0].user_id,
+        user_id: req.user[0].user_id,
         count: count,
     });
 });
