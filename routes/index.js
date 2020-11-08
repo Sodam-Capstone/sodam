@@ -23,53 +23,11 @@ router.get('/', async (req, res, next) => {
 router.get('/login',isNotLoggedIn,(req,res,next)=>{
   res.render('login');
 })
-router.post('/auth/login', isNotLoggedIn, (req, res, next)=>{
-  /**
-   * 로그인 전략 수행하는 로직
-   */
-  passport.authenticate('local', (authError, user, info)=>{
-    if(authError){
-      console.log(info);
-      console.error(authError);
-      return next(authError);
-    }
-    if(!user){
-      console.log(info);
-      return res.redirect('/');
-    }
-    return req.login(user, (loginError)=>{
-      if(loginError){
-        console.error(loginError);
-        return next(loginError);
-      }
-      return res.redirect('/success');
-    });
-  })(req, res, next);
-});
 
-router.get('/auth/logout', isLoggedIn, (req, res)=>{
-  req.logout();
-  req.session.destroy();
-  //delete req.session;
-  res.redirect('/');
-})
-
-var count = 0;
-router.get("/success", isLoggedIn,(req, res, next) => {
-  count += 1;
-  console.log("req.user :" ,req.user);
-  res.render("success", {
-    user: req.user[0].email,
-    count: count,
-  });
+router.get('/info', isLoggedIn, (req, res, next)=>{
+  res.render('info',{
+    user_id : req.user[0].user_id
+  })
 });
-router.get("/test", isLoggedIn,(req, res, next) => {
-  count += 1;
-  res.render("test", {
-    user: req.user[0].email,
-    count: count,
-  });
-});
-
 
 module.exports = router;

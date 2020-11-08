@@ -1,10 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p  <strong>#{title}</strong> 사이트입니다.
 
-  h1=id
-  h2=name
+  h1  <strong>소담</strong> 사이트입니다.
 
-  a(href="/login") 로그인
+  if user
+    h4 #{user} 님 환영합니다 
+  else
+    h4 로그인을 해주세요
+
+
+  if user
+    a(href="/info") info로 이동
+    a(href="/auth/logout") 로그아웃
+  else
+    a(href="/login") 로그인
