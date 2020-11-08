@@ -1,0 +1,4 @@
+{"results":[
+    {"speaker_label": "speaker1", "result":"안녕 오늘 날씨 참 좋다", "start_time":"0", "end_time":"2.0"},
+    {"speaker_label": "speaker2", "result":"그러게 오늘 놀러 갈까", "start_time":"2.0", "end_time":"3.6"}
+    ]}
