@@ -17,6 +17,7 @@ head
   // ICONS
   link(rel='apple-touch-icon' sizes='76x76' href='assets/img/apple-icon.png')
   link(rel='icon' type='image/png' sizes='96x96' href='assets/img/favicon.png')
+  script(src='https://code.jquery.com/jquery-3.5.1.min.js')
 // WRAPPER
 #wrapper
   .vertical-align-wrap
@@ -31,15 +32,15 @@ head
             form.form-auth-small(action='auth/login' method='post')
               .form-group
                 label.control-label.sr-only(for='signin-email') Email
-                input#signin-email.form-control(type='id' value='hyperadmin' placeholder='ID' name='email')
+                input#signin-email.form-control(type='id' value='hyperadmin' placeholder='ID' name='email' class="email")
               .form-group
                 label.control-label.sr-only(for='signin-password') Password
-                input#signin-password.form-control(type='password' value='' placeholder='Password' name="password")
+                input#signin-password.form-control(type='password' value='' placeholder='Password' name="password" class="password")
               .form-group.clearfix
                 label.fancy-checkbox.element-left
                   input(type='checkbox')
                   span Remember me
-              button.btn.btn-primary.btn-lg.btn-block(type='submit') LOGIN
+              .btn.btn-primary.btn-lg.btn-block(type='') LOGIN
               .bottom
                 span.helper-text
                   i.fa.fa-lock
@@ -58,3 +59,32 @@ head
             p by The Develovers
         .clearfix
 // END WRAPPER
+script.
+  $('.btn-block').click((e)=>{
+    if($('.email').val() == ""){
+      alert("아이디를 입력해주세요.");
+    }
+    else if($('.password').val() == ""){
+      alert("비밀번호를 입력해주세요.");
+    }
+    else{
+      $.ajax({
+        type : 'POST',
+        url : '/auth/login',
+        data : {
+          email : $('.email').val(),
+          password : $('.password').val(),
+        },
+        success : function(res){
+          if(res.message == '요청 실패'){
+            alert("아이디 또는 비밀번호를 확인해주세요.");
+          }else if(res.message == '요청 성공'){
+            $(location).attr('href','/success');
+          }
+        },
+        error : function(res){
+          alert("요청 실패");
+        }
+      })
+    }
+  });

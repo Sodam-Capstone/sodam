@@ -19,14 +19,18 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
         }
         if (!user) {
             console.log(info);
-            return res.redirect('/');
+            return res.json({
+                message : '요청 실패',
+            });
         }
         return req.login(user, (loginError) => {
             if (loginError) {
                 console.error(loginError);
                 return next(loginError);
             }
-            return res.redirect('/success');
+            return res.json({
+                message : '요청 성공',
+            });
         });
     })(req, res, next);
 });

@@ -18,5 +18,4 @@ router.get("/success", isLoggedIn, (req, res, next) => {
     });
 });
 
-
 module.exports = router;
