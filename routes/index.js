@@ -30,4 +30,25 @@ router.get('/info', isLoggedIn, (req, res, next)=>{
   })
 });
 
+router.get('/enrollment',isLoggedIn,(req,res,next)=>{
+  res.render('enrollment');
+})
+
+router.get('/meeting-list',isLoggedIn,(req,res,next)=>{
+  res.render('meeting-list');
+})
+
+router.get('/page-lockscreen',isLoggedIn,(req,res,next)=>{
+  res.render('page-lockscreen');
+})
+
+router.get('/page-profile',isLoggedIn,(req,res,next)=>{
+  res.render('page-profile');
+})
+
+router.get('/sentimental_total',isLoggedIn,(req,res,next)=>{
+  res.render('sentimental_total');
+})
+
+
 module.exports = router;

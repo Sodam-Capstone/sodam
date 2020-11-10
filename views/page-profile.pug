@@ -1,0 +1,340 @@
+doctype html
+head
+  title Profile | Klorofil - Free Bootstrap Dashboard Template
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+  // VENDOR CSS
+  link(rel='stylesheet', href='assets/vendor/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet', href='assets/vendor/font-awesome/css/font-awesome.min.css')
+  link(rel='stylesheet', href='assets/vendor/linearicons/style.css')
+  // MAIN CSS
+  link(rel='stylesheet', href='assets/css/main.css')
+  // FOR DEMO PURPOSES ONLY. You should remove this in your project
+  link(rel='stylesheet', href='assets/css/demo.css')
+  // GOOGLE FONTS
+  link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700', rel='stylesheet')
+  // ICONS
+  link(rel='apple-touch-icon', sizes='76x76', href='assets/img/apple-icon.png')
+  link(rel='icon', type='image/png', sizes='96x96', href='assets/img/favicon.png')
+// WRAPPER
+#wrapper
+  // NAVBAR
+  nav.navbar.navbar-default.navbar-fixed-top
+    .brand
+      a(href='/')
+        img.img-responsive.logo(src='assets/img/logo-dark.png', alt='Klorofil Logo')
+    .container-fluid
+      .navbar-btn
+        button.btn-toggle-fullwidth(type='button')
+          i.lnr.lnr-arrow-left-circle
+      #navbar-menu
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            a.dropdown-toggle.icon-menu(href='#', data-toggle='dropdown')
+              i.lnr.lnr-alarm
+              span.badge.bg-danger 5
+            ul.dropdown-menu.notifications
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-warning
+                  | System space is almost full
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-danger
+                  | You have 9 unfinished tasks
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-success
+                  | Monthly report is available
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-warning
+                  | Weekly meeting in 1 hour
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-success
+                  | Your request has been approved
+              li
+                a.more(href='#') See all notifications
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              img.img-circle(src='assets/img/user.png', alt='Avatar')
+              span Samuel
+              i.icon-submenu.lnr.lnr-chevron-down
+            ul.dropdown-menu
+              li
+                a(href='#')
+                  i.lnr.lnr-user
+                  span My Profile
+              li
+                a(href='#')
+                  i.lnr.lnr-envelope
+                  span Message
+              li
+                a(href='#')
+                  i.lnr.lnr-cog
+                  span Settings
+              li
+                a(href='#')
+                  i.lnr.lnr-exit
+                  span Logout
+  // END NAVBAR
+  // LEFT SIDEBAR
+  #sidebar-nav.sidebar
+    .sidebar-scroll
+      nav
+        ul.nav
+          li
+            a(href='/')
+              i.lnr.lnr-home
+              span Dashboard
+          li
+            a(href='/enrollment')
+              i.lnr.lnr-code
+              span &#xD68C;&#xC758;&#xB4F1;&#xB85D;
+          li
+            a(href='/meeting-list')
+              i.lnr.lnr-cog
+              span &#xD68C;&#xC758;&#xBAA9;&#xB85D;
+          li
+            a(href='/meeting-log')
+              i.lnr.lnr-cog
+              span &#xD68C;&#xC758;&#xB85D;
+          li
+            a.active(href='#subPages', data-toggle='collapse')
+              i.lnr.lnr-chart-bars
+              span &#xD68C;&#xC758;&#xBD84;&#xC11D;
+              i.icon-submenu.lnr.lnr-chevron-left
+            #subPages.collapse.in
+              ul.nav
+                li
+                  a.active(href='charts.html') &#xC804;&#xCCB4;&#xBD84;&#xC11D;
+                li
+                  a.active(href='charts.html') &#xAC1C;&#xC778;&#xBD84;&#xC11D;
+          li
+            a.active(href='#subPages', data-toggle='collapse')
+              i.lnr.lnr-file-empty
+              span Pages
+              i.icon-submenu.lnr.lnr-chevron-left
+            #subPages.collapse.in
+              ul.nav
+                li
+                  a.active(href='/page-profile') Profile
+                li
+                  a(href='/login') Login
+                li
+                  a(href='/page-lockscreen') Lockscreen
+  // END LEFT SIDEBAR
+  // MAIN
+  .main
+    // MAIN CONTENT
+    .main-content
+      .container-fluid
+        .panel.panel-profile
+          .clearfix
+            // LEFT COLUMN
+            .profile-left
+              // PROFILE HEADER
+              .profile-header
+                .overlay
+                .profile-main
+                  img.img-circle(src='assets/img/user-medium.png', alt='Avatar')
+                  h3.name Samuel Gold
+                  span.online-status.status-available Available
+                .profile-stat
+                  .row
+                    .col-md-4.stat-item
+                      | 45
+                      span Projects
+                    .col-md-4.stat-item
+                      | 15
+                      span Awards
+                    .col-md-4.stat-item
+                      | 2174
+                      span Points
+              // END PROFILE HEADER
+              // PROFILE DETAIL
+              .profile-detail
+                .profile-info
+                  h4.heading Basic Info
+                  ul.list-unstyled.list-justify
+                    li
+                      | Birthdate
+                      span 24 Aug, 2016
+                    li
+                      | Mobile
+                      span (124) 823409234
+                    li
+                      | Email
+                      span samuel@mydomain.com
+                    li
+                      | Website
+                      span
+                        a(href='https://www.themeineed.com') www.themeineed.com
+                .profile-info
+                  h4.heading Social
+                  ul.list-inline.social-icons
+                    li
+                      a.facebook-bg(href='#')
+                        i.fa.fa-facebook
+                    li
+                      a.twitter-bg(href='#')
+                        i.fa.fa-twitter
+                    li
+                      a.google-plus-bg(href='#')
+                        i.fa.fa-google-plus
+                    li
+                      a.github-bg(href='#')
+                        i.fa.fa-github
+                .profile-info
+                  h4.heading About
+                  p Interactively fashion excellent information after distinctive outsourcing.
+                .text-center
+                  a.btn.btn-primary(href='#') Edit Profile
+              // END PROFILE DETAIL
+            // END LEFT COLUMN
+            // RIGHT COLUMN
+            .profile-right
+              // TABBED CONTENT
+              .custom-tabs-line.tabs-line-bottom.left-aligned
+                ul.nav(role='tablist')
+                  li.active
+                    a(href='#tab-bottom-left1', role='tab', data-toggle='tab') Recent Activity
+                  li
+                    a(href='#tab-bottom-left2', role='tab', data-toggle='tab')
+                      | Projects
+                      span.badge 7
+              .tab-content
+                #tab-bottom-left1.tab-pane.fade.in.active
+                  ul.list-unstyled.activity-timeline
+                    li
+                      i.fa.fa-comment.activity-icon
+                      p
+                        | Commented on post
+                        a(href='#') Prototyping
+                        span.timestamp 2 minutes ago
+                    li
+                      i.fa.fa-cloud-upload.activity-icon
+                      p
+                        | Uploaded new file
+                        a(href='#') Proposal.docx
+                        |  to project
+                        a(href='#') New Year Campaign
+                        span.timestamp 7 hours ago
+                    li
+                      i.fa.fa-plus.activity-icon
+                      p
+                        | Added
+                        a(href='#') Martin
+                        |  and
+                        a(href='#') 3 others colleagues
+                        |  to project repository
+                        span.timestamp Yesterday
+                    li
+                      i.fa.fa-check.activity-icon
+                      p
+                        | Finished 80% of all
+                        a(href='#') assigned tasks
+                        span.timestamp 1 day ago
+                  .margin-top-30.text-center
+                    a.btn.btn-default(href='#') See all activity
+                #tab-bottom-left2.tab-pane.fade
+                  .table-responsive
+                    table.table.project-table
+                      thead
+                        tr
+                          th Title
+                          th Progress
+                          th Leader
+                          th Status
+                      tbody
+                        tr
+                          td
+                            a(href='#') Spot Media
+                          td
+                            .progress
+                              .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
+                                span 60% Complete
+                          td
+                            img.avatar.img-circle(src='assets/img/user2.png', alt='Avatar')
+                            a(href='#') Michael
+                          td
+                            span.label.label-success ACTIVE
+                        tr
+                          td
+                            a(href='#') E-Commerce Site
+                          td
+                            .progress
+                              .progress-bar(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%;')
+                                span 33% Complete
+                          td
+                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
+                            a(href='#') Antonius
+                          td
+                            span.label.label-warning PENDING
+                        tr
+                          td
+                            a(href='#') Project 123GO
+                          td
+                            .progress
+                              .progress-bar(role='progressbar', aria-valuenow='68', aria-valuemin='0', aria-valuemax='100', style='width: 68%;')
+                                span 68% Complete
+                          td
+                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
+                            a(href='#') Antonius
+                          td
+                            span.label.label-success ACTIVE
+                        tr
+                          td
+                            a(href='#') Wordpress Theme
+                          td
+                            .progress
+                              .progress-bar(role='progressbar', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100', style='width: 75%;')
+                                span 75%
+                          td
+                            img.avatar.img-circle(src='assets/img/user2.png', alt='Avatar')
+                            a(href='#') Michael
+                          td
+                            span.label.label-success ACTIVE
+                        tr
+                          td
+                            a(href='#') Project 123GO
+                          td
+                            .progress
+                              .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
+                                span 100%
+                          td
+                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
+                            a(href='#') Antonius
+                          td
+                            span.label.label-default CLOSED
+                        tr
+                          td
+                            a(href='#') Redesign Landing Page
+                          td
+                            .progress
+                              .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
+                                span 100%
+                          td
+                            img.avatar.img-circle(src='assets/img/user5.png', alt='Avatar')
+                            a(href='#') Jason
+                          td
+                            span.label.label-default CLOSED
+              // END TABBED CONTENT
+            // END RIGHT COLUMN
+    // END MAIN CONTENT
+  // END MAIN
+  .clearfix
+  footer
+    .container-fluid
+      p.copyright
+        | Shared by
+        i.fa.fa-love
+        a(href='https://bootstrapthemes.co') BootstrapThemes
+// END WRAPPER
+// Javascript
+script(src='assets/vendor/jquery/jquery.min.js')
+script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
+script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
+script(src='assets/scripts/klorofil-common.js')
