@@ -8,6 +8,8 @@ head
   link(rel='stylesheet' href='assets/css/bootstrap.min.css')
   link(rel='stylesheet' href='assets/vendor/font-awesome/css/font-awesome.min.css')
   link(rel='stylesheet' href='assets/vendor/linearicons/style.css')
+  link(rel="stylesheet", href="pop.css")
+  link(link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous")
   // MAIN CSS
   link(rel='stylesheet' href='assets/css/main.css')
   // FOR DEMO PURPOSES ONLY. You should remove this in your project
@@ -25,6 +27,8 @@ head
       .auth-box
         .left
           .content
+            input(type="hidden" class="email_check_hidden" val="false")
+            input(type="hidden" class="id_check_hidden" val="false")
             .header
               .logo.text-center
                 img(src='assets/img/logo-dark.png' alt='Klorofil Logo')
@@ -40,11 +44,34 @@ head
                 label.fancy-checkbox.element-left
                   input(type='checkbox')
                   span Remember me
-              .btn.btn-primary.btn-lg.btn-block(type='') LOGIN
+              .btn.btn-primary.btn-lg.btn-block(class= "login_btn") LOGIN
               .bottom
                 span.helper-text
-                  i.fa.fa-lock
-                  a(href='join.html') &#xD68C;&#xC6D0; &#xAC00;&#xC785;
+                  .modal-container
+                    input#modal-toggle(type='checkbox')
+                    label.modal-btn(for='modal-toggle') JOIN
+                    label.modal-backdrop(for='modal-toggle')
+                    .modal-content
+                      form.form-auth-small
+                        h4(style="padding-top:50px;") JOIN
+                        .form-group
+                          input#signin-id.form-control(type='text' value='' placeholder='ID' class="id_join")
+                          input#check-id.btn(type='button' value='아이디 중복체크' class = "duplicate_id")
+                        .form-group
+                          label.control-label.sr-only(for='signin-email') Email
+                          input#signin-email.form-control(type='email' value='' placeholder='EMail' class="email_join")
+                          input#check-email.btn(type='button' value='이메일 중복체크' class = "duplicate_email")
+                        .form-group
+                          label.control-label.sr-only(for='signin-name') Name
+                          input#signin-name.form-control(type='text' value='' placeholder='name' class="name_join")
+                        .form-group
+                          label.control-label.sr-only(for='signin-password') Password
+                          input#signin-password.form-control(type='password' value='' placeholder='Password' class="password_join")
+                        .form-group
+                          label.control-label.sr-only(for='signin-passwordchk') PasswordCheck
+                          input#signin-passwordchk.form-control(type='password' value='' placeholder='Password Check' class="password_join_check")
+                        label.modal-content-btn(class="join_btn") 회원가입하기
+                        //- label.modal-content-btn(class="join_confirm" for ="modal-toggle" style="display:none;") 회원가입하기
                 p
                 span.helper-text
                   i.fa.fa-lock
@@ -60,7 +87,85 @@ head
         .clearfix
 // END WRAPPER
 script.
-  $('.btn-block').click((e)=>{
+  /**
+  * 이메일 중복 체크
+  */
+  $('.duplicate_email').click((e)=>{
+    $.ajax({
+      type : 'POST',
+      url : '/auth/duplicate_email',
+      data : {
+        email_join : $('.email_join').val(),
+      },
+      success : function(res){
+        if(res.duplicate_email_check == true){
+          alert("중복된 email 입니다.");
+          $('.email_check_hidden').val(res.duplicate_email_check);
+          //중복되면 true
+        }else{
+          alert("중복된 email이 없습니다.");
+          $('.email_check_hidden').val(res.duplicate_email_check);
+        }
+      },
+      error : function(error){
+        alert("실패");
+      }
+    })
+  })
+  /**
+  * 아이디 중복 체크
+  */
+  $('.duplicate_id').click((e)=>{
+    $.ajax({
+      type : 'POST',
+      url : '/auth/duplicate_id',
+      data : {
+        id_join : $('.id_join').val(),
+      },
+      success : function(res){
+        if(res.duplicate_id_check == true){
+          alert("중복된 ID입니다.");
+          $('.id_check_hidden').val(res.duplicate_id_check);
+        }else{
+          alert("중복된 ID가 없습니다.");
+          $('.id_check_hidden').val(res.duplicate_id_check);
+        }
+      },
+      error : function(error){
+        alert("실패");
+      }
+    })
+  })
+  /**
+  * 회원가입
+  */
+  $('.join_btn').click((e)=>{
+    if($('.id_check_hidden').val() == 'false' && $('.email_check_hidden').val() == 'false'){
+      $.ajax({
+        type : 'POST',
+        url : '/auth/join',
+        data : {
+          id_join : $('.id_join').val(),
+          email_join : $('.email_join').val(),
+          name_join : $('.name_join').val(),
+          password_join : $('.password_join').val(),
+          password_join_check : $('.password_join_check').val(),
+        },
+        success : function(res){
+          alert("회원가입에 성공하였습니다.");
+        },
+        error : function(res){
+          alert("요청 실패");
+        }
+      });
+    }else{
+      alert("중복 검사를 해주세요");
+    }
+  })
+  /**
+  * 로그인
+  */
+  $('.login_btn').click((e)=>{
     if($('.email').val() == ""){
       alert("아이디를 입력해주세요.");
     }
