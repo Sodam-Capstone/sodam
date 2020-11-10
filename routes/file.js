@@ -6,12 +6,12 @@ const { isLoggedIn, isNotLoggedIn } = require('./middlewares.js');
 var bodyParser = require('body-parser');
 
 
-var fs = require('fs');
-console.log('파일읽기프로세스시작...');
-fs.readFile('./data/before.json', function (err, data) {
-  if(err) throw err;
-  console.log(data.toString());
-});
-console.log('파일읽기프로세스끝.');
+// var fs = require('fs');
+// console.log('파일읽기프로세스시작...');
+// fs.readFile('./data/before.json', function (err, data) {
+//   if(err) throw err;
+//   console.log(data.toString());
+// });
+// console.log('파일읽기프로세스끝.');
 
 module.exports = router;
