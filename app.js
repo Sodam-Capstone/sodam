@@ -8,8 +8,9 @@ const passport = require('passport');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const passportConfig = require('./passport');
+const authRouter = require('./routes/auth');
+const successRouter = require('./routes/success');
 
 var app = express();
 passportConfig(passport);
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
-  resave : false,
+  resave : true,
   saveUninitialized : false,
   secret : process.env.COOKIE_SECRET,
   cookie:{
@@ -37,7 +38,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/auth', authRouter);
+app.use('/', successRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
