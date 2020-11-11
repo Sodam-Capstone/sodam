@@ -50,8 +50,10 @@ router.get('/logout', isLoggedIn, (req, res) => {
  * 회원가입
  */
 router.post('/join',isNotLoggedIn, async(req, res)=>{
-    
-    await dbPool(`INSERT INTO mydb.user_information (user_id, user_pw, user_name, user_email) VALUES ('${req.body.id_join}', '${req.body.password_join}', '${req.body.name_join}', '${req.body.email_join}');`);
+    var query = `INSERT INTO user_information (user_id, user_pw, user_name, user_email) VALUES ('${req.body.id_join}', '${req.body.password_join}', '${req.body.name_join}', '${req.body.email_join}');`;
+    console.log(query);
+    var temp = await dbPool(query);
+    console.log(query);
     res.render('join');
 });
 
@@ -59,7 +61,8 @@ router.post('/join',isNotLoggedIn, async(req, res)=>{
  * 아이디 중복체크
  */
 router.post('/duplicate_id',isNotLoggedIn, async(req,res)=>{
-    var temp = await dbPool(`SELECT user_id FROM mydb.user_information WHERE user_id = '${req.body.id_join}'`)
+    var temp = await dbPool(`SELECT user_id FROM user_information WHERE user_id = '${req.body.id_join}'`)
+    console.log(`SELECT user_id FROM user_information WHERE user_id = '${req.body.id_join}'`);
     if(temp[0] == undefined){
         res.json({
             duplicate_id_check : false
@@ -75,7 +78,8 @@ router.post('/duplicate_id',isNotLoggedIn, async(req,res)=>{
  * 이메일 중복체크
  */
 router.post('/duplicate_email',isNotLoggedIn, async(req,res)=>{
-    var temp = await dbPool(`SELECT user_email FROM mydb.user_information WHERE user_email = '${req.body.email_join}'`)
+    var temp = await dbPool(`SELECT user_email FROM user_information WHERE user_email = '${req.body.email_join}'`)
+    console.log(`SELECT user_email FROM user_information WHERE user_email = '${req.body.email_join}'`);
     if(temp[0] == undefined){
         res.json({
             duplicate_email_check : false

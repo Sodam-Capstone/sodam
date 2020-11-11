@@ -10,7 +10,7 @@ module.exports = passport => {
             async(email, password, done) => { // id, pw는 위에서 받은 값 입니다.
                 try {
                     
-                    const user = await dbPool(`SELECT * FROM mydb.user_information WHERE user_id ='${email}'`);
+                    const user = await dbPool(`SELECT * FROM user_information WHERE user_id ='${email}'`);
                     if(user){
                         if (email === user[0].user_id && password === user[0].user_pw) { // id,pw를 사용하여 db에서 사용자를 조회하는 로직이 들어가야 합니다.
                             console.log("localStrategy에서 id,pw 조회 성공");

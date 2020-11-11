@@ -12,11 +12,11 @@ router.get('/', async (req, res, next) => {
     console.log(req.session.passport.user);
     console.log("session이 존재합니다.");
   }
-  title = await dbPool('select * from test.test');
+  title = await dbPool('select * from user_information');
   res.render('index', {
     title : "소담",
-    id: title[0].id,
-    name: title[0].name,
+    id: title[0].user_id,
+    name: title[0].user_name,
   });
 });
 
