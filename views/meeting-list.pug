@@ -1,0 +1,212 @@
+doctype html
+head
+  title Panels | Klorofil - Free Bootstrap Dashboard Template
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+  // VENDOR CSS
+  link(rel='stylesheet', href='assets/vendor/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet', href='assets/vendor/font-awesome/css/font-awesome.min.css')
+  link(rel='stylesheet', href='assets/vendor/linearicons/style.css')
+  // MAIN CSS
+  link(rel='stylesheet', href='assets/css/main.css')
+  // FOR DEMO PURPOSES ONLY. You should remove this in your project
+  link(rel='stylesheet', href='assets/css/demo.css')
+  // GOOGLE FONTS
+  link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700', rel='stylesheet')
+  // ICONS
+  link(rel='apple-touch-icon', sizes='76x76', href='assets/img/apple-icon.png')
+  link(rel='icon', type='image/png', sizes='96x96', href='assets/img/favicon.png')
+// WRAPPER
+#wrapper
+  // NAVBAR
+  nav.navbar.navbar-default.navbar-fixed-top
+    .brand
+      a(href='/')
+        img.img-responsive.logo(src='assets/img/logo-dark.png', alt='Klorofil Logo')
+    .container-fluid
+      .navbar-btn
+        button.btn-toggle-fullwidth(type='button')
+          i.lnr.lnr-arrow-left-circle
+      #navbar-menu
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            a.dropdown-toggle.icon-menu(href='#', data-toggle='dropdown')
+              i.lnr.lnr-alarm
+              span.badge.bg-danger 5
+            ul.dropdown-menu.notifications
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-warning
+                  | System space is almost full
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-danger
+                  | You have 9 unfinished tasks
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-success
+                  | Monthly report is available
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-warning
+                  | Weekly meeting in 1 hour
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-success
+                  | Your request has been approved
+              li
+                a.more(href='#') See all notifications
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              img.img-circle(src='assets/img/user.png', alt='Avatar')
+              span Samuel
+              i.icon-submenu.lnr.lnr-chevron-down
+            ul.dropdown-menu
+              li
+                a(href='#')
+                  i.lnr.lnr-user
+                  span My Profile
+              li
+                a(href='#')
+                  i.lnr.lnr-envelope
+                  span Message
+              li
+                a(href='#')
+                  i.lnr.lnr-exit
+                  span Logout
+  // END NAVBAR
+  // LEFT SIDEBAR
+  #sidebar-nav.sidebar
+    .sidebar-scroll
+      nav
+        ul.nav
+          li
+            a(href='/')
+              i.lnr.lnr-home
+              span Dashboard
+          li
+            a(href='/enrollment')
+              i.lnr.lnr-code
+              span &#xD68C;&#xC758;&#xB4F1;&#xB85D;
+          li
+            a(href='/meeting-list')
+              i.lnr.lnr-cog
+              span &#xD68C;&#xC758;&#xBAA9;&#xB85D;
+          li
+            a(href='/sentimental_total')
+              i.lnr.lnr-cog
+              span &#xD68C;&#xC758;&#xBD84;&#xC11D;
+          li
+            a.active(href='#subPages', data-toggle='collapse')
+              i.lnr.lnr-file-empty
+              span Pages
+              i.icon-submenu.lnr.lnr-chevron-left
+            #subPages.collapse.in
+              ul.nav
+                li
+                  a.active(href='/page-profile') Profile
+                li
+                  a(href='/login') Login
+                li
+                  a(href='/page-lockscreen') Lockscreen
+  // END LEFT SIDEBAR
+  // MAIN
+  .main
+    // MAIN CONTENT
+    .main-content
+      .container-fluid
+        h3.page-title
+        .row
+          .col-md-11
+            // PANEL HEADLINE
+            .panel.panel-headline
+              .panel-heading
+                h3.panel-title &#xD68C;&#xC758; &#xBAA9;&#xB85D;
+                p.panel-subtitle &#xB4F1;&#xB85D;&#xD55C; &#xD68C;&#xC758; &#xBAA9;&#xB85D;&#xC744; &#xC870;&#xD68C;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+            // END PANEL HEADLINE
+        .row
+          .col-md-11
+            .panel
+              div
+                //
+                  <div class="card-header">
+                  <i class="fas fa-table mr-1">회의 리스트</i>
+                  </div>
+                .card-body
+                  .table-responsive
+                    table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                      thead
+                        tr
+                          th &#xC81C;&#xBAA9;
+                          th &#xB4F1;&#xB85D;&#xC790;
+                          th &#xD0DC;&#xADF8;
+                          th &#xC2DC;&#xAC04;
+                          th &#xB0A0;&#xC9DC;
+                      tfoot
+                        tr
+                          th Title
+                          th Name
+                          th tag
+                          th time
+                          th date
+                      tbody
+                        tr
+                          td Tiger Nixon
+                          td System Architect
+                          td Edinburgh
+                          td 61
+                          td 2011/04/25
+                        tr
+                          td Lael Greer
+                          td Systems Administrator
+                          td London
+                          td 21
+                          td 2009/02/27
+                        tr
+                          td Jonas Alexander
+                          td Developer
+                          td San Francisco
+                          td 30
+                          td 2010/07/14
+                        tr
+                          td Shad Decker
+                          td Regional Director
+                          td Edinburgh
+                          td 51
+                          td 2008/11/13
+                        tr
+                          td Michael Bruce
+                          td Javascript Developer
+                          td Singapore
+                          td 29
+                          td 2011/06/27
+                        tr
+                          td Donna Snider
+                          td Customer Support
+                          td New York
+                          td 27
+                          td 2011/01/25
+  // END MAIN CONTENT
+// END MAIN
+.clearfix
+footer
+  .container-fluid
+    p.copyright
+      | Shared by
+      i.fa.fa-love
+      a(href='https://bootstrapthemes.co') BootstrapThemes
+// END WRAPPER
+// Javascript
+script(src='assets/vendor/jquery/jquery.min.js')
+script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
+script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
+script(src='assets/scripts/klorofil-common.js')
+// datatable
+script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js', crossorigin='anonymous')
+script(src='js/scripts.js')
+script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js', crossorigin='anonymous')
+script(src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js', crossorigin='anonymous')
+script(src='assets/demo/datatables-demo.js')
+| &#x9; --&gt;
