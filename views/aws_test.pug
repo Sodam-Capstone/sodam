@@ -1,0 +1,8 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Document
+body
+    form(action='/upload' method='post' enctype='multipart/form-data')
+        input(type='file' name='imgFile')
+        input(type='submit' value='S3에 보내기')
