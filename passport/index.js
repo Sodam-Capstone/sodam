@@ -12,7 +12,7 @@ module.exports = passport => {
   // 메모리에 한번만 저장
   passport.deserializeUser(async(email, done) => {  // 매개변수 id는 세션에 저장됨 값(req.session.passport.user)
     try {
-      let user = await dbPool(`SELECT * FROM user_information WHERE user_id = '${email}'`);
+      let user = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.user_information WHERE user_id = '${email}'`);
       console.log(email);
       console.log("디시리얼라이즈",user);
       user = done(null, user);

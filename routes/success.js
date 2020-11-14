@@ -8,13 +8,15 @@ const {
 } = require('./middlewares.js');
 
 
-var count = 0;
 router.get("/success", isLoggedIn, (req, res, next) => {
-    count += 1;
+    if(req.session.passport){
+    console.log(req.session);
+    console.log(req.session.passport.user);
+    console.log("session이 존재합니다.");
+    }
     console.log("req.user :", req.user);
     res.render("index", {
         user_id: req.user[0].user_id,
-        count: count,
     });
 });
 

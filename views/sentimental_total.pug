@@ -28,92 +28,10 @@ head
     .brand
       a(href='/')
         img.img-responsive.logo(src='assets/img/logo-dark.png', alt='Klorofil Logo')
-    .container-fluid
-      .navbar-btn
-        button.btn-toggle-fullwidth(type='button')
-          i.lnr.lnr-arrow-left-circle
-      #navbar-menu
-        ul.nav.navbar-nav.navbar-right
-          li.dropdown
-            a.dropdown-toggle.icon-menu(href='#', data-toggle='dropdown')
-              i.lnr.lnr-alarm
-              span.badge.bg-danger 5
-            ul.dropdown-menu.notifications
-              li
-                a.notification-item(href='#')
-                  span.dot.bg-warning
-                  | System space is almost full
-              li
-                a.notification-item(href='#')
-                  span.dot.bg-danger
-                  | You have 9 unfinished tasks
-              li
-                a.notification-item(href='#')
-                  span.dot.bg-success
-                  | Monthly report is available
-              li
-                a.notification-item(href='#')
-                  span.dot.bg-warning
-                  | Weekly meeting in 1 hour
-              li
-                a.notification-item(href='#')
-                  span.dot.bg-success
-                  | Your request has been approved
-              li
-                a.more(href='#') See all notifications
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              img.img-circle(src='assets/img/user.png', alt='Avatar')
-              span Samuel
-              i.icon-submenu.lnr.lnr-chevron-down
-            ul.dropdown-menu
-              li
-                a(href='#')
-                  i.lnr.lnr-user
-                  span My Profile
-              li
-                a(href='#')
-                  i.lnr.lnr-envelope
-                  span Message
-              li
-                a(href='#')
-                  i.lnr.lnr-exit
-                  span Logout
+    include gnb
   // END NAVBAR
   // LEFT SIDEBAR
-  #sidebar-nav.sidebar
-    .sidebar-scroll
-      nav
-        ul.nav
-          li
-            a(href='/')
-              i.lnr.lnr-home
-              span Dashboard
-          li
-            a(href='/enrollment')
-              i.lnr.lnr-code
-              span &#xD68C;&#xC758;&#xB4F1;&#xB85D;
-          li
-            a(href='/meeting-list')
-              i.lnr.lnr-cog
-              span &#xD68C;&#xC758;&#xBAA9;&#xB85D;
-          li
-            a(href='/sentimental_total')
-              i.lnr.lnr-cog
-              span &#xD68C;&#xC758;&#xBD84;&#xC11D;
-          li
-            a.active(href='#subPages', data-toggle='collapse')
-              i.lnr.lnr-file-empty
-              span Pages
-              i.icon-submenu.lnr.lnr-chevron-left
-            #subPages.collapse.in
-              ul.nav
-                li
-                  a.active(href='page-profile.html') Profile
-                li
-                  a(href='/login') Login
-                li
-                  a(href='page-lockscreen.html') Lockscreen
+  include lnb
   // END LEFT SIDEBAR
   // MAIN
   .main
