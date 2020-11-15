@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 
+
 json_path = path.join(__dirname, "../");
 const readFile = util.promisify(fs.readFile); //프로미스화 시켜주기
 

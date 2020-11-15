@@ -42,8 +42,8 @@ router.post('/upload', upload.single("wavFile"), async function (req, res, next)
   // 텍스트 필드가 있는 경우, req.body가 이를 포함할 것
   try {
     console.log("파일 정보 : ", req.file);
-    //python.pythonRunAws(req, res, path); //파이썬 실행 
-    await inputDatabase.toDatabase(req, res);
+    python.pythonRunAws(req, res, path); //파이썬 실행 
+    //inputDatabase.toDatabase(req, res);
   } catch (error) {
     console.error(error);
   }

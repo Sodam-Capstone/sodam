@@ -1,11 +1,14 @@
 const {PythonShell} = require('python-shell');
+const util = require('util');
+const inputDatabase = require('../axios/toDatabase');
+const toDatabaseSync = util.promisify(inputDatabase.toDatabase)
   /**
    * 
    * @param {*} req req.file
    * @param {*} res 
    * @param {*} path 
    */
-const pythonRunAws = (req, res, path) => {
+const pythonRunAws = async (req, res, path) => {
     var options = {
         mode: 'text',
         scriptPath: path.join(__dirname, "../python/"),
@@ -20,6 +23,7 @@ const pythonRunAws = (req, res, path) => {
         console.log(results);
         pythonRunReformat(req, res, path);
     });
+    return true;
 }
 
 /**
@@ -36,12 +40,13 @@ const pythonRunReformat = (req, res, path) => {
         args: [`${req.file.originalname}`, json_path]
     };
     console.log("pythonRunReformat - options : ",options);
-    PythonShell.run('reformat.py', options, function (err, results) {
+    PythonShell.run('reformat.py', options, async function (err, results) {
         if (err){
             throw err; 
         } 
         console.log("----------파이썬 pythonRunReformat 실행 완료---------");
         console.log(results);
+        await toDatabaseSync(req, res);
     });
 }
 
