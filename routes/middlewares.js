@@ -2,7 +2,8 @@ exports.isLoggedIn = (req, res, next) => {
     if(req.isAuthenticated()){
         next();
     }else{
-        res.status(403).send('로그인을 해주세요');
+        //res.send('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">alert("로그인이 필요합니다.");</script>');
+        res.redirect('/login');
     }
 };
 

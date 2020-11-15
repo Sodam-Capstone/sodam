@@ -1,3 +1,0 @@
-// const ID = 'HELLO';
-// const PW = 'WORLD';
-// const [rows] = await connection.query('INSERT INTO MEMBERS_INFO(ID, PW) VALUES(?, ?)', [ID, PW]);

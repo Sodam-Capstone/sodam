@@ -11,6 +11,8 @@ var indexRouter = require('./routes/index');
 const passportConfig = require('./passport');
 const authRouter = require('./routes/auth');
 const successRouter = require('./routes/success');
+const meetingRouter = require('./routes/meeting');
+const awsSdkRouter = require('./routes/awsSdk');
 
 var app = express();
 passportConfig(passport);
@@ -40,6 +42,8 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/', successRouter);
+app.use('/', meetingRouter);
+app.use('/', awsSdkRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

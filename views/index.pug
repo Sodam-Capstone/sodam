@@ -25,123 +25,16 @@ head
   // NAVBAR
   nav.navbar.navbar-default.navbar-fixed-top
     .brand
-      a(href='index.html')
+      a(href='/')
         img.img-responsive.logo(src='assets/img/logo-dark.png' alt='Klorofil Logo')
-    .container-fluid
-      .navbar-btn
-        button.btn-toggle-fullwidth(type='button')
-          i.lnr.lnr-arrow-left-circle
-      #navbar-menu
-        ul.nav.navbar-nav.navbar-right
-          if user_id 
-            li.dropdown
-              a.dropdown-toggle.icon-menu(href='#' data-toggle='dropdown')
-                i.lnr.lnr-alarm
-                span.badge.bg-danger 5
-              ul.dropdown-menu.notifications
-                li
-                  a.notification-item(href='#')
-                    span.dot.bg-warning
-                    | System space is almost full
-                li
-                  a.notification-item(href='#')
-                    span.dot.bg-danger
-                    | You have 9 unfinished tasks
-                li
-                  a.notification-item(href='#')
-                    span.dot.bg-success
-                    | Monthly report is available
-                li
-                  a.notification-item(href='#')
-                    span.dot.bg-warning
-                    | Weekly meeting in 1 hour
-                li
-                  a.notification-item(href='#')
-                    span.dot.bg-success
-                    | Your request has been approved
-                li
-                  a.more(href='#') See all notifications
-            li.dropdown
-              a.dropdown-toggle(href='#' data-toggle='dropdown')
-                img.img-circle(src='assets/img/user.png' alt='Avatar')
-                span #{user_id}
-                i.icon-submenu.lnr.lnr-chevron-down
-              ul.dropdown-menu
-                li
-                  a(href='#')
-                    i.lnr.lnr-user
-                    span My Profile
-                li
-                  a(href='#')
-                    i.lnr.lnr-envelope
-                    span Message
-                li
-                  a(href='/auth/logout')
-                    i.lnr.lnr-exit
-                    span Logout
-          else
-            li.dropdown
-              a.dropdown-toggle(href='#' data-toggle='dropdown')
-                //- img.img-circle(src='assets/img/user.png' alt='Avatar')
-                span 로그인을 해주세요
-                i.icon-submenu.lnr.lnr-chevron-down
-              ul.dropdown-menu
-                li
-                  a(href='/login')
-                    i.lnr.lnr-user
-                    span 로그인
-                li
-                  a(href='/login')
-                    i.lnr.lnr-envelope
-                    span 회원가입
+    include gnb
           //
             <li>
             <a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
             </li>
   // END NAVBAR
   // LEFT SIDEBAR
-  #sidebar-nav.sidebar
-    .sidebar-scroll
-      nav
-        ul.nav
-          li
-            a(href='index.html')
-              i.lnr.lnr-home
-              span Dashboard
-          li
-            a(href='enrollment.html')
-              i.lnr.lnr-code
-              span &#xD68C;&#xC758;&#xB4F1;&#xB85D;
-          li
-            a(href='meeting-list.html')
-              i.lnr.lnr-cog
-              span &#xD68C;&#xC758;&#xBAA9;&#xB85D;
-          li
-            a(href='meeting-log.html')
-              i.lnr.lnr-cog
-              span &#xD68C;&#xC758;&#xB85D;
-          li
-            a.active(href='#subPages' data-toggle='collapse')
-              i.lnr.lnr-chart-bars
-              span &#xD68C;&#xC758;&#xBD84;&#xC11D;
-              i.icon-submenu.lnr.lnr-chevron-left
-            #subPages.collapse.in
-              ul.nav
-                li
-                  a.active(href='charts.html') &#xC804;&#xCCB4;&#xBD84;&#xC11D;
-                li
-                  a.active(href='charts.html') &#xAC1C;&#xC778;&#xBD84;&#xC11D;
-          li
-            a.active(href='#subPages' data-toggle='collapse')
-              i.lnr.lnr-file-empty
-              span Pages
-              i.icon-submenu.lnr.lnr-chevron-left
-            #subPages.collapse.in
-              ul.nav
-                li
-                  a.active(href='page-profile.html') Profile
-                li
-                  a(href='page-lockscreen.html') Lockscreen
+  include lnb
   // END LEFT SIDEBAR
   // MAIN
   .main
@@ -360,33 +253,33 @@ head
                     img.img-circle.pull-left.avatar(src='assets/img/user1.png' alt='Avatar')
                     p
                       a(href='#') Michael
-                      |  has achieved 80% of his completed tasks 
+                      |  has achieved 80% of his completed tasks
                       span.timestamp 20 minutes ago
                   li
                     img.img-circle.pull-left.avatar(src='assets/img/user2.png' alt='Avatar')
                     p
                       a(href='#') Daniel
-                      |  has been added as a team member to project 
+                      |  has been added as a team member to project
                       a(href='#') System Update
                       span.timestamp Yesterday
                   li
                     img.img-circle.pull-left.avatar(src='assets/img/user3.png' alt='Avatar')
                     p
                       a(href='#') Martha
-                      |  created a new heatmap view 
+                      |  created a new heatmap view
                       a(href='#') Landing Page
                       span.timestamp 2 days ago
                   li
                     img.img-circle.pull-left.avatar(src='assets/img/user4.png' alt='Avatar')
                     p
                       a(href='#') Jane
-                      |  has completed all of the tasks 
+                      |  has completed all of the tasks
                       span.timestamp 2 days ago
                   li
                     img.img-circle.pull-left.avatar(src='assets/img/user5.png' alt='Avatar')
                     p
                       a(href='#') Jason
-                      |  started a discussion about 
+                      |  started a discussion about
                       a(href='#') Weekly Meeting
                       span.timestamp 3 days ago
                 button.btn.btn-primary.btn-bottom.center-block(type='button') Load More
@@ -406,35 +299,35 @@ head
                 ul.list-unstyled.task-list
                   li
                     p
-                      | Updating Users Settings 
+                      | Updating Users Settings
                       span.label-percent 23%
                     .progress.progress-xs
                       .progress-bar.progress-bar-danger(role='progressbar' aria-valuenow='23' aria-valuemin='0' aria-valuemax='100' style='width:23%')
                         span.sr-only 23% Complete
                   li
                     p
-                      | Load &amp; Stress Test 
+                      | Load &amp; Stress Test
                       span.label-percent 80%
                     .progress.progress-xs
                       .progress-bar.progress-bar-success(role='progressbar' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100' style='width: 80%')
                         span.sr-only 80% Complete
                   li
                     p
-                      | Data Duplication Check 
+                      | Data Duplication Check
                       span.label-percent 100%
                     .progress.progress-xs
                       .progress-bar.progress-bar-success(role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%')
                         span.sr-only Success
                   li
                     p
-                      | Server Check 
+                      | Server Check
                       span.label-percent 45%
                     .progress.progress-xs
                       .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width: 45%')
                         span.sr-only 45% Complete
                   li
                     p
-                      | Mobile App Development 
+                      | Mobile App Development
                       span.label-percent 10%
                     .progress.progress-xs
                       .progress-bar.progress-bar-danger(role='progressbar' aria-valuenow='10' aria-valuemin='0' aria-valuemax='100' style='width: 10%')
@@ -469,19 +362,19 @@ head
                 h4 CPU Load
                 ul.list-unstyled.list-justify
                   li
-                    | High: 
+                    | High:
                     span 95%
                   li
-                    | Average: 
+                    | Average:
                     span 87%
                   li
-                    | Low: 
+                    | Low:
                     span 20%
                   li
-                    | Threads: 
+                    | Threads:
                     span 996
                   li
-                    | Processes: 
+                    | Processes:
                     span 259
             // END REALTIME CHART
     // END MAIN CONTENT
@@ -490,7 +383,7 @@ head
   footer
     .container-fluid
       p.copyright
-        | Shared by 
+        | Shared by
         i.fa.fa-love
         a(href='https://bootstrapthemes.co') BootstrapThemes
 // END WRAPPER

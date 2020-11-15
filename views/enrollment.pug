@@ -1,0 +1,86 @@
+doctype html
+head
+  title  &#xD68C;&#xC758;&#xB4F1;&#xB85D; | &#xC18C;&#xB2F4;
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+  // VENDOR CSS
+  link(rel='stylesheet', href='assets/vendor/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet', href='assets/vendor/font-awesome/css/font-awesome.min.css')
+  link(rel='stylesheet', href='assets/vendor/linearicons/style.css')
+  // MAIN CSS
+  link(rel='stylesheet', href='assets/css/main.css')
+  // FOR DEMO PURPOSES ONLY. You should remove this in your project
+  link(rel='stylesheet', href='assets/css/demo.css')
+  // GOOGLE FONTS
+  link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700', rel='stylesheet')
+  // ICONS
+  link(rel='apple-touch-icon', sizes='76x76', href='assets/img/apple-icon.png')
+  link(rel='icon', type='image/png', sizes='96x96', href='assets/img/favicon.png')
+// WRAPPER
+#wrapper
+  // NAVBAR
+  nav.navbar.navbar-default.navbar-fixed-top
+    .brand
+      a(href='/')
+        img.img-responsive.logo(src='assets/img/logo-dark.png', alt='Klorofil Logo')
+    include gnb
+  // END NAVBAR
+  // LEFT SIDEBAR
+  include lnb
+  // END LEFT SIDEBAR
+  // MAIN
+  .main
+    // MAIN CONTENT
+    .main-content
+      .container-fluid
+        h3.page-title &#xD68C;&#xC758; &#xB4F1;&#xB85D;
+        .row
+          .col-md-8
+            // INPUTS
+            .panel
+              .panel-heading
+                h3.panel-title &#xD68C;&#xC758; &#xC815;&#xBCF4;
+              .panel-body
+                // START 회의정보 등록
+                form(action='/upload' method='post' enctype='multipart/form-data')
+                  // action 임시로 해놓음
+                  input.form-control(type='text', placeholder='회의 제목' name="meet_title")
+                  br
+                  input.form-control(type='date', placeholder='회의 날짜' name="meet_date")
+                  br
+                  .filebox
+                    input.upload-name(value='선택된 파일 없음', disabled='disabled')
+                    label(for='ex_filename') &#xD68C;&#xC758; &#xD30C;&#xC77C; &#xC120;&#xD0DD;
+                    input#ex_filename.upload-hidden(type='file', name='wavFile', accept='audio/*')
+                  // HASHTAG
+                  .content
+                    table(class='table')
+                      table#tag-list
+                        h4 &#xD0DC;&#xADF8; &#xBAA9;&#xB85D;
+                      div
+                        input#tag.btn.btn-default(type='text', size='12', maxlength='12', placeholder='태그입력')
+                  // END HASHTAG
+                  br
+                  input.btn.btn-primary(type='submit')
+                // END 회의정보 등록
+              // END INPUTS
+    // END MAIN CONTENT
+  // END MAIN
+  .clearfix
+  footer
+    .container-fluid
+      p.copyright
+        | Shared by
+        i.fa.fa-love
+        a(href='https://bootstrapthemes.co') BootstrapThemes
+// END WRAPPER
+// Javascript
+script(src='assets/vendor/jquery/jquery.min.js')
+script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
+script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
+script(src='assets/scripts/klorofil-common.js')
+// hashtag 연결
+script(src='assets/scripts/hashtag.js')
+// 녹음파일찾는 js
+script(src='assets/scripts/filesearch.js')
