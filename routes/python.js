@@ -1,8 +1,10 @@
 const {PythonShell} = require('python-shell');
- /**
-  * Python-Shell 관련
-  */
-
+  /**
+   * 
+   * @param {*} req req.file
+   * @param {*} res 
+   * @param {*} path 
+   */
 const pythonRunAws = (req, res, path) => {
     var options = {
         mode: 'text',
@@ -20,6 +22,12 @@ const pythonRunAws = (req, res, path) => {
     });
 }
 
+/**
+ * 
+ * @param {*} req req.file
+ * @param {*} res 
+ * @param {*} path 
+ */
 const pythonRunReformat = (req, res, path) => {
     json_path = path.join(__dirname, "../");
     var options = {
