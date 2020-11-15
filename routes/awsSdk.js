@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const path = require('path');
-const { pythonRun } = require('./python');//파이썬 모듈 불러오기
+const python= require('./python');//파이썬 모듈 불러오기
 /**
  * AWS-SDK 관련
  */
@@ -40,7 +40,11 @@ router.post('/upload', upload.single("wavFile"), function(req, res, next){
   // input(type='file' name='imgFile')
   // 텍스트 필드가 있는 경우, req.body가 이를 포함할 것
   console.log("파일 정보 : ",req.file);
-  pythonRun(req, path);//파이썬 실행
+  try {
+    python.pythonRunAws(req, res, path);//파이썬 실행 
+  } catch (error) {
+    console.error(error);
+  }
   res.redirect('/');
 })
 
