@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const path = require('path');
 const python = require('./python'); //파이썬 모듈 불러오기
-const inputDatabase = require('../axios/toDatabase');
 
 /**
  * AWS-SDK 관련
@@ -43,7 +42,6 @@ router.post('/upload', upload.single("wavFile"), async function (req, res, next)
   try {
     console.log("파일 정보 : ", req.file);
     python.pythonRunAws(req, res, path); //파이썬 실행 
-    //inputDatabase.toDatabase(req, res);
   } catch (error) {
     console.error(error);
   }
