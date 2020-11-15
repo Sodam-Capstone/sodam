@@ -12,12 +12,11 @@ import sys
 
 # 로컬 파일 이름, 버킷 이름, 버킷 파일 이름
 # s3.upload_file(local_file, bucket_name, bucket_file)
-test = sys.argv[0]
+
 ### 버킷 파일 텍스트화 하기
 transcribe = boto3.client('transcribe')
-job_name = test
-job_uri = 's3://speech.to.text/s1_sadness_M_s4.wav'
-
+job_name = sys.argv[1]
+job_uri = 's3://speech.to.text/' + sys.argv[1]
 
 transcribe.start_transcription_job(
     TranscriptionJobName=job_name,
@@ -36,6 +35,8 @@ while True:
 
 
 ### 텍스트화 파일 로컬에 저장하기
+job_name = sys.argv[1][:-4]
+
 url = status['TranscriptionJob']['Transcript']['TranscriptFileUri']
 r = requests.get(url, allow_redirects = True)
-open('py_json/origin.json', 'wb').write(r.content)
+open('py_json/'+ job_name +'.json', 'wb').write(r.content)

@@ -3,12 +3,11 @@ exports.pythonRun = (req, path) => {
      * Python-Shell 관련
      */
     const {PythonShell} = require('python-shell');
-    fileName =  req.file.originalname;
-    
+
     var options = {
         mode: 'text',
         scriptPath: path.join(__dirname, "../python/"),
-        args: [fileName]
+        args: [`${req.file.originalname}`]
     };
     console.log("python - options : ",options);
     PythonShell.run('aws.py', options, function (err, results) {
@@ -16,5 +15,6 @@ exports.pythonRun = (req, path) => {
             throw err; 
         } 
         console.log("----------파이썬 실행 완료---------");
+        console.log(results);
     });
 }
