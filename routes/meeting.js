@@ -14,20 +14,44 @@ router.get('/enrollment', isLoggedIn, (req, res, next) => {
   });
 })
 
-router.get('/meeting-list', isLoggedIn, async(req, res, next) => {
-  // 나중에 회의등록에서 넘어온 meet_title 일치하는것만 불러올 예정
-  var userlist = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_share WHERE user1_index = ${req.user[0].user_index}`);
-  console.log(userlist);
+// router.get('/meeting-list', isLoggedIn, async(req, res, next) => {
+//   // 나중에 회의등록에서 넘어온 meet_title 일치하는것만 불러올 예정
+//   // user_index로 meet_index들 받아옴.
+//   var userlist = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_share WHERE user1_index = ${req.user[0].user_index}`);
+//   console.log(userlist);
+//
+//   //meet_index로 제목, 날짜 받아옴
+//   var meetlist = [];
+//   for(var i = 0 ; i < userlist.length ; i++){
+//     meetlist[i] = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_information WHERE meet_index = ${userlist[i].meet_index}`);
+//   }
+//   console.log(meetlist);
+//
+//   //meet_index로 해시태그정보 받아옴
+//   var hashlist = [];
+//   for(var i = 0 ; i < userlist.length ; i++){
+//       hashlist[i] = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_hashing WHERE meet_index = ${userlist[i].meet_index}`);
+//   }
+//   console.log(hashlist);
+//   res.render('meeting-list', {
+//     user_id: req.user[0].user_id,
+//     meetlist : meetlist,
+//     userlist : userlist,
+//     hashlist : hashlist,
+//   });
+// })
 
-  var meetlist = [];
-  for(var i = 0 ; i < userlist.length ; i++){
-    meetlist[i] = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_information WHERE meet_index = ${userlist[i].meet_index}`);
-  }
-  console.log(meetlist);
+router.get('/meeting-list', isLoggedIn, async(req, res, next) => {
+  var meeting_list = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_share as m_s join ${process.env.DB_DATABASE}.meet_information as m_i ON (m_s.meet_index = m_i.meet_index) left join ${process.env.DB_DATABASE}.meet_hashing as m_h ON (m_s.meet_index = m_h.meet_index) WHERE m_s.user1_index = ${req.user[0].user_index}`);
+  console.log(meeting_list);
+  var i;
+  for(i=0;meeting_list[i]!=undefined;i++)
+    console.log('rows : '+i);
+  console.log(i);
   res.render('meeting-list', {
     user_id: req.user[0].user_id,
-    meetlist : meetlist,
-    userlist : userlist,
+    meeting_data: meeting_list,
+    row: i,
   });
 })
 

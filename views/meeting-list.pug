@@ -55,22 +55,29 @@ head
                         tr
                           th &#xC81C;&#xBAA9;
                           th &#xD0DC;&#xADF8;
-                          th &#xC2DC;&#xAC04;
+                          th &#xD30C;&#xC77C;
                           th &#xB0A0;&#xC9DC;
                       tfoot
                         tr
                           th Title
                           th tag
-                          th time
+                          th file
                           th date
                       tbody
-                        -for(var j=0; j< meetlist.length; j++)
-                          tr
-                            td #{meetlist[j][0].meet_name}
-                            td testtag1
-                            td #{meetlist[j][0].meet_voice}
-                            td #{meetlist[j][0].meet_date}
-                  //h3 #{JSON.stringify(meetlist[1][0])}
+                          -for(var i=0;i<row;i++)
+                            tr
+                             td #{meeting_data[i].meet_name}
+                             if meeting_data[i].meet_hashtag1 == null
+                              td
+                             else if meeting_data[i].meet_hashtag2 == null
+                              td #{'#' + meeting_data[i].meet_hashtag1}
+                             else if meeting_data[i].meet_hashtag3 == null
+                              td #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2}
+                             else
+                              td  #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2} #{'#' + meeting_data[i].meet_hashtag3}
+                             td #{meeting_data[i].meet_voice}
+                             td #{meeting_data[i].meet_date}
+                  //h3 #{JSON.stringify(hashlist[0][0])}
                   //h3 #{JSON.stringify(userlist[0])}
 
   // END MAIN CONTENT
