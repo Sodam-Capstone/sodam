@@ -34,200 +34,225 @@ head
   // LEFT SIDEBAR
   include lnb
   // END LEFT SIDEBAR
+
   // MAIN
   .main
     // MAIN CONTENT
     .main-content
       .container-fluid
-        h3.page-title &#xD68C;&#xC758; &#xBD84;&#xC11D;
-      .bs-component
-        // 상단 회의정보 tab
-        ul.nav.nav-tabs
-          li.nav-item
-            a.nav-link.active(data-toggle='tab', href='#meeting_log') &#xD68C;&#xC758;&#xB85D;
-          li.nav-item
-            a.nav-link(data-toggle='tab', href='#sentimental_total') &#xD68C;&#xC758; &#xC804;&#xCCB4; &#xD3C9;&#xAC00;
-          li.nav-item
-            a.nav-link(data-toggle='tab', href='#sentimental_personal') &#xD68C;&#xC758; &#xAC1C;&#xC778; &#xD3C9;&#xAC00;
-
-
-
-      div
-        // 회의록,감정분석
-        #myTabContent.tab-content
-          // 회의록
-          #meeting_log.tab-pane.fade.show.active
-            // PANEL 회의 제목, 참여자
-            .col-md-8
-              .panel
-                .panel-heading
-                  h3#log_title.panel-title #{text_title}
-                .panel-body
-                  table#conference_member.table
-                    tbody
-                      tr
-                        th #{text_spk1}
-                        th #{text_spk2}
-                        th #{text_spk3}
-                        th #{text_spk4}
-                  div
-                    p &#xC624;&#xB514;&#xC624;
-                    audio#meetinglog_tab_audio(controls='', updatetracktime='updateTrackTime(this,"meetinglog_tab");', onended='endTrackTime("meetinglog_tab_audio","meetinglog_tab");')
-                      source(src='s1_sadness_M_s4.wav')
-                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; &#xD45C;&#xC2DC;&#xC548;&#xB428;
-            // END PANEL HEADLINE
-            // START 해시태그
-            .col-md-3
-              .panel
-                .panel-heading
-                  h3.panel-title &#xD68C;&#xC758; &#xD0DC;&#xADF8;
-                .panel-body
-                  table#conference_tag.table
-                    tbody
-                      tr
-                        td # #{hash1}
-                      tr
-                        td # #{hash2}
-                      tr
-                        td # #{hash3}
-            // END 해시태그
-            // PANEL 회의 내용
-            .row
-              .col-md-11
-                #panel-scrolling-demo.panel
-                  .panel-heading
-                    h3.panel-title &#xD68C;&#xC758; &#xB0B4;&#xC6A9;
-                  .panel-body
-                    a#meetinglog_tab_desc_0.sample_link(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
-                    p #{text_spk1} : #{text_result}
-                    p #{text_spk2} : #{text_result2}
-                    p #{text_spk3} : #{text_result3}
-          // END 회의록
-          // 회의 전체 평가
-          #sentimental_total.tab-pane.fade
-            // 전체 감정 비율
-            .row
-              .col-md-6
-                .panel
-                  .card-header
-                    i.fas.fa-chart-pie.mr-1
-                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD68C;&#xC758; &#xAC10;&#xC815; &#xBE44;&#xC728;
-                  .card-body
-                    canvas#myPieChart(width='100%', height='50')
-                  .card-footer.small.text-muted Updated yesterday at 11:59 PM
-              .col-md-5
-                .panel
-                  .panel-heading
-                    h3.panel-title &#xD68C;&#xC758; &#xAC10;&#xC815; &#xC810;&#xC218;
-                    h1  80&#xC810;
-                  .panel-body
-                    p 10&#xC810;
-            // END 전체 감정 비율
-            // 전체 발언 비율
-            .row
-              .col-md-6
-                .panel
-                  .card-header
-                    i.fas.fa-chart-bar.mr-1
-                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD68C;&#xC758; &#xBC1C;&#xC5B8; &#xC21C;&#xC704;
-                  .card-body
-                    canvas#myBarChart(width='100%', height='50')
-                  .card-footer.small.text-muted Updated yesterday at 11:59 PM
-              .col-md-5
-                .panel
-                  .panel-heading
-                    h3.panel-title &#xD68C;&#xC758; &#xBC1C;&#xC5B8; &#xC21C;&#xC704;
-                  .panel-body
-                    #demo-line-chart.ct-chart
-            // END 전체 발언 비율
-          // END 회의 전체 평가
-          // 회의 개인 평가
-          #sentimental_personal.tab-pane.fade
-            // 개인 감정 비율
-            .row
-              .col-md-6
-                .panel
-                  .card-header
-                    i.fas.fa-chart-pie.mr-1
-                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD68C;&#xC758; &#xAC10;&#xC815; &#xBE44;&#xC728;
-                  .card-body
-                    canvas#myPieChart2(width='100%', height='50')
-                  .card-footer.small.text-muted Updated yesterday at 11:59 PM
-              .col-md-5
-                .panel
-                  .panel-heading
-                    h3.panel-title &#xD68C;&#xC758; &#xAC10;&#xC815; &#xC810;&#xC218;
-                    h1  80&#xC810;
-                  .panel-body
-                    p 10&#xC810;
-            // END 개인 감정 비율
-            // 개인 발언 비율
-            .row
-              .col-md-6
-                .panel
-                  .card-header
-                    i.fas.fa-chart-bar.mr-1
-                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD68C;&#xC758; &#xBC1C;&#xC5B8; &#xC21C;&#xC704;
-                  .card-body
-                    canvas#myBarChart2(width='100%', height='50')
-                  .card-footer.small.text-muted Updated yesterday at 11:59 PM
-              .col-md-5
-                .panel
-                  .panel-heading
-                    h3.panel-title &#xD68C;&#xC758; &#xBC1C;&#xC5B8; &#xC21C;&#xC704;
-                  .panel-body
-                    #demo-line-chart.ct-chart
-            // END 개인 발언 비율
-          // END 회의 개인 평가
-        // END 회의록,감정분석
-      // 회의 평가
-      //
-        <div class="row">
-        <div class="col-md-6">
-        <div class="panel">
-        <div class="card-header">
-        <i class="fas fa-chart-pie mr-1"></i>
-        회의 감정 비율
-        </div>
-        <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
-        </div>
-        <div class="col-md-5">
-        <div class="panel">
-        <div class="panel-heading">
-        <h3 class="panel-title">회의 감정 점수</h3>
-        <h1> 80점 </h1>
-        </div>
-        <div class="panel-body">
-        <p>10점</p>
-        </div>
-        </div>
-        </div>
-        </div>
-        <div class="row">
-        <div class="col-md-6">
-        <div class="panel">
-        <div class="card-header">
-        <i class="fas fa-chart-bar mr-1"></i>
-        회의 발언 순위
-        </div>
-        <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
-        </div>
-        <div class="col-md-5">
-        <div class="panel">
-        <div class="panel-heading">
-        <h3 class="panel-title">회의 발언 순위</h3>
-        </div>
-        <div class="panel-body">
-        <div id="demo-line-chart" class="ct-chart"></div>
-        </div>
-        </div>
-        </div>
-        </div>
-    // END MAIN
+        .panel.panel-profile
+          .clearfix
+            // LEFT COLUMN
+            .sentimental-left
+              // TABBED CONTENT
+              .custom-tabs-line.tabs-line-bottom.left-aligned
+                ul.nav.nav-pills(role='tablist')
+                  li.active
+                    a(href='#meeting_log', role='tab', data-toggle='tab') &#xD68C;&#xC758;&#xB85D;
+                  li
+                    a(href='#sentimental_total', role='tab', data-toggle='tab') &#xC804;&#xCCB4; &#xD3C9;&#xAC00;
+                  li
+                    a(href='#sentimental_personal', role='tab', data-toggle='tab') &#xAC1C;&#xC778; &#xD3C9;&#xAC00;
+              .tab-content
+                // 회의록
+                #meeting_log.tab-pane.fade.in.active
+                  .col-md-12
+                    .row
+                      .panel
+                        #meeting_record
+                          audio#meetinglog_tab_audio(controls='', updatetracktime='updateTrackTime(this,"meetinglog_tab");', onended='endTrackTime("meetinglog_tab_audio","meetinglog_tab");')
+                            source(src='s1_sadness_M_s4.wav')
+                            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD45C;&#xC2DC;&#xC548;&#xB428;
+                    .row
+                      #panel-scrolling-demo.panel
+                        .panel-heading
+                          h3.panel-title &#xD68C;&#xC758; &#xB0B4;&#xC6A9;
+                        #conference_log.panel-body
+                        ul.list-unstyled.activity-timeline
+                          -for(var j=0; j< testdata.length; j++)
+                            li
+                              h4 #{testdata[j].speaker_label}
+                              p
+                                span.timestamp
+                                  a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
+                                    span#start_time  #{testdata[j].start_time}
+                                  span#end_time
+                                  a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
+                                    span  #{testdata[j].end_time}
+                                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{testdata[j].result}
+                          h4
+                            //#{JSON.stringify(speakerdata[0])}
+                          //button.btn.btn-primary.btn-bottom.center-block(type='button') Load More
+                // END 회의록
+                // 전체 감정 점수
+                #sentimental_total.tab-pane.fade
+                  // 전체 감정 비율
+                  .row
+                    .col-md-8
+                      .panel
+                        .card-header
+                          i.fas.fa-chart-pie.mr-1
+                          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                        br
+                        .card-body
+                          canvas#myPieChart(width='100%', height='50')
+                        .card-footer.small.text-muted Updated yesterday at 11:59 PM
+                    .col-md-4
+                      .panel
+                        .panel-heading
+                          h3.panel-title &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                          h1  80&#xC810;
+                        .panel-body
+                          p 10&#xC810;
+                  // END 전체 감정 비율
+                  // 전체 발언 비율
+                  .row
+                    .col-md-8
+                      .panel
+                        .card-header
+                          i.fas.fa-chart-bar.mr-1
+                          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xC804;&#xCCB4; &#xC801;&#xADF9;&#xB3C4; &#xC21C;&#xC704;
+                        br
+                        .card-body
+                          canvas#myBarChart(width='100%', height='50')
+                        .card-footer.small.text-muted Updated yesterday at 11:59 PM
+                    .col-md-4
+                      .panel
+                        .panel-heading
+                          h3.panel-title &#xD68C;&#xC758; &#xC801;&#xADF9;&#xB3C4; &#xBD84;&#xC11D;
+                          h1  70&#xC810;
+                        .panel-body
+                          #demo-line-chart.ct-chart
+                          p  @@ &#xC810;
+                  // END 전체 발언 비율
+                // END 전체 감정 점수
+                // 회의 개인 평가
+                #sentimental_personal.tab-pane.fade
+                  // TABBED CONTENT
+                  .custom-tabs-line.tabs-line-bottom.center-aligned
+                    ul.nav.nav-pills(role='tablist')
+                      li.active
+                        a(href='#first', sclass='label label-primary', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;1
+                      li
+                        a.label.label-primary(href='#second', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;2
+                      li
+                        a.label.label-primary(href='#third', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;3
+                      li
+                        a.label.label-primary(href='#fourth', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;4
+                  // 참석자 만족도 분석
+                  .tab-content
+                    // 참석자1 만족도 분석
+                    #first.tab-pane.fade.in.active
+                      .row
+                        .col-md-8
+                          .panel
+                            .card-body
+                              canvas#myPieChart1(width='100%', height='50')
+                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
+                        .col-md-4
+                          .panel
+                            .panel-heading
+                              h3.panel-title &#xCC38;&#xAC00;&#xC790;1 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                              h1  80&#xC810;
+                            .panel-body
+                              p 10&#xC810;
+                    // END 참석자1 만족도 분석
+                    // 참석자2 만족도 분석
+                    #second.tab-pane.fade
+                      .row
+                        .col-md-8
+                          .panel
+                            .card-header
+                              i.fas.fa-chart-pie.mr-1
+                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;2 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                            br
+                            .card-body
+                              canvas#myPieChart2(width='100%', height='50')
+                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
+                        .col-md-4
+                          .panel
+                            .panel-heading
+                              h3.panel-title &#xCC38;&#xAC00;&#xC790;2 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                              h1  80&#xC810;
+                            .panel-body
+                              p 10&#xC810;
+                    // END 참석자2 만족도 분석
+                    // 참석자3 만족도 분석
+                    #third.tab-pane.fade
+                      .row
+                        .col-md-8
+                          .panel
+                            .card-header
+                              i.fas.fa-chart-pie.mr-1
+                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;3 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                            br
+                            .card-body
+                              canvas#myPieChart3(width='100%', height='50')
+                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
+                        .col-md-4
+                          .panel
+                            .panel-heading
+                              h3.panel-title &#xCC38;&#xAC00;&#xC790;3 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                              h1  80&#xC810;
+                            .panel-body
+                              p 10&#xC810;
+                    // END 참석자3 만족도 분석
+                    // 참석자4 만족도 분석
+                    #fourth.tab-pane.fade
+                      .row
+                        .col-md-8
+                          .panel
+                            .card-header
+                              i.fas.fa-chart-pie.mr-1
+                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;4 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                            br
+                            .card-body
+                              canvas#myPieChart4(width='100%', height='50')
+                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
+                        .col-md-4
+                          .panel
+                            .panel-heading
+                              h3.panel-title &#xCC38;&#xAC00;&#xC790;4 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                              h1  80&#xC810;
+                            .panel-body
+                              p 10&#xC810;
+                    // END 참석자4 만족도 분석
+                  // END 참석자 만족도 분석
+                // END 회의 개인 평가
+              // END TABBED CONTENT
+            // END LEFT COLUMN
+            br
+            br
+            // RIGHT COLUMN
+            .sentimental-right
+              // LABELS
+              .profile-detail
+                a.navbar-btn-right(href='#')
+                  i.lnr.lnr-cog
+                .profile-info
+                  h4.heading &#xD68C;&#xC758; Info
+                  p #{text_title}
+                .profile-info
+                  h4.heading &#xCC38;&#xC5EC;&#xC790;
+                  ul.list-inline.social-icons
+                    -for(var j = 0; j < speakerdata.length ; j++)
+                      li
+                        span.label.label-info(contenteditable='true')  #{speakerdata[j].speaker_label}
+                .profile-info
+                  h4.heading &#xD0DC;&#xADF8;
+                  ul.list-unstyled.list-justify
+                    if hashdata.meet_hashtag1 != null
+                      li
+                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag1}
+                    if hashdata.meet_hashtag2 != null
+                      li
+                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag2}
+                    if hashdata.meet_hashtag3 != null
+                      li
+                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag3}
+            // END RIGHT COLUMN
+    // END MAIN CONTENT
+  // END MAIN
     .clearfix
     footer
       .container-fluid

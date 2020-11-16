@@ -66,7 +66,8 @@ head
                       tbody
                           -for(var i=0;i<row;i++)
                             tr
-                             td #{meeting_data[i].meet_name}
+                             td
+                               a(href='/sentimental_total') #{meeting_data[i].meet_name}
                              if meeting_data[i].meet_hashtag1 == null
                               td
                              else if meeting_data[i].meet_hashtag2 == null
