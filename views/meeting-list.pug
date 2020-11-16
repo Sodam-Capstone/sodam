@@ -50,65 +50,36 @@ head
                 .card-header
                 .card-body
                   .table-responsive
-                    table#dataTable.table.table-bordered(width='97%' cellspacing='0')
+                    table#dataTable.table.table-bordered(width='97%', cellspacing='0')
                       thead
                         tr
                           th &#xC81C;&#xBAA9;
-                          th &#xB4F1;&#xB85D;&#xC790;
                           th &#xD0DC;&#xADF8;
                           th &#xC2DC;&#xAC04;
                           th &#xB0A0;&#xC9DC;
                       tfoot
                         tr
                           th Title
-                          th Name
                           th tag
                           th time
                           th date
                       tbody
-                        tr
-                          td Tiger Nixon
-                          td System Architect
-                          td Edinburgh
-                          td 61
-                          td 2011/04/25
-                        tr
-                          td Lael Greer
-                          td Systems Administrator
-                          td London
-                          td 21
-                          td 2009/02/27
-                        tr
-                          td Jonas Alexander
-                          td Developer
-                          td San Francisco
-                          td 30
-                          td 2010/07/14
-                        tr
-                          td Shad Decker
-                          td Regional Director
-                          td Edinburgh
-                          td 51
-                          td 2008/11/13
-                        tr
-                          td Michael Bruce
-                          td Javascript Developer
-                          td Singapore
-                          td 29
-                          td 2011/06/27
-                        tr
-                          td Donna Snider
-                          td Customer Support
-                          td New York
-                          td 27
-                          td 2011/01/25
+                        -for(var j=0; j< meetlist.length; j++)
+                          tr
+                            td #{meetlist[j][0].meet_name}
+                            td testtag1
+                            td #{meetlist[j][0].meet_voice}
+                            td #{meetlist[j][0].meet_date}
+                  //h3 #{JSON.stringify(meetlist[1][0])}
+                  //h3 #{JSON.stringify(userlist[0])}
+
   // END MAIN CONTENT
 // END MAIN
 .clearfix
 footer
   .container-fluid
     p.copyright
-      | Shared by 
+      | Shared by
       i.fa.fa-love
       a(href='https://bootstrapthemes.co') BootstrapThemes
 // END WRAPPER
