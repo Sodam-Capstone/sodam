@@ -40,18 +40,9 @@ router.get('/test', isLoggedIn,  async(req, res, next) => {
   res.render('test', {
     user_id : req.user[0].user_id,
     text_title : textdata[0].meet_title,
-    text_spk1 : textdata[0].speaker_label,
-    text_result : textdata[0].result,
-    text_spk2 : textdata[1].speaker_label,
-    text_result2 : textdata[1].result,
-    text_start1 : textdata[0].start_time,
-    text_end1 : '-' + textdata[0].end_time,
-    text_start2 : textdata[1].start_time,
-    text_end2 : '-' + textdata[1].end_time,
 
-    hash1 : hashdata[0].meet_hashtag1,
-    hash2 : hashdata[0].meet_hashtag2,
-    hash3 : hashdata[0].meet_hashtag3,
+    hashdata : hashdata[0],
+    testdata : textdata,
   });
 })
 

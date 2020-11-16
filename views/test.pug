@@ -35,7 +35,6 @@ head
   include lnb
   // END LEFT SIDEBAR
 
-
   // MAIN
   .main
     // MAIN CONTENT
@@ -70,38 +69,19 @@ head
                           h3.panel-title &#xD68C;&#xC758; &#xB0B4;&#xC6A9;
                         #conference_log.panel-body
                         ul.list-unstyled.activity-timeline
-                          li
-                            h4 #{text_spk1}
-                            p
-                              span.timestamp
-                                a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
-                                  span#start_time  #{text_start1}
-                                span#end_time
-                                a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
-                                  span  #{text_end1}
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{text_result}
-                          li
-                            h4 #{text_spk2}
-                            p
-                              span.timestamp
-                                a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
-                                  span#start_time  #{text_start2}
-                                span#end_time
-                                a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
-                                  span  #{text_end2}
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{text_result2}
-                          li
-                            h4 #{text_spk3}
-                            p
-                              span.timestamp
-                                a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
-                                  span#start_time  #{text_start3}
-                                span#end_time  
-                                a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
-                                  span  #{text_end3}
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{text_result3}
+                          -for(var j=0; j<2; j++)
+                            li
+                              h4 #{testdata[j].speaker_label}
+                              p
+                                span.timestamp
+                                  a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
+                                    span#start_time  #{testdata[j].start_time}
+                                  span#end_time
+                                  a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
+                                    span  #{testdata[j].end_time}
+                                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{testdata[j].result}
 
-                          button.btn.btn-primary.btn-bottom.center-block(type='button') Load More
+                          //button.btn.btn-primary.btn-bottom.center-block(type='button') Load More
                 // END 회의록
                 // 전체 감정 점수
                 #sentimental_total.tab-pane.fade
@@ -266,11 +246,11 @@ head
                   h4.heading &#xD0DC;&#xADF8;
                   ul.list-unstyled.list-justify
                     li
-                      a.badge(contenteditable='true')  #{hash1}
+                      a.badge(contenteditable='true')  #{hashdata.meet_hashtag1}
                     li
-                      a.badge(contenteditable='true')  #{hash2}
+                      a.badge(contenteditable='true')  #{hashdata.meet_hashtag2}
                     li
-                      a.badge(contenteditable='true')  #{hash3}
+                      a.badge(contenteditable='true')  #{hashdata.meet_hashtag3}
             // END RIGHT COLUMN
     // END MAIN CONTENT
   // END MAIN
