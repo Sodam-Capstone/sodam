@@ -43,19 +43,19 @@ head
                 h3.panel-title &#xD68C;&#xC758; &#xC815;&#xBCF4;
               .panel-body
                 // START 회의정보 등록
-                form(action='page-profile.html')
+                form(action='/upload' method='post' enctype='multipart/form-data')
                   // action 임시로 해놓음
-                  input.form-control(type='text', placeholder='회의 제목')
+                  input.form-control(type='text', placeholder='회의 제목' name="meet_title")
                   br
-                  input.form-control(type='date', placeholder='회의 날짜')
+                  input.form-control(type='date', placeholder='회의 날짜' name="meet_date")
                   br
                   .filebox
                     input.upload-name(value='선택된 파일 없음', disabled='disabled')
                     label(for='ex_filename') &#xD68C;&#xC758; &#xD30C;&#xC77C; &#xC120;&#xD0DD;
-                    input#ex_filename.upload-hidden(type='file', accept='audio/*')
+                    input#ex_filename.upload-hidden(type='file', name='wavFile', accept='audio/*')
                   // HASHTAG
                   .content
-                    table(calss='table')
+                    table(class='table')
                       table#tag-list
                         h4 &#xD0DC;&#xADF8; &#xBAA9;&#xB85D;
                       div

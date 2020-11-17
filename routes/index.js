@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const dbPool = require('../config/config.js') //DB 연결
-const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares.js');
+const inputDatabase = require('../axios/toDatabase');
+/**
+ * index 화면
+ */
 
-
-/* GET home page. */
 router.get('/', async (req, res, next) => {
   if(req.user){
     res.render("index", {
@@ -16,6 +16,9 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+/**
+ * 로그인 화면 이동시 
+ */
 router.get('/login',isNotLoggedIn,(req,res,next)=>{
   res.render('login');
 })

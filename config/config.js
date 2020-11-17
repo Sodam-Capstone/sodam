@@ -5,6 +5,11 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE
 });
+
+/**
+ * 
+ * @param {*} queries 
+ */
 const dbPool = async (queries) => {
     const connection = await pool.getConnection(async conn => conn);
     try {    

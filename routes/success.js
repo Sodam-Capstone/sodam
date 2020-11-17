@@ -11,13 +11,13 @@ const {
 router.get("/success", isLoggedIn, (req, res, next) => {
     if(req.session.passport){
     console.log(req.session);
-    console.log(req.session.passport.user);
     console.log("session이 존재합니다.");
     }
     console.log("req.user :", req.user);
-    res.render("index", {
-        user_id: req.user[0].user_id,
-    });
+    // res.render("index", {
+    //     user_id: req.user[0].user_id,
+    // });
+    res.redirect('/');
 });
 
 module.exports = router;
