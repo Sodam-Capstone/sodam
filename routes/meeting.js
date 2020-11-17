@@ -39,11 +39,15 @@ router.get('/page-profile', isLoggedIn, (req, res, next) => {
   });
 })
 
-router.get('/sentimental_total', isLoggedIn,  async(req, res, next) => {
+router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   // 나중에 회의등록에서 넘어온 meet_title 일치하는것만 불러올 예정
-  var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '회의1'`);
-  var hashdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_hashing WHERE meet_index = 1`);
-  var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts`);
+  var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '${req.body.meet_name}'`);
+  var getindex = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_information WHERE meet_name = '${req.body.meet_name}'`);
+  var hashdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_hashing WHERE meet_index = ${getindex[0].meet_index}`);
+  //console.log(getindex[0].meet_index);
+  console.log(`${req.body.meet_name}`);
+  console.log('asdfds');
+  var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts where meet_title = '${req.body.meet_name}'`);
   res.render('sentimental_total', {
     user_id : req.user[0].user_id,
     text_title : textdata[0].meet_title,
@@ -53,5 +57,20 @@ router.get('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     speakerdata : speakerdata,
   });
 })
+
+// router.get('/sentimental_total', isLoggedIn,  async(req, res, next) => {
+//   // 나중에 회의등록에서 넘어온 meet_title 일치하는것만 불러올 예정
+//   var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '회의1'`);
+//   var hashdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_hashing WHERE meet_index = 1`);
+//   var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts`);
+//   res.render('sentimental_total', {
+//     user_id : req.user[0].user_id,
+//     text_title : textdata[0].meet_title,
+//
+//     hashdata : hashdata[0],
+//     testdata : textdata,
+//     speakerdata : speakerdata,
+//   });
+// })
 
 module.exports = router;

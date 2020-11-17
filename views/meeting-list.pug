@@ -17,6 +17,7 @@ head
   // ICONS
   link(rel='apple-touch-icon' sizes='76x76' href='assets/img/apple-icon.png')
   link(rel='icon' type='image/png' sizes='96x96' href='assets/img/favicon.png')
+  script(src='https://code.jquery.com/jquery-3.5.1.min.js')
 // WRAPPER
 #wrapper
   // NAVBAR
@@ -67,7 +68,7 @@ head
                           -for(var i=0;i<row;i++)
                             tr
                              td
-                               a(href='/sentimental_total') #{meeting_data[i].meet_name}
+                               a(href="javascript:send_title('"+meeting_data[i].meet_name+"')" ) #{meeting_data[i].meet_name}
                              if meeting_data[i].meet_hashtag1 == null
                               td
                              else if meeting_data[i].meet_hashtag2 == null
@@ -91,7 +92,22 @@ footer
       i.fa.fa-love
       a(href='https://bootstrapthemes.co') BootstrapThemes
 // END WRAPPER
+script(type='text/javascript').
+  function send_title(aa) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/sentimental_total");
+    var post = document.createElement("input");
+    post.setAttribute("type", "hidden");
+    post.setAttribute("name", "meet_name");
+    post.setAttribute("value", aa);
+    form.appendChild(post);
+    document.body.appendChild(form);
+    form.submit();
+  }
+
 // Javascript
+
 script(src='assets/vendor/jquery/jquery.min.js')
 script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
 script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
