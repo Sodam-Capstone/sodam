@@ -14,29 +14,22 @@
                     a(href='/meeting-list')
                         i.lnr.lnr-cog
                         span &#xD68C;&#xC758;&#xBAA9;&#xB85D;
+
+                //li
+                //    a(href='/sentimental_total')
+                //        i.lnr.lnr-cog
+                //        span &#xD68C;&#xC758;&#xB85D; 
+
                 li
-                    a(href='/meeting-log')
-                        i.lnr.lnr-cog
-                        span &#xD68C;&#xC758;&#xB85D;
-                li
-                    a.active(href='#subPages' data-toggle='collapse')
-                        i.lnr.lnr-chart-bars
-                        span &#xD68C;&#xC758;&#xBD84;&#xC11D;
-                        i.icon-submenu.lnr.lnr-chevron-left
+                    a.active(href='#subPages', data-toggle='collapse')
+                      i.lnr.lnr-file-empty
+                      span Pages
+                      i.icon-submenu.lnr.lnr-chevron-left
                     #subPages.collapse.in
-                    ul.nav
+                      ul.nav
                         li
-                          a.active(href='charts.html') &#xC804;&#xCCB4;&#xBD84;&#xC11D;
+                          a.active(href='page-profile.html') Profile
                         li
-                          a.active(href='charts.html') &#xAC1C;&#xC778;&#xBD84;&#xC11D;
-                li
-                    a.active(href='#subPages' data-toggle='collapse')
-                        i.lnr.lnr-file-empty
-                        span Pages
-                        i.icon-submenu.lnr.lnr-chevron-left
-                    #subPages.collapse.in
-                        ul.nav
-                            li
-                                a.active(href='/page-profile') Profile
-                            li
-                                a(href='/page-lockscreen') Lockscreen
+                          a(href='page-login.html') Login
+                        li
+                          a(href='page-lockscreen.html') Lockscreen
