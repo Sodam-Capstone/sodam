@@ -45,7 +45,7 @@ router.post('/upload', upload.single("wavFile"), async function (req, res, next)
   } catch (error) {
     console.error(error);
   }
-  res.render('/');
+  res.redirect('/');
 })
 
 module.exports = router;
