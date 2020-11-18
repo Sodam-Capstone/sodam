@@ -50,8 +50,8 @@ head
                   input.form-control(type='date', placeholder='회의 날짜' name="meet_date")
                   br
                   .filebox
-                    input.upload-name(value='선택된 파일 없음', disabled='disabled')
-                    label(for='ex_filename') &#xD68C;&#xC758; &#xD30C;&#xC77C; &#xC120;&#xD0DD;
+                    input.upload-name(value='선택된 파일 없음', name='meet_voice', disabled='disabled')
+                    label(for='ex_filename',) &#xD68C;&#xC758; &#xD30C;&#xC77C; &#xC120;&#xD0DD;
                     input#ex_filename.upload-hidden(type='file', name='wavFile', accept='audio/*')
                   // HASHTAG
                   .content
@@ -59,7 +59,7 @@ head
                       table#tag-list
                         h4 &#xD0DC;&#xADF8; &#xBAA9;&#xB85D;
                       div
-                        input#tag.btn.btn-default(type='text', size='12', maxlength='12', placeholder='태그입력')
+                        input#tag.btn.btn-default(type='text', size='12', maxlength='12', placeholder='태그입력', name='tag1')
                   // END HASHTAG
                   br
                   input.btn.btn-primary(type='submit')

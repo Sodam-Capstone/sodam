@@ -15,7 +15,7 @@
 /********************
  * GENERAL STYLES
  ********************/
-html {
+ html {
   position: relative;
   min-height: 100%; }
 
@@ -32,7 +32,8 @@ a {
     text-decoration: none; }
 
 th {
-  font-weight: 600; }
+  font-weight: 600;
+}
 
 .page-title {
   margin-top: 0;
@@ -448,9 +449,14 @@ ul.list-justify > li {
   -moz-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
+  /* -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px; */
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  border-radius: 2px;
+  border-radius: 10px;
+  /* 별 수정 */
+
   border-color: #eaeaea;
   background-color: #fcfcfc; }
   .form-control:focus {
@@ -464,9 +470,13 @@ ul.list-justify > li {
 .input-group {
   -moz-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
+  width : 30% ; 
+}
+/* 별 수정 */
 
 .input-group .form-control, .input-group-addon, .input-group-btn {
+  width : 20%;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none; }
@@ -627,7 +637,8 @@ ul.list-justify > li {
   -moz-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
-  padding: 6px 22px; }
+  padding: 6px 22px; 
+  size : 30% }
 
 .btn-group-lg > .btn,
 .btn-lg {
@@ -643,7 +654,8 @@ ul.list-justify > li {
 
 .btn-primary {
   background-color: #00AAFF;
-  border-color: #00a0f0; }
+  border-color: #00a0f0; 
+  }
   .btn-primary:hover, .btn-primary:focus {
     background-color: #00a0f0;
     border-color: #00a0f0; }
@@ -759,6 +771,7 @@ fieldset[disabled] .btn {
   transition: all 0.2s ease-out; }
 
 .label {
+  font-size : 13px;
   font-weight: normal; }
 
 .metric {
@@ -1185,6 +1198,32 @@ ul.activity-list > li {
 
 .padding-bottom-30 {
   padding-bottom: 30px !important; }
+
+
+
+/***********************
+* PAGE : 감정분석
+****************/
+
+.panel-sentimental {
+  posiion: relative;}
+
+.sentimental-left {
+  padding-left: 0;
+  float: left;
+  width: 70%;
+  position: absolute;
+  background-color: #ffffff; }
+
+.sentimental-right {
+  float: right;
+  width: 30%;
+  padding: 20px 15px;
+  border-radius: 25px 25px 25px 25px;
+  background-color: #f1f1f1; }
+  .sentimental-right .heading {
+    margin-top: 0; }
+
 
 /********************
  * PAGE: PROFILE
@@ -1817,3 +1856,51 @@ ul.activity-timeline > li {
     border: 1px solid #CCC; }
 
 /*# sourceMappingURL=main.css.map */
+
+
+
+
+/* ************************ 태그 css */
+
+ul.tag{
+  padding: 16px 0;
+}
+
+ul.tag li {
+  display : inline-block;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 8px;
+  -moz-box-shadow: 0px 1px 2px 0 rgba(252, 249, 249, 0.2);
+  -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
+  padding: 6px 22px; 
+  width : 32%;
+  letter-spacing: -.5px; 
+  margin-left : 3px;
+  margin-top : 3px; 
+  font-size : 13px;}
+
+form {
+  padding-top: 16px;
+}
+
+ul.tag li.tag-item {
+  padding: 8px 12px;
+  background-color: #64636b;
+  color: rgb(255, 255, 255);
+}
+
+ul.tag li.tag-item:hover {
+  background-color: #00AAFF;
+  color: #fff;
+}
+
+.del-btn {
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
