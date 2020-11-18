@@ -1,6 +1,11 @@
 const axios = require('../axios/readFileJson');
 const dbPool = require('../config/config');
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 const toDatabase = async (req, res) => {
     var datas = await axios.readFileJson(req, res);
     const schema = process.env.DB_DATABASE;

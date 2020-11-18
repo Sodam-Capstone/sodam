@@ -1,4 +1,27 @@
 # project-sodam
+# 사용방법
+1) npm i 를 터미널에서 실행하여 npm 들을 설치해줍니다.
+2) DB와 연동하기 위하여 .env에 다음과 같이 입력합니다.
+
+```
+DB_HOST = "호스트"
+DB_USER = "계정"
+DB_PASSWORD = "비밀번호"
+DB_DATABASE = "스키마"
+COOKIE_SECRET = ""
+```
+3) config 폴더를 만들어 awsconfig.json을 다음과 같이 입력합니다. 꼭 .gitignore 처리를 해주세요.
+
+```
+{
+    "accessKeyId": "aws accesskey를 넣어주세요.",
+    "secretAccessKey": "aws accesskey를 넣어주세요.",
+    "region": "ap-northeast-2" //본인 지역을 넣어주세요. 
+  }
+```
+4) npm start을 터미널에 입력하여 실행시켜줍니다.
+
+[sodam에 사용된 주요 모듈 설명](https://github.com/kingbj940429/Node.JS_Tips_for_me/blob/main/README.md)
 
 # 내역
 ### 2020-10-15
@@ -76,4 +99,11 @@ module.exports = dbTest;
 
 5) 로그인이 필요한 부분은 로그인 화면으로 이동
 **=> 나중에 alert도 뜨게끔 수정**
+
+### 2020-11-15
+1) **aws-sdk** 를 사용하여 AWS 와 연결시켜줌
+
+2) 회의등록에서 제출을 하면 s3 파일을 저장해주고 **aws 파이썬 api** 를 실행시킴
+
+3) 제출한 음성파일에 대해 DB에 저장
 

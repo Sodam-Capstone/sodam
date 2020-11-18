@@ -1,7 +1,7 @@
 const {PythonShell} = require('python-shell');
 const util = require('util');
 const inputDatabase = require('../axios/toDatabase');
-const toDatabaseSync = util.promisify(inputDatabase.toDatabase)
+const toDatabaseSync = util.promisify(inputDatabase.toDatabase)//프로미스화
   /**
    * 
    * @param {*} req req.file
