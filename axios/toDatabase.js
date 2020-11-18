@@ -2,20 +2,13 @@ const axios = require('../axios/readFileJson');
 const dbPool = require('../config/config');
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
+ *
+ * @param {*} req
+ * @param {*} res
  */
 const toDatabase = async (req, res) => {
     var datas = await axios.readFileJson(req, res);
     const schema = process.env.DB_DATABASE;
-
-    var meet_information_query = `
-    INSERT INTO
-        ${schema}.meet_information(meet_name,meet_date, meet_voice)
-    VALUES('${req.body.meet_title}','${req.body.meet_date}','${req.body.wavFile}')
-    `
-    await dbPool(meet_information_query);
 
     for(var key in datas.result){
         var temp = datas.result[key];
@@ -28,14 +21,14 @@ const toDatabase = async (req, res) => {
     }
 
     var findindex = await dbPool(`SELECT * FROM ${schema}.meet_information WHERE meet_name = '${req.body.meet_title}'`);
-    
+
     var meet_share_query = `
     INSERT INTO
         ${schema}.meet_share(user1_index, meet_index)
     VALUES('${req.user[0].user_index}','${findindex[0].meet_index}')
     `
     await dbPool(meet_share_query);
-    
+
 
     //await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_text`);
 
