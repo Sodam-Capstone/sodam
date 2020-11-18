@@ -48,29 +48,57 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   console.log(`${req.body.meet_name}`);
   console.log('asdfds');
   var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts where meet_title = '${req.body.meet_name}'`);
+
+  var emotion = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_emotion where meet_index=1`)
+
+  var i;
+  var total_anger = 0;
+  var total_happy = 0;
+  var total_neutral = 0;
+  var total_sad = 0;
+  var total_time = 0;
+  var score = 0;
+  var personal_score = new Array(i);
+  for(i=0;emotion[i]!=undefined;i++) {
+    total_anger += emotion[i].anger *= 1;
+    total_happy += emotion[i].happiness *= 1;
+    total_neutral += emotion[i].neutral *= 1;
+    total_sad += emotion[i].sadness *= 1;
+    total_time += emotion[i].time *= 1;
+  }
+  var num = 100 / i;
+  var avg_time = total_time / i;
+  var time_percent = new Array(i);
+  var personal_score = new Array(i);
+  var v = 0;
+  for(i=0;emotion[i]!=undefined;i++) {
+    time_percent[i] = emotion[i].time / total_time * 100;
+    v += (time_percent[i] - num) * (time_percent[i] - num);
+    personal_score[i] = ((emotion[i].happiness/emotion[i].time*1.0) + (emotion[i].neutral/emotion[i].time*0.67) + (emotion[i].sadness/emotion[i].time*0.33))*100;
+    personal_score[i] = personal_score[i].toFixed(1);
+    console.log(personal_score[i]);
+  }
+  v /= i;
+
+  time_score = 100 - (Math.sqrt(v) * 2);
+  time_score = time_score.toFixed(0);
+  console.log(time_score);
+  emotion_score = ((total_happy/total_time*1.0) + (total_neutral/total_time*0.67) + (total_sad/total_time*0.33)) * 100;
+  emotion_score = emotion_score.toFixed(1);
   res.render('sentimental_total', {
     user_id : req.user[0].user_id,
-    text_title : textdata[0].meet_title,
+    text_title : textdata[0].meet_name,
+    user1_score : personal_score[0],
+    user2_score : personal_score[1],
+    user3_score : personal_score[2],
+    user4_score : personal_score[3],
 
     hashdata : hashdata[0],
     testdata : textdata,
     speakerdata : speakerdata,
+    emotion_score : emotion_score,
+    time_score : time_score,
   });
 })
-
-// router.get('/sentimental_total', isLoggedIn,  async(req, res, next) => {
-//   // 나중에 회의등록에서 넘어온 meet_title 일치하는것만 불러올 예정
-//   var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '회의1'`);
-//   var hashdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_hashing WHERE meet_index = 1`);
-//   var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts`);
-//   res.render('sentimental_total', {
-//     user_id : req.user[0].user_id,
-//     text_title : textdata[0].meet_title,
-//
-//     hashdata : hashdata[0],
-//     testdata : textdata,
-//     speakerdata : speakerdata,
-//   });
-// })
 
 module.exports = router;
