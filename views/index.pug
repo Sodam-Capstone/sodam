@@ -44,341 +44,33 @@ head
         // OVERVIEW
         .panel.panel-headline
           .panel-heading
-            h3.panel-title Weekly Overview
-            p.panel-subtitle Period: Oct 14, 2016 - Oct 21, 2016
           .panel-body
             .row
-              .col-md-3
-                .metric
-                  span.icon
-                    i.fa.fa-download
-                  p
-                    span.number 1,252
-                    span.title Downloads
-              .col-md-3
-                .metric
-                  span.icon
-                    i.fa.fa-shopping-bag
-                  p
-                    span.number 203
-                    span.title Sales
-              .col-md-3
-                .metric
-                  span.icon
-                    i.fa.fa-eye
-                  p
-                    span.number 274,678
-                    span.title Visits
-              .col-md-3
-                .metric
-                  span.icon
-                    i.fa.fa-bar-chart
-                  p
-                    span.number 35%
-                    span.title Conversions
-            .row
-              .col-md-9
-                #headline-chart.ct-chart
-              .col-md-3
-                .weekly-summary.text-right
-                  span.number 2,315
-                  span.percentage
-                    i.fa.fa-caret-up.text-success
-                    |  12%
-                  span.info-label Total Sales
-                .weekly-summary.text-right
-                  span.number $5,758
-                  span.percentage
-                    i.fa.fa-caret-up.text-success
-                    |  23%
-                  span.info-label Monthly Income
-                .weekly-summary.text-right
-                  span.number $65,938
-                  span.percentage
-                    i.fa.fa-caret-down.text-danger
-                    |  8%
-                  span.info-label Total Income
-        // END OVERVIEW
-        .row
-          .col-md-6
-            // RECENT PURCHASES
-            .panel
-              .panel-heading
-                h3.panel-title Recent Purchases
-                .right
-                  button.btn-toggle-collapse(type='button')
-                    i.lnr.lnr-chevron-up
-                  button.btn-remove(type='button')
-                    i.lnr.lnr-cross
-              .panel-body.no-padding
-                table.table.table-striped
-                  thead
-                    tr
-                      th Order No.
-                      th Name
-                      th Amount
-                      th Date &amp; Time
-                      th Status
-                  tbody
-                    tr
-                      td
-                        a(href='#') 763648
-                      td Steve
-                      td $122
-                      td Oct 21, 2016
-                      td
-                        span.label.label-success COMPLETED
-                    tr
-                      td
-                        a(href='#') 763649
-                      td Amber
-                      td $62
-                      td Oct 21, 2016
-                      td
-                        span.label.label-warning PENDING
-                    tr
-                      td
-                        a(href='#') 763650
-                      td Michael
-                      td $34
-                      td Oct 18, 2016
-                      td
-                        span.label.label-danger FAILED
-                    tr
-                      td
-                        a(href='#') 763651
-                      td Roger
-                      td $186
-                      td Oct 17, 2016
-                      td
-                        span.label.label-success SUCCESS
-                    tr
-                      td
-                        a(href='#') 763652
-                      td Smith
-                      td $362
-                      td Oct 16, 2016
-                      td
-                        span.label.label-success SUCCESS
-              .panel-footer
-                .row
-                  .col-md-6
-                    span.panel-note
-                      i.fa.fa-clock-o
-                      |  Last 24 hours
-                  .col-md-6.text-right
-                    a.btn.btn-primary(href='#') View All Purchases
-            // END RECENT PURCHASES
-          .col-md-6
-            // MULTI CHARTS
-            .panel
-              .panel-heading
-                h3.panel-title Projection vs. Realization
-                .right
-                  button.btn-toggle-collapse(type='button')
-                    i.lnr.lnr-chevron-up
-                  button.btn-remove(type='button')
-                    i.lnr.lnr-cross
-              .panel-body
-                #visits-trends-chart.ct-chart
-            // END MULTI CHARTS
-        .row
-          .col-md-7
-            // TODO LIST
-            .panel
-              .panel-heading
-                h3.panel-title To-Do List
-                .right
-                  button.btn-toggle-collapse(type='button')
-                    i.lnr.lnr-chevron-up
-                  button.btn-remove(type='button')
-                    i.lnr.lnr-cross
-              .panel-body
-                ul.list-unstyled.todo-list
-                  li
-                    label.control-inline.fancy-checkbox
-                      input(type='checkbox')
-                      span
-                    p
-                      span.title Restart Server
-                      span.short-description Dynamically integrate client-centric technologies without cooperative resources.
-                      span.date Oct 9, 2016
-                    .controls
-                      a(href='#')
-                        i.icon-software.icon-software-pencil
-                      a(href='#')
-                        i.icon-arrows.icon-arrows-circle-remove
-                  li
-                    label.control-inline.fancy-checkbox
-                      input(type='checkbox')
-                      span
-                    p
-                      span.title Retest Upload Scenario
-                      span.short-description
-                        | Compellingly implement clicks-and-mortar relationships without highly efficient metrics.
-                      span.date Oct 23, 2016
-                    .controls
-                      a(href='#')
-                        i.icon-software.icon-software-pencil
-                      a(href='#')
-                        i.icon-arrows.icon-arrows-circle-remove
-                  li
-                    label.control-inline.fancy-checkbox
-                      input(type='checkbox')
-                      span
-                    p
-                      strong Functional Spec Meeting
-                      span.short-description
-                        | Monotonectally formulate client-focused core competencies after parallel web-readiness.
-                      span.date Oct 11, 2016
-                    .controls
-                      a(href='#')
-                        i.icon-software.icon-software-pencil
-                      a(href='#')
-                        i.icon-arrows.icon-arrows-circle-remove
-            // END TODO LIST
-          .col-md-5
-            // TIMELINE
-            .panel.panel-scrolling
-              .panel-heading
-                h3.panel-title Recent User Activity
-                .right
-                  button.btn-toggle-collapse(type='button')
-                    i.lnr.lnr-chevron-up
-                  button.btn-remove(type='button')
-                    i.lnr.lnr-cross
-              .panel-body
-                ul.list-unstyled.activity-list
-                  li
-                    img.img-circle.pull-left.avatar(src='assets/img/user1.png' alt='Avatar')
-                    p
-                      a(href='#') Michael
-                      |  has achieved 80% of his completed tasks
-                      span.timestamp 20 minutes ago
-                  li
-                    img.img-circle.pull-left.avatar(src='assets/img/user2.png' alt='Avatar')
-                    p
-                      a(href='#') Daniel
-                      |  has been added as a team member to project
-                      a(href='#') System Update
-                      span.timestamp Yesterday
-                  li
-                    img.img-circle.pull-left.avatar(src='assets/img/user3.png' alt='Avatar')
-                    p
-                      a(href='#') Martha
-                      |  created a new heatmap view
-                      a(href='#') Landing Page
-                      span.timestamp 2 days ago
-                  li
-                    img.img-circle.pull-left.avatar(src='assets/img/user4.png' alt='Avatar')
-                    p
-                      a(href='#') Jane
-                      |  has completed all of the tasks
-                      span.timestamp 2 days ago
-                  li
-                    img.img-circle.pull-left.avatar(src='assets/img/user5.png' alt='Avatar')
-                    p
-                      a(href='#') Jason
-                      |  started a discussion about
-                      a(href='#') Weekly Meeting
-                      span.timestamp 3 days ago
-                button.btn.btn-primary.btn-bottom.center-block(type='button') Load More
-            // END TIMELINE
-        .row
-          .col-md-4
-            // TASKS
-            .panel
-              .panel-heading
-                h3.panel-title My Tasks
-                .right
-                  button.btn-toggle-collapse(type='button')
-                    i.lnr.lnr-chevron-up
-                  button.btn-remove(type='button')
-                    i.lnr.lnr-cross
-              .panel-body
-                ul.list-unstyled.task-list
-                  li
-                    p
-                      | Updating Users Settings
-                      span.label-percent 23%
-                    .progress.progress-xs
-                      .progress-bar.progress-bar-danger(role='progressbar' aria-valuenow='23' aria-valuemin='0' aria-valuemax='100' style='width:23%')
-                        span.sr-only 23% Complete
-                  li
-                    p
-                      | Load &amp; Stress Test
-                      span.label-percent 80%
-                    .progress.progress-xs
-                      .progress-bar.progress-bar-success(role='progressbar' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100' style='width: 80%')
-                        span.sr-only 80% Complete
-                  li
-                    p
-                      | Data Duplication Check
-                      span.label-percent 100%
-                    .progress.progress-xs
-                      .progress-bar.progress-bar-success(role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%')
-                        span.sr-only Success
-                  li
-                    p
-                      | Server Check
-                      span.label-percent 45%
-                    .progress.progress-xs
-                      .progress-bar.progress-bar-warning(role='progressbar' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100' style='width: 45%')
-                        span.sr-only 45% Complete
-                  li
-                    p
-                      | Mobile App Development
-                      span.label-percent 10%
-                    .progress.progress-xs
-                      .progress-bar.progress-bar-danger(role='progressbar' aria-valuenow='10' aria-valuemin='0' aria-valuemax='100' style='width: 10%')
-                        span.sr-only 10% Complete
-            // END TASKS
-          .col-md-4
-            // VISIT CHART
-            .panel
-              .panel-heading
-                h3.panel-title Website Visits
-                .right
-                  button.btn-toggle-collapse(type='button')
-                    i.lnr.lnr-chevron-up
-                  button.btn-remove(type='button')
-                    i.lnr.lnr-cross
-              .panel-body
-                #visits-chart.ct-chart
-            // END VISIT CHART
-          .col-md-4
-            // REALTIME CHART
-            .panel
-              .panel-heading
-                h3.panel-title System Load
-                .right
-                  button.btn-toggle-collapse(type='button')
-                    i.lnr.lnr-chevron-up
-                  button.btn-remove(type='button')
-                    i.lnr.lnr-cross
-              .panel-body
-                #system-load.easy-pie-chart(data-percent='70')
-                  span.percent 70
-                h4 CPU Load
-                ul.list-unstyled.list-justify
-                  li
-                    | High:
-                    span 95%
-                  li
-                    | Average:
-                    span 87%
-                  li
-                    | Low:
-                    span 20%
-                  li
-                    | Threads:
-                    span 996
-                  li
-                    | Processes:
-                    span 259
-            // END REALTIME CHART
+              #container-slide
+                .slide_wrap
+                  .slide_box
+                    .slide_list.clearfix
+                      .slide_content.slide01
+                        p  &#xC18C;&#xB2F4; : &#xC18C;&#xB9AC;&#xB97C; &#xB2F4;&#xB2E4;
+                      .slide_content.slide02
+                        p &#xAE30;&#xB2A5; &#xC124;&#xBA85; 1
+                      .slide_content.slide03
+                        p &#xAE30;&#xB2A5; &#xC124;&#xBA85; 2
+                      .slide_content.slide04
+                        p &#xAE30;&#xB2A5; &#xC124;&#xBA85; 3
+                    // // .slide_list
+                  // // .slide_box
+                  .slide_btn_box
+                    button.slide_btn_prev(type='button') Prev
+                    button.slide_btn_next(type='button') Next
+                  // // .slide_btn_box
+                  ul.slide_pagination
+                  // // .slide_pagination
+                // // .slide_wrap
+              // // .container slide
     // END MAIN CONTENT
   // END MAIN
+
   .clearfix
   footer
     .container-fluid
@@ -394,6 +86,8 @@ script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
 script(src='assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')
 script(src='assets/vendor/chartist/js/chartist.min.js')
 script(src='assets/scripts/klorofil-common.js')
+script(src='assets/scripts/carouselSlide.js')
+
 script.
   $(function() {
   var data, options;

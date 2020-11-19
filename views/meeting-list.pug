@@ -54,12 +54,15 @@ head
                     table#dataTable.table.table-bordered(width='97%', cellspacing='0')
                       thead
                         tr
+                          th &nbsp;
                           th &#xC81C;&#xBAA9;
                           th &#xD0DC;&#xADF8;
                           th &#xD30C;&#xC77C;
                           th &#xB0A0;&#xC9DC;
                       tfoot
                         tr
+                          th
+                            button#selectBtn.label.label-primary(type='button') &#xC0AD;&#xC81C;
                           th Title
                           th tag
                           th file
@@ -67,18 +70,20 @@ head
                       tbody
                           -for(var i=0;i<row;i++)
                             tr
-                             td
-                               a(href="javascript:send_title('"+meeting_data[i].meet_name+"')" ) #{meeting_data[i].meet_name}
-                             if meeting_data[i].meet_hashtag1 == null
                               td
-                             else if meeting_data[i].meet_hashtag2 == null
-                              td #{'#' + meeting_data[i].meet_hashtag1}
-                             else if meeting_data[i].meet_hashtag3 == null
-                              td #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2}
-                             else
-                              td  #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2} #{'#' + meeting_data[i].meet_hashtag3}
-                             td #{meeting_data[i].meet_voice}
-                             td #{meeting_data[i].meet_date}
+                                input(type='checkbox', name='user_CheckBox')
+                              td
+                                a(href="javascript:send_title('"+meeting_data[i].meet_name+"')" ) #{meeting_data[i].meet_name}
+                              if meeting_data[i].meet_hashtag1 == null
+                                td
+                              else if meeting_data[i].meet_hashtag2 == null
+                                td #{'#' + meeting_data[i].meet_hashtag1}
+                              else if meeting_data[i].meet_hashtag3 == null
+                                td #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2}
+                              else
+                                td  #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2} #{'#' + meeting_data[i].meet_hashtag3}
+                              td #{meeting_data[i].meet_voice}
+                              td #{meeting_data[i].meet_date}
                   //h3 #{JSON.stringify(hashlist[0][0])}
                   //h3 #{JSON.stringify(userlist[0])}
 
