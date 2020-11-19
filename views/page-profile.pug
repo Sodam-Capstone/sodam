@@ -47,185 +47,33 @@ head
                   span.online-status.status-available Available
                 .profile-stat
                   .row
-                    .col-md-4.stat-item
-                      | 45
-                      span Projects
-                    .col-md-4.stat-item
-                      | 15
-                      span Awards
-                    .col-md-4.stat-item
-                      | 2174
-                      span Points
+                    .col-md-6.stat-item
+                      span &#xB0B4; &#xC815;&#xBCF4;
+                    .col-md-6.stat-item(onclick="location.href='/page-lockscreen'")
+                      span &#xD68C;&#xC6D0; &#xD0C8;&#xD1F4;
               // END PROFILE HEADER
+
               // PROFILE DETAIL
               .profile-detail
-                .profile-info
-                  h4.heading Basic Info
-                  ul.list-unstyled.list-justify
-                    li
-                      | Birthdate
-                      span 24 Aug, 2016
-                    li
-                      | Mobile
-                      span (124) 823409234
-                    li
-                      | Email
-                      span samuel@mydomain.com
-                    li
-                      | Website
-                      span
-                        a(href='https://www.themeineed.com') www.themeineed.com
-                .profile-info
-                  h4.heading Social
-                  ul.list-inline.social-icons
-                    li
-                      a.facebook-bg(href='#')
-                        i.fa.fa-facebook
-                    li
-                      a.twitter-bg(href='#')
-                        i.fa.fa-twitter
-                    li
-                      a.google-plus-bg(href='#')
-                        i.fa.fa-google-plus
-                    li
-                      a.github-bg(href='#')
-                        i.fa.fa-github
-                .profile-info
-                  h4.heading About
-                  p Interactively fashion excellent information after distinctive outsourcing.
-                .text-center
-                  a.btn.btn-primary(href='#') Edit Profile
+                .panel
+                  .profile-info
+                    h4.heading My Profile
+                    ul.list-unstyled.list-justify
+                      li
+                        | Name 
+                        span &#xAE40;&#xC138;&#xC885;
+                      li
+                        | Email 
+                        span samuel@mydomain.com
+                  .text-center
+                    a.btn.btn-primary(href='#') Edit Profile
+                  br
+                  br
+                  br
               // END PROFILE DETAIL
+
             // END LEFT COLUMN
-            // RIGHT COLUMN
-            .profile-right
-              // TABBED CONTENT
-              .custom-tabs-line.tabs-line-bottom.left-aligned
-                ul.nav(role='tablist')
-                  li.active
-                    a(href='#tab-bottom-left1', role='tab', data-toggle='tab') Recent Activity
-                  li
-                    a(href='#tab-bottom-left2', role='tab', data-toggle='tab')
-                      | Projects
-                      span.badge 7
-              .tab-content
-                #tab-bottom-left1.tab-pane.fade.in.active
-                  ul.list-unstyled.activity-timeline
-                    li
-                      i.fa.fa-comment.activity-icon
-                      p
-                        | Commented on post
-                        a(href='#') Prototyping
-                        span.timestamp 2 minutes ago
-                    li
-                      i.fa.fa-cloud-upload.activity-icon
-                      p
-                        | Uploaded new file
-                        a(href='#') Proposal.docx
-                        |  to project
-                        a(href='#') New Year Campaign
-                        span.timestamp 7 hours ago
-                    li
-                      i.fa.fa-plus.activity-icon
-                      p
-                        | Added
-                        a(href='#') Martin
-                        |  and
-                        a(href='#') 3 others colleagues
-                        |  to project repository
-                        span.timestamp Yesterday
-                    li
-                      i.fa.fa-check.activity-icon
-                      p
-                        | Finished 80% of all
-                        a(href='#') assigned tasks
-                        span.timestamp 1 day ago
-                  .margin-top-30.text-center
-                    a.btn.btn-default(href='#') See all activity
-                #tab-bottom-left2.tab-pane.fade
-                  .table-responsive
-                    table.table.project-table
-                      thead
-                        tr
-                          th Title
-                          th Progress
-                          th Leader
-                          th Status
-                      tbody
-                        tr
-                          td
-                            a(href='#') Spot Media
-                          td
-                            .progress
-                              .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span 60% Complete
-                          td
-                            img.avatar.img-circle(src='assets/img/user2.png', alt='Avatar')
-                            a(href='#') Michael
-                          td
-                            span.label.label-success ACTIVE
-                        tr
-                          td
-                            a(href='#') E-Commerce Site
-                          td
-                            .progress
-                              .progress-bar(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%;')
-                                span 33% Complete
-                          td
-                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
-                            a(href='#') Antonius
-                          td
-                            span.label.label-warning PENDING
-                        tr
-                          td
-                            a(href='#') Project 123GO
-                          td
-                            .progress
-                              .progress-bar(role='progressbar', aria-valuenow='68', aria-valuemin='0', aria-valuemax='100', style='width: 68%;')
-                                span 68% Complete
-                          td
-                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
-                            a(href='#') Antonius
-                          td
-                            span.label.label-success ACTIVE
-                        tr
-                          td
-                            a(href='#') Wordpress Theme
-                          td
-                            .progress
-                              .progress-bar(role='progressbar', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100', style='width: 75%;')
-                                span 75%
-                          td
-                            img.avatar.img-circle(src='assets/img/user2.png', alt='Avatar')
-                            a(href='#') Michael
-                          td
-                            span.label.label-success ACTIVE
-                        tr
-                          td
-                            a(href='#') Project 123GO
-                          td
-                            .progress
-                              .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                span 100%
-                          td
-                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
-                            a(href='#') Antonius
-                          td
-                            span.label.label-default CLOSED
-                        tr
-                          td
-                            a(href='#') Redesign Landing Page
-                          td
-                            .progress
-                              .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                span 100%
-                          td
-                            img.avatar.img-circle(src='assets/img/user5.png', alt='Avatar')
-                            a(href='#') Jason
-                          td
-                            span.label.label-default CLOSED
-              // END TABBED CONTENT
-            // END RIGHT COLUMN
+          
     // END MAIN CONTENT
   // END MAIN
   .clearfix

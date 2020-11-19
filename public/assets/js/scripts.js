@@ -20,3 +20,10 @@
         $("body").toggleClass("sb-sidenav-toggled");
     });
 })(jQuery);
+
+
+
+
+/**meeting-list.html 의 회의 목록 checkbox js */
+
+

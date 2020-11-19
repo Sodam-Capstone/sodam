@@ -20,15 +20,6 @@ const toDatabase = async (req, res) => {
         await dbPool(query);
     }
 
-    var findindex = await dbPool(`SELECT * FROM ${schema}.meet_information WHERE meet_name = '${req.body.meet_title}'`);
-
-    var meet_share_query = `
-    INSERT INTO
-        ${schema}.meet_share(user1_index, meet_index)
-    VALUES('${req.user[0].user_index}','${findindex[0].meet_index}')
-    `
-    await dbPool(meet_share_query);
-
 
     //await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_text`);
 
