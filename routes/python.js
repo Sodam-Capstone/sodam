@@ -10,6 +10,7 @@ const dbPool = require('../config/config');
    * @param {*} path
    */
 const pythonRunAws = async(req, res, path) => {
+
     var options = {
         mode: 'text',
         scriptPath: path.join(__dirname, "../python/"),
@@ -24,21 +25,40 @@ const pythonRunAws = async(req, res, path) => {
     VALUES('${req.body.meet_title}','${req.body.meet_date}','${options.args[0]}')
     `
     await dbPool(meet_information_query);
-    console.log("인포쿼리");
 
-    //meet_share 추가
+    //meet_index 찾기
     var findindex = await dbPool(`SELECT * FROM ${schema}.meet_information WHERE meet_name = '${req.body.meet_title}'`);
 
-    console.log(findindex[0].meet_index);
-
+    //meet_share 추가
     var meet_share_query = `
     INSERT INTO
         ${schema}.meet_share(user1_index, meet_index)
     VALUES('${req.user[0].user_index}','${findindex[0].meet_index}')
     `
     await dbPool(meet_share_query);
-    console.log("쉐어쿼리");
 
+    // //태그 추가
+    var meet_hash_query = `
+    INSERT INTO
+        ${schema}.meet_hashing(meet_index, meet_hashtag1, meet_hashtag2, meet_hashtag3)
+    VALUES('${findindex[0].meet_index}','${req.body.tagname1}','${req.body.tagname2}','${req.body.tagname3}')
+    `
+    await dbPool(meet_hash_query);
+
+    // 회의 공유 추가
+    for(var i = 0; i< 3; i++){
+        console.log("입력정보 테스트");
+        var user_index = await dbPool(`SELECT * FROM ${schema}.user_information WHERE user_id = '${req.body.shareID[i]}'`);
+        console.log(user_index);
+
+        var user_share_query = `
+        INSERT INTO
+            ${schema}.meet_share(user1_index, meet_index)
+        VALUES('${user_index[0].user_index}','${findindex[0].meet_index}')
+        `
+        await dbPool(user_share_query);
+    }
+    
     console.log("pythonRunAws - options : ",options);
     PythonShell.run('aws.py', options, function (err, results) {
         if (err){
