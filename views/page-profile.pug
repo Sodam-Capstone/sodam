@@ -43,14 +43,14 @@ head
                 .overlay
                 .profile-main
                   img.img-circle(src='assets/img/user-medium.png', alt='Avatar')
-                  h3.name Samuel Gold
+                  h3.name #{user_id}
                   span.online-status.status-available Available
                 .profile-stat
                   .row
                     .col-md-6.stat-item
-                      span &#xB0B4; &#xC815;&#xBCF4;
-                    .col-md-6.stat-item(onclick="location.href='/page-lockscreen'")
-                      span &#xD68C;&#xC6D0; &#xD0C8;&#xD1F4;
+                      span 내 정보
+                    .col-md-6.stat-item(onclick="location.href='/page-lockscreen'" style="cursor: pointer")
+                      span 회원 탈퇴
               // END PROFILE HEADER
 
               // PROFILE DETAIL
@@ -61,12 +61,12 @@ head
                     ul.list-unstyled.list-justify
                       li
                         | Name 
-                        span &#xAE40;&#xC138;&#xC885;
+                        span #{user_name}
                       li
                         | Email 
-                        span samuel@mydomain.com
+                        span #{user_email}
                   .text-center
-                    a.btn.btn-primary(href='#') Edit Profile
+                    a.btn.btn-primary(href='/page-profile?mode=update') Edit Profile
                   br
                   br
                   br

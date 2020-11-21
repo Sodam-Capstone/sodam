@@ -112,3 +112,7 @@ module.exports = dbTest;
 
 ### 2020-11-18
 1) reformat.py 수정
+
+### 2020-11-21
+1) bcrypt로 비밀번호 암호화
+2) profile-page 세분화

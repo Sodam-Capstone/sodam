@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const dbPool = require('../config/config.js') //DB 연결
 const passport = require('passport');
+const bcrypt = require('bcrypt');
 const {
     isLoggedIn,
     isNotLoggedIn
@@ -50,10 +51,20 @@ router.get('/logout', isLoggedIn, (req, res) => {
  * 회원가입
  */
 router.post('/join',isNotLoggedIn, async(req, res)=>{
-    var query = `INSERT INTO ${process.env.DB_DATABASE}.user_information (user_id, user_pw, user_name, user_email) VALUES ('${req.body.id_join}', '${req.body.password_join}', '${req.body.name_join}', '${req.body.email_join}');`;
-    console.log(query);
-    var temp = await dbPool(query);
-    console.log(query);
+    const password_hash = await bcrypt.hash(req.body.password_join, 12);
+    var query = `
+    INSERT INTO ${process.env.DB_DATABASE}.user_information (
+        user_id, 
+        user_pw, 
+        user_name, 
+        user_email) 
+    VALUES (
+        '${req.body.id_join}', 
+        '${password_hash}', 
+        '${req.body.name_join}', 
+        '${req.body.email_join}'
+        );`;
+    await dbPool(query);
     res.render('join');
 });
 

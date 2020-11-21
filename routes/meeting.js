@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const dbPool = require('../config/config.js') //DB 연결
 const passport = require('passport');
+const pageProfile = require('./page_profile/pageProfile');
 const {
   isLoggedIn,
   isNotLoggedIn
@@ -33,9 +34,13 @@ router.get('/page-lockscreen', isLoggedIn, (req, res, next) => {
   });
 })
 
-router.get('/page-profile', isLoggedIn, (req, res, next) => {
+router.get('/page-profile', isLoggedIn, async (req, res, next) => {
+  const result = await pageProfile.pageProfileResult(req, res);
+  
   res.render('page-profile', {
-    user_id: req.user[0].user_id,
+    user_id: result[0].user_id,
+    user_name : result[0].user_name,
+    user_email : result[0].user_email,
   });
 })
 
