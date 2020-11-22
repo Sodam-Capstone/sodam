@@ -76,9 +76,9 @@ head
                                 a(href="javascript:send_title('"+meeting_data[i].meet_name+"')" ) #{meeting_data[i].meet_name}
                               if meeting_data[i].meet_hashtag1 == null
                                 td
-                              else if meeting_data[i].meet_hashtag2 == null
+                              else if meeting_data[i].meet_hashtag2 == null || meeting_data[i].meet_hashtag2==""
                                 td #{'#' + meeting_data[i].meet_hashtag1}
-                              else if meeting_data[i].meet_hashtag3 == null
+                              else if meeting_data[i].meet_hashtag3 == null || meeting_data[i].meet_hashtag3==""
                                 td #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2}
                               else
                                 td  #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2} #{'#' + meeting_data[i].meet_hashtag3}

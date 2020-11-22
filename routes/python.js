@@ -47,9 +47,20 @@ const pythonRunAws = async(req, res, path) => {
 
     // 회의 공유 추가
     for(var i = 0; i< 3; i++){
-        console.log("입력정보 테스트");
+
+        //공유란을 비워뒀을 때
+        if(req.body.shareID[i] == ""){
+            continue;
+        }
+
         var user_index = await dbPool(`SELECT * FROM ${schema}.user_information WHERE user_id = '${req.body.shareID[i]}'`);
         console.log(user_index);
+
+        //아아디를 잘못 입력했을 때
+        if(user_index == undefined){
+            console.log("잘못된 ID 입력");
+            continue;
+        }
 
         var user_share_query = `
         INSERT INTO
