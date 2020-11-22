@@ -114,5 +114,11 @@ module.exports = dbTest;
 1) reformat.py 수정
 
 ### 2020-11-21
-1) bcrypt로 비밀번호 암호화
+1) __**bcrypt**__ 로 비밀번호 암호화
 2) profile-page 세분화
+
+### 2020-11-22
+1) MVC 패턴으로 profile-page 코드 구현
+2) 회원정보 수정과 탈퇴 기능 구현
+
+  => 모든 예외처리 완료(__**bcrypt**__ 으로 비교)

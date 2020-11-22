@@ -47,9 +47,9 @@ head
                   span.online-status.status-available Available
                 .profile-stat
                   .row
-                    .col-md-6.stat-item
-                      span 내 정보
-                    .col-md-6.stat-item(onclick="location.href='/page-lockscreen'" style="cursor: pointer")
+                    #popbutton1.col-md-6.stat-item(style="cursor:pointer")
+                      span 비밀번호 변경
+                    #popbutton2.col-md-6.stat-item(style="cursor:pointer")
                       span 회원 탈퇴
               // END PROFILE HEADER
 
@@ -57,23 +57,74 @@ head
               .profile-detail
                 .panel
                   .profile-info
-                    h4.heading My Profile
+                    h4.heading 나의 프로필
                     ul.list-unstyled.list-justify
                       li
-                        | Name 
-                        span #{user_name}
+                        | <strong>Name</strong> 
+                        input.form-control(type="text", value=user_name, id="user_name")
                       li
-                        | Email 
-                        span #{user_email}
+                        | <strong>Email</strong> 
+                        input.form-control(type="text", value=user_email, id="user_email")
                   .text-center
-                    a.btn.btn-primary(href='/page-profile?mode=update') Edit Profile
+                    a.btn.btn-primary(id="update_btn") 정보 수정
                   br
                   br
                   br
               // END PROFILE DETAIL
 
             // END LEFT COLUMN
-          
+            // Modal
+            #myPwEditModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myProfileModalLabel' aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                      span(aria-hidden='true') &times;
+                    .logo.text-center
+                      img(src='assets/img/logo-dark.png' alt='Klorofil Logo')
+                  .modal-body
+                    .content
+                      .user.text-center
+                        img.img-circle(src='assets/img/user-medium.png' alt='Avatar')
+                        h2.name #{user_name}
+                  .modal-footer
+                    form(action='')
+                      div
+                        h5#nowpassword.text-left(text-align='center;') &#xD604;&#xC7AC; &#xBE44;&#xBC00;&#xBC88;&#xD638;
+                        input.old_pw.form-control(type='password' placeholder='비밀번호 수정을 원하시면 비밀번호를 입력하세요.')
+                      div
+                        h5#newpassword.text-left &#xC0C8; &#xBE44;&#xBC00;&#xBC88;&#xD638;
+                        input.new_pw#newPW.form-control(type='password' placeholder='새 비밀번호를 입력하세요.')
+                      div
+                        h5#newpasswordchk.text-left &#xC0C8; &#xBE44;&#xBC00;&#xBC88;&#xD638; &#xD655;&#xC778;
+                        input.new_pw_chk#newPWchk.form-control(type='password' placeholder='새 비밀번호를 확인하세요.')
+                      #alert-success.alert.alert-success &#xC0C8; &#xBE44;&#xBC00;&#xBC88;&#xD638;&#xAC00; &#xC77C;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.
+                      #alert-danger.alert.alert-danger &#xC0C8; &#xBE44;&#xBC00;&#xBC88;&#xD638;&#xAC00; &#xC77C;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.
+                      br
+                      #changePW.btn.btn-primary.btn-lg.btn-block(type='text' data-dismiss='modal') 확인
+            // Modal
+            #mySecessionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myProfileModalLabel' aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                      span(aria-hidden='true') &times;
+                    .logo.text-center
+                      img(src='assets/img/logo-dark.png' alt='Klorofil Logo')
+                  .modal-body
+                    .content
+                      .user.text-center
+                        br
+                        img.img-circle(src='assets/img/user-medium.png' alt='Avatar')
+                        h2.name #{user_name}
+                  .modal-footer
+                    div
+                      .input-group
+                        input.delete_chk.form-control(type='password' placeholder='탈퇴를 원하시면 비밀번호를 입력하세요.')
+                        span.input-group-btn
+                          button.btn.btn-primary(type='' id="delete_btn")
+                            i.fa.fa-arrow-right
+                    br
     // END MAIN CONTENT
   // END MAIN
   .clearfix
@@ -89,3 +140,99 @@ script(src='assets/vendor/jquery/jquery.min.js')
 script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
 script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
 script(src='assets/scripts/klorofil-common.js')
+| &#x9;!
+script.
+  $(document).ready(function() {
+  //새 비밀번호 체크 div
+  $("#alert-success").hide();
+  $("#alert-danger").hide();
+  //modal 창
+  $("#close_modal").click(function() {
+  $("#mySecessionModal").modal("hide");
+  $("#myPwEditModal").modal("hide");
+  });
+  $("#popbutton1").click(function() {
+  $("#myPwEditModal").modal("show");
+  });
+  $("#popbutton2").click(function() {
+  $("#mySecessionModal").modal("show");
+  });
+  $(()=>{
+    $('#update_btn').click((e)=>{
+      if($('.new_pw').val() == '' || $('.new_pw_chk').val() == '' || $('.old_pw').val() == ''){
+        alert("비밀번호 변경에서 비밀번호를 입력해주세요.");
+      }else{
+        if($('.new_pw').val() === $('.new_pw_chk').val()){
+          $.ajax({
+            type : 'POST',
+            url : '/page-profile/update',
+            data : {
+              mode : 'update',
+              user_name : $('#user_name').val(),
+              user_email : $('#user_email').val(),
+              old_pw : $('.old_pw').val(),
+              new_pw : $('.new_pw').val(),
+            },
+            success : function(res){
+              if(res.result){
+                alert("수정이 완료되었습니다.");
+                location.reload();
+              }else{
+                alert("현재 비밀번호를 확인해주십시오.");
+              }
+            },
+            error : function(error){
+              alert("시스템 장애가 발생하였습니다. 관리자에게 알려주십시오.");
+            }
+          });
+        }else{
+          alert("새 비밀번호가 서로 다릅니다.");
+        }
+      }
+    });
+
+    /**
+    * 삭제
+    */
+    $('#delete_btn').click((e)=>{
+      if($('.delete_chk').val()===''){
+        alert('비밀번호를 입력해주세요.');
+      }else{
+        $.ajax({
+          type : 'POST',
+          url : '/page-profile/update',
+          data : {
+            mode : 'delete',
+            user_pw : $('.delete_chk').val(),
+          },
+          success : function(res){
+            if(res.result == 1){
+              alert("탈퇴가 성공적으로 되었습니다.");
+              location.href='/';
+            }else{
+              alert("비밀번호가 다릅니다.");
+            }
+          },
+          error : function(error){
+            alert("시스템 장애가 발생하였습니다. 관리자에게 알려주십시오.");
+          }
+        });
+      }
+    });
+  });
+  /*
+  $("input").keyup(function()){
+  var pwd1 = $("#newPW").val();
+  var pwd2 = $("#newPWchk").val();
+  if(pwd1 != "" || pwd2 != ""){
+  if(pwd1 == pwd2){
+  $("#alert-success").show();
+  $("#alert-danger").hide();]
+  $("#changePW").removeAttr("disabled");
+  }else{
+  $("#alert-success").hide();
+  $("#alert-danger").show();]
+  $("#changePW").attr("disabled","disabled");
+  }
+  });*/
+  });

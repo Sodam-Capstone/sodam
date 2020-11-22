@@ -14,10 +14,11 @@ const dbPool = async (queries) => {
     const connection = await pool.getConnection(async conn => conn);
     try {    
       const [rows] = await connection.query(queries);
+      console.log('Query Success =>' + queries);
       connection.release();
       return rows;
     } catch (err) {
-      console.log('Query Error');
+      console.log('Query Error =>' + queries);
       connection.release();
       return false;
     }

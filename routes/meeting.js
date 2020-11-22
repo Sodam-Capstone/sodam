@@ -36,12 +36,17 @@ router.get('/page-lockscreen', isLoggedIn, (req, res, next) => {
 
 router.get('/page-profile', isLoggedIn, async (req, res, next) => {
   const result = await pageProfile.pageProfileResult(req, res);
-  
-  res.render('page-profile', {
-    user_id: result[0].user_id,
-    user_name : result[0].user_name,
-    user_email : result[0].user_email,
-  });
+    res.render('page-profile', {
+      user_id: result[0].user_id,
+      user_name : result[0].user_name,
+      user_email : result[0].user_email,
+    });
+})
+router.post('/page-profile/update', isLoggedIn, async(req, res, next)=>{
+    const result = await pageProfile.pageProfileMerge(req, res);
+    res.json({
+      result,
+    });
 })
 
 router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
