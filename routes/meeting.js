@@ -28,6 +28,44 @@ router.get('/meeting-list', isLoggedIn, async(req, res, next) => {
   });
 })
 
+router.post('/meeting-list',isLoggedIn, async(req, res)=>{
+  console.log("받음");
+  console.log(`${req.body.send_data}`);
+
+  var meeting_list = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_share as m_s join ${process.env.DB_DATABASE}.meet_information as m_i ON (m_s.meet_index = m_i.meet_index) left join ${process.env.DB_DATABASE}.meet_hashing as m_h ON (m_s.meet_index = m_h.meet_index) WHERE m_s.user1_index = ${req.user[0].user_index}`);
+  console.log(meeting_list);
+
+  var list = req.body.send_data;
+  var len = req.body.send_data.length;
+
+  for(var i = 0;i<len;i++){
+    if(list[i] == ','){
+      continue;
+    }
+    var del_index = list[i];
+    var delete_list_query = `
+    DELETE FROM
+        ${process.env.DB_DATABASE}.meet_share
+    WHERE share_index = ${meeting_list[del_index].share_index};
+    `
+  await dbPool(delete_list_query);
+  }
+
+
+  var meeting_list = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_share as m_s join ${process.env.DB_DATABASE}.meet_information as m_i ON (m_s.meet_index = m_i.meet_index) left join ${process.env.DB_DATABASE}.meet_hashing as m_h ON (m_s.meet_index = m_h.meet_index) WHERE m_s.user1_index = ${req.user[0].user_index}`);
+  console.log(meeting_list);
+  
+  var i;
+  for(i=0;meeting_list[i]!=undefined;i++)
+    console.log('rows : '+i);
+  console.log(i);
+  res.render('meeting-list', {
+    user_id: req.user[0].user_id,
+    meeting_data: meeting_list,
+    row: i,
+  });
+});
+
 router.get('/page-lockscreen', isLoggedIn, (req, res, next) => {
   res.render('page-lockscreen', {
     user_id: req.user[0].user_id,
@@ -42,6 +80,7 @@ router.get('/page-profile', isLoggedIn, async (req, res, next) => {
       user_email : result[0].user_email,
     });
 })
+
 router.post('/page-profile/update', isLoggedIn, async(req, res, next)=>{
     const result = await pageProfile.pageProfileMerge(req, res);
     res.json({
