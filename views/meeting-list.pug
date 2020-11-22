@@ -62,7 +62,7 @@ head
                       tfoot
                         tr
                           th
-                            button#selectBtn.label.label-primary(type='button') &#xC0AD;&#xC81C;
+                            a(href="javascript:send_check()" ) 삭제
                           th Title
                           th tag
                           th file
@@ -70,8 +70,8 @@ head
                       tbody
                           -for(var i=0;i<row;i++)
                             tr
-                              td
-                                input(type='checkbox', name='user_CheckBox')
+                              td(name='check')
+                                input(type='checkbox', name='user_CheckBox' class="sended") 
                               td
                                 a(href="javascript:send_title('"+meeting_data[i].meet_name+"')" ) #{meeting_data[i].meet_name}
                               if meeting_data[i].meet_hashtag1 == null
@@ -110,6 +110,61 @@ script(type='text/javascript').
     document.body.appendChild(form);
     form.submit();
   }
+
+script(type='text/javascript').
+  function send_check() {
+    var j = 0;
+    var cnt = 0;
+    var num_list = new Array();
+    $('input:checkbox[name="user_CheckBox"]').each(function() {
+      if($(this).is(":checked") == true){
+        num_list[cnt] = j;
+        cnt++;
+      }
+      j++;
+    });
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/meeting-list");
+    var post = document.createElement("input");
+    post.setAttribute("type", "hidden");
+    post.setAttribute("name", "send_data");
+    post.setAttribute("value", num_list);
+    form.appendChild(post);
+    document.body.appendChild(form);
+    form.submit();
+    alert(cnt+"개의 회의가 삭제됩니다.");
+  }
+
+//- script.
+//-   $('#selectBtn').click(function(){
+//-     var cnt = 0;
+//-     var j = 0;
+//-     var check_num = new Array();
+//-     $('input:checkbox[name="user_CheckBox"]').each(function() {
+//-       if($(this).is(":checked") == true){
+//-         check_num[cnt] = j;
+//-         cnt++;
+//-       }
+//-       j++;
+//-     });
+//-     alert(check_num);
+//-     $.ajax({
+//-       type : 'GET',
+//-       url : '/list',
+//-       data : {
+//-         check_num : check_num,
+//-       },
+//-       success : function(data){
+//-         location.href='/';
+//-         alert("보내기 성공");
+//-       },
+//-       error: function(err){
+//-         alert("보내기 실패");
+//-       }
+//-     });
+//-   });
+
 
 // Javascript
 
