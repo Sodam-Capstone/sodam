@@ -1207,7 +1207,9 @@ ul.activity-list > li {
       .auth-box .content {
         width: 95%; }
       .auth-box.lockscreen {
-        width: 90%; } }
+        width: 90%; } 
+      
+      }
 
 /******************/
 
@@ -1401,17 +1403,14 @@ ul.activity-list > li {
 .panel-profile {
   position: relative; 
   margin-top : 2%;
-  width : 95%;}
+  width : 80%;
+}
 
 .profile-left {
-  margin-right: 30%;
   padding-left: 0%;
   padding-right: 00%;
-  float: left;
-  width: 50%;
   height: 100%;
-  position: absolute;
-  background-color: #F8F8F8; }
+ }
 
 .profile-right {
   float: right;
@@ -1427,7 +1426,7 @@ ul.activity-list > li {
     width: 100%; }
   .profile-left {
     position: relative;
-    margin-bottom: 30px; } }
+    margin-bottom: 0px; } }
 
 .profile-header {
   position: relative;
@@ -1444,7 +1443,7 @@ ul.activity-list > li {
   .profile-header .profile-main {
     position: relative;
     padding: 20px;
-    background-image: url("../../assets/img/profile-bg.png");
+    background-image: rgba(178, 178, 178, 0.2);;
     background-repeat: no-repeat;
     background-size: cover; }
   .profile-header .name {
@@ -2049,7 +2048,7 @@ ul.activity-timeline > li {
   width: 100%; 
   margin: auto; 
   overflow-x: hidden; }
-.slide_content { 
+.slide_content > img{ 
   display: table; 
   float: left; width: 800px; 
   height: 400px; }

@@ -5,36 +5,36 @@
     #navbar-menu
     ul.nav.navbar-nav.navbar-right
         if user_id
-            li.dropdown
-                a.dropdown-toggle.icon-menu(href='#' data-toggle='dropdown')
-                    i.lnr.lnr-alarm
-                    span.badge.bg-danger 5
-                ul.dropdown-menu.notifications
-                    li
-                        a.notification-item(href='#')
-                        span.dot.bg-warning
-                        | System space is almost full
-                    li
-                        a.notification-item(href='#')
-                        span.dot.bg-danger
-                        | You have 9 unfinished tasks
-                    li
-                        a.notification-item(href='#')
-                        span.dot.bg-success
-                        | Monthly report is available
-                    li
-                        a.notification-item(href='#')
-                        span.dot.bg-warning
-                        | Weekly meeting in 1 hour
-                    li
-                        a.notification-item(href='#')
-                        span.dot.bg-success
-                        | Your request has been approved
-                    li
-                        a.more(href='#') See all notifications
+            //- li.dropdown
+            //-     a.dropdown-toggle.icon-menu(href='#' data-toggle='dropdown')
+            //-         i.lnr.lnr-alarm
+            //-         span.badge.bg-danger 5
+            //-     ul.dropdown-menu.notifications
+            //-         li
+            //-             a.notification-item(href='#')
+            //-             span.dot.bg-warning
+            //-             | System space is almost full
+            //-         li
+            //-             a.notification-item(href='#')
+            //-             span.dot.bg-danger
+            //-             | You have 9 unfinished tasks
+            //-         li
+            //-             a.notification-item(href='#')
+            //-             span.dot.bg-success
+            //-             | Monthly report is available
+            //-         li
+            //-             a.notification-item(href='#')
+            //-             span.dot.bg-warning
+            //-             | Weekly meeting in 1 hour
+            //-         li
+            //-             a.notification-item(href='#')
+            //-             span.dot.bg-success
+            //-             | Your request has been approved
+            //-         li
+            //-             a.more(href='#') See all notifications
             li.dropdown
                 a.dropdown-toggle(href='#' data-toggle='dropdown')
-                    img.img-circle(src='assets/img/user.png' alt='Avatar')
+                    img.img-circle(src='assets/img/user_prof.png' alt='Avatar')
                     span #{user_id}
                     i.icon-submenu.lnr.lnr-chevron-down
                 ul.dropdown-menu
