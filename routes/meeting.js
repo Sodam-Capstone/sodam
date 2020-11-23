@@ -150,4 +150,15 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   });
 })
 
+
+router.get('/login-findid', isNotLoggedIn, (req, res, next) => {
+  res.render('login-findid', {
+  });
+}) 
+
+router.get('/login-findpw', isNotLoggedIn, (req, res, next) => {
+  res.render('login-findpw', {
+  });
+})
+
 module.exports = router;

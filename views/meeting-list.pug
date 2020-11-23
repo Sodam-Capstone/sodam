@@ -1,6 +1,6 @@
 doctype html
 head
-  title Panels | Klorofil - Free Bootstrap Dashboard Template
+  title 회의목록 | 소담
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
   meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
@@ -18,6 +18,10 @@ head
   link(rel='apple-touch-icon' sizes='76x76' href='assets/img/apple-icon.png')
   link(rel='icon' type='image/png' sizes='96x96' href='assets/img/favicon.png')
   script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+
+  //- link(href='https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css', rel='stylesheet', crossorigin='anonymous')
+  //- script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js', crossorigin='anonymous')
+
 // WRAPPER
 #wrapper
   // NAVBAR
@@ -54,19 +58,20 @@ head
                     table#dataTable.table.table-bordered(width='97%', cellspacing='0')
                       thead
                         tr
-                          th &nbsp;
+                          th 
+                            a(href="javascript:send_check()" ) 삭제
                           th &#xC81C;&#xBAA9;
                           th &#xD0DC;&#xADF8;
                           th &#xD30C;&#xC77C;
                           th &#xB0A0;&#xC9DC;
-                      tfoot
-                        tr
-                          th
-                            a(href="javascript:send_check()" ) 삭제
-                          th Title
-                          th tag
-                          th file
-                          th date
+                      //- tfoot
+                        //- tr
+                        //-   th
+                        //-     a(href="javascript:send_check()" ) 삭제
+                        //-   th Title
+                        //-   th tag
+                        //-   th file
+                        //-   th date
                       tbody
                           -for(var i=0;i<row;i++)
                             tr
@@ -74,7 +79,7 @@ head
                                 input(type='checkbox', name='user_CheckBox' class="sended") 
                               td
                                 a(href="javascript:send_title('"+meeting_data[i].meet_name+"')" ) #{meeting_data[i].meet_name}
-                              if meeting_data[i].meet_hashtag1 == null
+                              if meeting_data[i].meet_hashtag1 == null || meeting_data[i].meet_hashtag2==""
                                 td
                               else if meeting_data[i].meet_hashtag2 == null || meeting_data[i].meet_hashtag2==""
                                 td #{'#' + meeting_data[i].meet_hashtag1}
@@ -133,7 +138,12 @@ script(type='text/javascript').
     form.appendChild(post);
     document.body.appendChild(form);
     form.submit();
-    alert(cnt+"개의 회의가 삭제됩니다.");
+    if(cnt == 0){
+      alert("삭제할 회의를 선택해주세요.");
+    }
+    else{
+      alert(cnt+"개의 회의가 삭제됩니다.");
+    }
   }
 
 //- script.
