@@ -60,8 +60,7 @@ head
                     .row
                       .panel
                         #meeting_record
-                          audio#meetinglog_tab_audio(controls='', updatetracktime='updateTrackTime(this,"meetinglog_tab");', onended='endTrackTime("meetinglog_tab_audio","meetinglog_tab");')
-                            source(src='s1_sadness_M_s4.wav')
+                        <audio controls src='#{file_path}' />
                             | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD45C;&#xC2DC;&#xC548;&#xB428;
                     .row
                       #panel-scrolling-demo.panel
