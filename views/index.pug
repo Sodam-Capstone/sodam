@@ -26,7 +26,7 @@ head
   nav.navbar.navbar-default.navbar-fixed-top
     .brand
       a(href='/')
-        img.img-responsive.logo(src='assets/img/logo-dark.png' alt='Klorofil Logo')
+        img.img-responsive.logo(src='assets/img/logo.png' alt='Klorofil Logo' style='height:100%')
     include gnb
           //
             <li>
@@ -40,40 +40,20 @@ head
   .main
     // MAIN CONTENT
     .main-content
+      .col-md-12
+        .bannerpanel
+          img(src='assets/img/banner1.png', alt='No banner')
+
+    .main-content
       .container-fluid
-        // OVERVIEW
-        .panel.panel-headline
-          .panel-heading
-          .panel-body
-            .row
-              #container-slide
-                .slide_wrap
-                  .slide_box
-                    .slide_list.clearfix
-                      .slide_content.slide01
-                        img(src='assets/img/banner1.png', alt='No banner')
-                        //- p  &#xC18C;&#xB2F4; : &#xC18C;&#xB9AC;&#xB97C; &#xB2F4;&#xB2E4;
-                      .slide_content.slide02
-                        img(src='assets/img/banner1.png', alt='No banner')
-                        //- p &#xAE30;&#xB2A5; &#xC124;&#xBA85; 1
-                      .slide_content.slide03
-                        img(src='assets/img/banner1.png', alt='No banner')
-                        //- p &#xAE30;&#xB2A5; &#xC124;&#xBA85; 2
-                      //- .slide_content.slide04
-                      //-   img(src='assets/img/banner1.png', alt='No banner')
-                        //- p &#xAE30;&#xB2A5; &#xC124;&#xBA85; 3
-                    // // .slide_list
-                  // // .slide_box
-                  .slide_btn_box
-                    button.slide_btn_prev(type='button') Prev
-                    button.slide_btn_next(type='button') Next
-                  // // .slide_btn_box
-                  ul.slide_pagination
-                  // // .slide_pagination
-                // // .slide_wrap
-              // // .container slide
-    // END MAIN CONTENT
-  // END MAIN
+        .col-md-12
+          .infopanel
+            img(src='assets/img/info1.png', alt='No banner')
+            img(src='assets/img/info2.png', alt='No banner')
+            img(src='assets/img/info3.png', alt='No banner')
+
+  // END MAIN CONTENT
+// END MAIN
 
   .clearfix
   footer
