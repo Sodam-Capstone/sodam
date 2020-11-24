@@ -34,43 +34,45 @@ head
     // MAIN CONTENT
     .main-content
       .container-fluid
-        .panel.panel-profile
-          .clearfix
-            // LEFT COLUMN
-            .profile-left
-              // PROFILE HEADER
-              .profile-header
-                .overlay
-                .profile-main
-                  img.img-circle(src='assets/img/user_prof2.png', alt='Avatar')
-                  h3.name #{user_id}
-                  span.online-status.status-available Available
-                .profile-stat
-                  .row
-                    #popbutton1.col-md-6.stat-item(style="cursor:pointer")
-                      span 비밀번호 변경
-                    #popbutton2.col-md-6.stat-item(style="cursor:pointer")
-                      span 회원 탈퇴
-              // END PROFILE HEADER
+        .row
+          .col-md-8
+            .panel.panel-profile
+              .clearfix
+                // LEFT COLUMN
+                .profile-left
+                  // PROFILE HEADER
+                  .profile-header
+                    .overlay
+                    .profile-main
+                      img.img-circle(src='assets/img/user_prof2.png', alt='Avatar')
+                      h3.name #{user_id}
+                      span.online-status.status-available Available
+                    .profile-stat
+                      .row
+                        #popbutton1.col-md-6.stat-item(style="cursor:pointer")
+                          span 비밀번호 변경
+                        #popbutton2.col-md-6.stat-item(style="cursor:pointer")
+                          span 회원 탈퇴
+                  // END PROFILE HEADER
 
-              // PROFILE DETAIL
-              .profile-detail
-                .panel
-                  .profile-info
-                    h4.heading 나의 프로필
-                    ul.list-unstyled.list-justify
-                      li
-                        | <strong>Name</strong> 
-                        input.form-control(type="text", value=user_name, id="user_name")
-                      li
-                        | <strong>Email</strong> 
-                        input.form-control(type="text", value=user_email, id="user_email")
-                  .text-center
-                    a.btn.btn-primary(id="update_btn") 정보 수정
-                  br
-                  br
-                  br
-              // END PROFILE DETAIL
+                  // PROFILE DETAIL
+                  .profile-detail
+                    .panel
+                      .profile-info
+                        h4.heading 나의 프로필
+                        ul.list-unstyled.list-justify
+                          li
+                            | <strong>Name</strong> 
+                            input.form-control(type="text", value=user_name, id="user_name")
+                          li
+                            | <strong>Email</strong> 
+                            input.form-control(type="text", value=user_email, id="user_email")
+                      .text-center
+                        a.btn.btn-primary(id="update_btn") 정보 수정
+                      br
+                      br
+                      br
+                  // END PROFILE DETAIL
 
             // END LEFT COLUMN
             // Modal
@@ -81,7 +83,7 @@ head
                     button.close(type='button' data-dismiss='modal' aria-label='Close')
                       span(aria-hidden='true') &times;
                     .logo.text-center
-                      img(src='assets/img/logo-dark.png' alt='Klorofil Logo')
+                      img(src='assets/img/logo.png' alt='Klorofil Logo')
                   .modal-body
                     .content
                       .user.text-center
@@ -110,12 +112,12 @@ head
                     button.close(type='button' data-dismiss='modal' aria-label='Close')
                       span(aria-hidden='true') &times;
                     .logo.text-center
-                      img(src='assets/img/logo-dark.png' alt='Klorofil Logo')
+                      img(src='assets/img/logo.png' alt='Klorofil Logo')
                   .modal-body
                     .content
                       .user.text-center
                         br
-                        img.img-circle(src='assets/img/user-medium.png' alt='Avatar')
+                        img.img-circle(src='assets/img/user_prof2.png' alt='Avatar')
                         h2.name #{user_name}
                   .modal-footer
                     div
