@@ -298,6 +298,10 @@ float: left; }
       .navbar-nav > li > a span:not(.badge),
       .navbar-nav > li > a .icon-submenu {
         display: none; }
+      .navbar-nav > li > a .icon-submenu {
+        margin-top: 2%;
+        display: block;
+      }
     .navbar-nav .open .dropdown-menu {
       -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -1152,7 +1156,8 @@ ul.activity-list > li {
     width: 58%;
     height: 100%;
     position: relative;
-    background-image: url("../../assets/img/login-bg.jpg");
+    /* background-image: url("../../assets/img/login-bg.jpg"); */
+    background-image: url("../../assets/img/banner2.png");
     background-repeat: no-repeat;
     background-size: cover; }
     .auth-box .right:before {
@@ -1183,7 +1188,7 @@ ul.activity-list > li {
       display: block;
       width: 100%;
       height: 100%;
-      background: rgba(99, 156, 185, 0.92); }
+      background: rgba(99, 156, 185, 0.72); }
   .auth-box .header {
     margin-bottom: 30px; }
   .auth-box .lead {
@@ -1432,7 +1437,7 @@ ul.activity-list > li {
 .panel-profile {
   position: relative; 
   margin-top : 2%;
-  width : 80%;
+  width : 100%;
 }
 
 .profile-left {
@@ -2156,11 +2161,11 @@ ul.activity-timeline > li {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 25% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */   
-  height: 50%:                       
+  height: 50%;                       
 }
 
 .modal-backdrop { 
