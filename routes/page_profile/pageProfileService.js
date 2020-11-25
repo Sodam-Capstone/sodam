@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt');
 
 /**
  * Select
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const pageProfileSelect = async (req, res) =>{
    const result = await pageProfileDao.pageProfileSelect(req, res);
@@ -13,8 +13,8 @@ const pageProfileSelect = async (req, res) =>{
 
 /**
  * Insert
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const pageProfileInsert = async (req, res) =>{
     const result = await pageProfileDao.pageProfileInsert(req, res);
@@ -23,12 +23,18 @@ const pageProfileInsert = async (req, res) =>{
 
  /**
   * Update
-  * @param {*} req 
-  * @param {*} res 
+  * @param {*} req
+  * @param {*} res
   */
 const pageProfileUpdate = async (req, res) =>{
+  console.log('ffffffffff');
     const old_pw = await pageProfileDao.pageProfilePasswordCheck(req, res);
     const password_key = await bcrypt.compare(req.body.old_pw, old_pw);
+    if(req.body.old_pw == '' && req.body.new_pw == '') {
+        console.log('fasfdf');
+        await pageProfileDao.pageProfileUpdate(req, res, old_pw);
+        return 1;
+    }
     if(password_key){
         const new_pw = await bcrypt.hash(req.body.new_pw, 12);
         await pageProfileDao.pageProfileUpdate(req, res, new_pw);
@@ -40,8 +46,8 @@ const pageProfileUpdate = async (req, res) =>{
 
 /**
  * Delete
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const pageProfileDelete = async (req, res) =>{
     const pwCheck = await pageProfileDao.pageProfilePasswordCheck(req, res);

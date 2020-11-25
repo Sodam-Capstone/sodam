@@ -60,10 +60,10 @@ head
                     h4.heading 나의 프로필
                     ul.list-unstyled.list-justify
                       li
-                        | <strong>Name</strong> 
+                        | <strong>Name</strong>
                         input.form-control(type="text", value=user_name, id="user_name")
                       li
-                        | <strong>Email</strong> 
+                        | <strong>Email</strong>
                         input.form-control(type="text", value=user_email, id="user_email")
                   .text-center
                     a.btn.btn-primary(id="update_btn") 정보 수정
@@ -159,35 +159,32 @@ script.
   });
   $(()=>{
     $('#update_btn').click((e)=>{
-      if($('.new_pw').val() == '' || $('.new_pw_chk').val() == '' || $('.old_pw').val() == ''){
-        alert("비밀번호 변경에서 비밀번호를 입력해주세요.");
-      }else{
-        if($('.new_pw').val() === $('.new_pw_chk').val()){
-          $.ajax({
-            type : 'POST',
-            url : '/page-profile/update',
-            data : {
-              mode : 'update',
-              user_name : $('#user_name').val(),
-              user_email : $('#user_email').val(),
-              old_pw : $('.old_pw').val(),
-              new_pw : $('.new_pw').val(),
-            },
-            success : function(res){
-              if(res.result){
-                alert("수정이 완료되었습니다.");
-                location.reload();
-              }else{
-                alert("현재 비밀번호를 확인해주십시오.");
-              }
-            },
-            error : function(error){
-              alert("시스템 장애가 발생하였습니다. 관리자에게 알려주십시오.");
+
+      if($('.new_pw').val() === $('.new_pw_chk').val()){
+        $.ajax({
+          type : 'POST',
+          url : '/page-profile/update',
+          data : {
+            mode : 'update',
+            user_name : $('#user_name').val(),
+            user_email : $('#user_email').val(),
+            old_pw : $('.old_pw').val(),
+            new_pw : $('.new_pw').val(),
+          },
+          success : function(res){
+            if(res.result){
+              alert("수정이 완료되었습니다.");
+              location.reload();
+            }else{
+              alert("현재 비밀번호를 확인해주십시오.");
             }
-          });
-        }else{
-          alert("새 비밀번호가 서로 다릅니다.");
-        }
+          },
+          error : function(error){
+            alert("시스템 장애가 발생하였습니다. 관리자에게 알려주십시오.");
+          }
+        });
+      }else{
+        alert("새 비밀번호가 서로 다릅니다.");
       }
     });
 
