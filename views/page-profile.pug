@@ -1,6 +1,6 @@
 doctype html
 head
-  title Profile | Klorofil - Free Bootstrap Dashboard Template
+  title &#xD504;&#xB85C;&#xD544; | &#xC18C;&#xB2F4;
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
   meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
@@ -16,14 +16,14 @@ head
   link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700', rel='stylesheet')
   // ICONS
   link(rel='apple-touch-icon', sizes='76x76', href='assets/img/apple-icon.png')
-  link(rel='icon', type='image/png', sizes='96x96', href='assets/img/favicon.png')
+  link(rel='icon' type='image/png' sizes='96x96' href='assets/img/sodam.png')
 // WRAPPER
 #wrapper
   // NAVBAR
   nav.navbar.navbar-default.navbar-fixed-top
     .brand
       a(href='/')
-        img.img-responsive.logo(src='assets/img/logo-dark.png', alt='Klorofil Logo')
+        img.img-responsive.logo(src='assets/img/logo.png', alt='Klorofil Logo')
     include gnb
   // END NAVBAR
   // LEFT SIDEBAR
@@ -34,210 +34,207 @@ head
     // MAIN CONTENT
     .main-content
       .container-fluid
-        .panel.panel-profile
-          .clearfix
-            // LEFT COLUMN
-            .profile-left
-              // PROFILE HEADER
-              .profile-header
-                .overlay
-                .profile-main
-                  img.img-circle(src='assets/img/user-medium.png', alt='Avatar')
-                  h3.name Samuel Gold
-                  span.online-status.status-available Available
-                .profile-stat
-                  .row
-                    .col-md-4.stat-item
-                      | 45
-                      span Projects
-                    .col-md-4.stat-item
-                      | 15
-                      span Awards
-                    .col-md-4.stat-item
-                      | 2174
-                      span Points
-              // END PROFILE HEADER
-              // PROFILE DETAIL
-              .profile-detail
-                .profile-info
-                  h4.heading Basic Info
-                  ul.list-unstyled.list-justify
-                    li
-                      | Birthdate
-                      span 24 Aug, 2016
-                    li
-                      | Mobile
-                      span (124) 823409234
-                    li
-                      | Email
-                      span samuel@mydomain.com
-                    li
-                      | Website
-                      span
-                        a(href='https://www.themeineed.com') www.themeineed.com
-                .profile-info
-                  h4.heading Social
-                  ul.list-inline.social-icons
-                    li
-                      a.facebook-bg(href='#')
-                        i.fa.fa-facebook
-                    li
-                      a.twitter-bg(href='#')
-                        i.fa.fa-twitter
-                    li
-                      a.google-plus-bg(href='#')
-                        i.fa.fa-google-plus
-                    li
-                      a.github-bg(href='#')
-                        i.fa.fa-github
-                .profile-info
-                  h4.heading About
-                  p Interactively fashion excellent information after distinctive outsourcing.
-                .text-center
-                  a.btn.btn-primary(href='#') Edit Profile
-              // END PROFILE DETAIL
+        .row
+          .col-md-8
+            .panel.panel-profile
+              .clearfix
+                // LEFT COLUMN
+                .profile-left
+                  // PROFILE HEADER
+                  .profile-header
+                    .overlay
+                    .profile-main
+                      img.img-circle(src='assets/img/user_prof2.png', alt='Avatar')
+                      h3.name #{user_id}
+                      span.online-status.status-available Available
+                    .profile-stat
+                      .row
+                        #popbutton1.col-md-6.stat-item(style="cursor:pointer")
+                          span 비밀번호 변경
+                        #popbutton2.col-md-6.stat-item(style="cursor:pointer")
+                          span 회원 탈퇴
+                  // END PROFILE HEADER
+
+                  // PROFILE DETAIL
+                  .profile-detail
+                    .panel
+                      .profile-info
+                        h4.heading 나의 프로필
+                        ul.list-unstyled.list-justify
+                          li
+                            | <strong>Name</strong> 
+                            input.form-control(type="text", value=user_name, id="user_name")
+                          li
+                            | <strong>Email</strong> 
+                            input.form-control(type="text", value=user_email, id="user_email")
+                      .text-center
+                        a.btn.btn-primary(id="update_btn") 정보 수정
+                      br
+                      br
+                      br
+                  // END PROFILE DETAIL
+
             // END LEFT COLUMN
-            // RIGHT COLUMN
-            .profile-right
-              // TABBED CONTENT
-              .custom-tabs-line.tabs-line-bottom.left-aligned
-                ul.nav(role='tablist')
-                  li.active
-                    a(href='#tab-bottom-left1', role='tab', data-toggle='tab') Recent Activity
-                  li
-                    a(href='#tab-bottom-left2', role='tab', data-toggle='tab')
-                      | Projects
-                      span.badge 7
-              .tab-content
-                #tab-bottom-left1.tab-pane.fade.in.active
-                  ul.list-unstyled.activity-timeline
-                    li
-                      i.fa.fa-comment.activity-icon
-                      p
-                        | Commented on post
-                        a(href='#') Prototyping
-                        span.timestamp 2 minutes ago
-                    li
-                      i.fa.fa-cloud-upload.activity-icon
-                      p
-                        | Uploaded new file
-                        a(href='#') Proposal.docx
-                        |  to project
-                        a(href='#') New Year Campaign
-                        span.timestamp 7 hours ago
-                    li
-                      i.fa.fa-plus.activity-icon
-                      p
-                        | Added
-                        a(href='#') Martin
-                        |  and
-                        a(href='#') 3 others colleagues
-                        |  to project repository
-                        span.timestamp Yesterday
-                    li
-                      i.fa.fa-check.activity-icon
-                      p
-                        | Finished 80% of all
-                        a(href='#') assigned tasks
-                        span.timestamp 1 day ago
-                  .margin-top-30.text-center
-                    a.btn.btn-default(href='#') See all activity
-                #tab-bottom-left2.tab-pane.fade
-                  .table-responsive
-                    table.table.project-table
-                      thead
-                        tr
-                          th Title
-                          th Progress
-                          th Leader
-                          th Status
-                      tbody
-                        tr
-                          td
-                            a(href='#') Spot Media
-                          td
-                            .progress
-                              .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span 60% Complete
-                          td
-                            img.avatar.img-circle(src='assets/img/user2.png', alt='Avatar')
-                            a(href='#') Michael
-                          td
-                            span.label.label-success ACTIVE
-                        tr
-                          td
-                            a(href='#') E-Commerce Site
-                          td
-                            .progress
-                              .progress-bar(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%;')
-                                span 33% Complete
-                          td
-                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
-                            a(href='#') Antonius
-                          td
-                            span.label.label-warning PENDING
-                        tr
-                          td
-                            a(href='#') Project 123GO
-                          td
-                            .progress
-                              .progress-bar(role='progressbar', aria-valuenow='68', aria-valuemin='0', aria-valuemax='100', style='width: 68%;')
-                                span 68% Complete
-                          td
-                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
-                            a(href='#') Antonius
-                          td
-                            span.label.label-success ACTIVE
-                        tr
-                          td
-                            a(href='#') Wordpress Theme
-                          td
-                            .progress
-                              .progress-bar(role='progressbar', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100', style='width: 75%;')
-                                span 75%
-                          td
-                            img.avatar.img-circle(src='assets/img/user2.png', alt='Avatar')
-                            a(href='#') Michael
-                          td
-                            span.label.label-success ACTIVE
-                        tr
-                          td
-                            a(href='#') Project 123GO
-                          td
-                            .progress
-                              .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                span 100%
-                          td
-                            img.avatar.img-circle(src='assets/img/user1.png', alt='Avatar')
-                            a(href='#') Antonius
-                          td
-                            span.label.label-default CLOSED
-                        tr
-                          td
-                            a(href='#') Redesign Landing Page
-                          td
-                            .progress
-                              .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                span 100%
-                          td
-                            img.avatar.img-circle(src='assets/img/user5.png', alt='Avatar')
-                            a(href='#') Jason
-                          td
-                            span.label.label-default CLOSED
-              // END TABBED CONTENT
-            // END RIGHT COLUMN
+            // Modal
+            #myPwEditModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myProfileModalLabel' aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                      span(aria-hidden='true') &times;
+                    .logo.text-center
+                      img(src='assets/img/logo.png' alt='Klorofil Logo')
+                  .modal-body
+                    .content
+                      .user.text-center
+                        img.img-circle(src='assets/img/user_prof2.png' alt='Avatar')
+                        h2.name #{user_name}
+                  .modal-footer
+                    form(action='')
+                      div
+                        h5#nowpassword.text-left(text-align='center;') &#xD604;&#xC7AC; &#xBE44;&#xBC00;&#xBC88;&#xD638;
+                        input.old_pw.form-control(type='password' placeholder='비밀번호 수정을 원하시면 비밀번호를 입력하세요.')
+                      div
+                        h5#newpassword.text-left &#xC0C8; &#xBE44;&#xBC00;&#xBC88;&#xD638;
+                        input.new_pw#newPW.form-control(type='password' placeholder='새 비밀번호를 입력하세요.')
+                      div
+                        h5#newpasswordchk.text-left &#xC0C8; &#xBE44;&#xBC00;&#xBC88;&#xD638; &#xD655;&#xC778;
+                        input.new_pw_chk#newPWchk.form-control(type='password' placeholder='새 비밀번호를 확인하세요.')
+                      #alert-success.alert.alert-success &#xC0C8; &#xBE44;&#xBC00;&#xBC88;&#xD638;&#xAC00; &#xC77C;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.
+                      #alert-danger.alert.alert-danger &#xC0C8; &#xBE44;&#xBC00;&#xBC88;&#xD638;&#xAC00; &#xC77C;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.
+                      br
+                      #changePW.btn.btn-primary.btn-lg.btn-block(type='text' data-dismiss='modal') 확인
+            // Modal
+            #mySecessionModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myProfileModalLabel' aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                      span(aria-hidden='true') &times;
+                    .logo.text-center
+                      img(src='assets/img/logo.png' alt='Klorofil Logo')
+                  .modal-body
+                    .content
+                      .user.text-center
+                        br
+                        img.img-circle(src='assets/img/user_prof2.png' alt='Avatar')
+                        h2.name #{user_name}
+                  .modal-footer
+                    div
+                      .input-group
+                        input.delete_chk.form-control(type='password' placeholder='탈퇴를 원하시면 비밀번호를 입력하세요.')
+                        span.input-group-btn
+                          button.btn.btn-primary(type='' id="delete_btn")
+                            i.fa.fa-arrow-right
+                    br
     // END MAIN CONTENT
   // END MAIN
-  .clearfix
-  footer
-    .container-fluid
-      p.copyright
-        | Shared by
-        i.fa.fa-love
-        a(href='https://bootstrapthemes.co') BootstrapThemes
+  //- .clearfix
+  //- footer
+  //-   .container-fluid
+  //-     p.copyright
+  //-       | Shared by
+  //-       i.fa.fa-love
+  //-       a(href='https://bootstrapthemes.co') BootstrapThemes
 // END WRAPPER
 // Javascript
 script(src='assets/vendor/jquery/jquery.min.js')
 script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
 script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
 script(src='assets/scripts/klorofil-common.js')
+| &#x9;!
+script.
+  $(document).ready(function() {
+  //새 비밀번호 체크 div
+  $("#alert-success").hide();
+  $("#alert-danger").hide();
+  //modal 창
+  $("#close_modal").click(function() {
+  $("#mySecessionModal").modal("hide");
+  $("#myPwEditModal").modal("hide");
+  });
+  $("#popbutton1").click(function() {
+  $("#myPwEditModal").modal("show");
+  });
+  $("#popbutton2").click(function() {
+  $("#mySecessionModal").modal("show");
+  });
+  $(()=>{
+    $('#update_btn').click((e)=>{
+      if($('.new_pw').val() == '' || $('.new_pw_chk').val() == '' || $('.old_pw').val() == ''){
+        alert("비밀번호 변경에서 비밀번호를 입력해주세요.");
+      }else{
+        if($('.new_pw').val() === $('.new_pw_chk').val()){
+          $.ajax({
+            type : 'POST',
+            url : '/page-profile/update',
+            data : {
+              mode : 'update',
+              user_name : $('#user_name').val(),
+              user_email : $('#user_email').val(),
+              old_pw : $('.old_pw').val(),
+              new_pw : $('.new_pw').val(),
+            },
+            success : function(res){
+              if(res.result){
+                alert("수정이 완료되었습니다.");
+                location.reload();
+              }else{
+                alert("현재 비밀번호를 확인해주십시오.");
+              }
+            },
+            error : function(error){
+              alert("시스템 장애가 발생하였습니다. 관리자에게 알려주십시오.");
+            }
+          });
+        }else{
+          alert("새 비밀번호가 서로 다릅니다.");
+        }
+      }
+    });
+
+    /**
+    * 삭제
+    */
+    $('#delete_btn').click((e)=>{
+      if($('.delete_chk').val()===''){
+        alert('비밀번호를 입력해주세요.');
+      }else{
+        $.ajax({
+          type : 'POST',
+          url : '/page-profile/update',
+          data : {
+            mode : 'delete',
+            user_pw : $('.delete_chk').val(),
+          },
+          success : function(res){
+            if(res.result == 1){
+              alert("탈퇴가 성공적으로 되었습니다.");
+              location.href='/';
+            }else{
+              alert("비밀번호가 다릅니다.");
+            }
+          },
+          error : function(error){
+            alert("시스템 장애가 발생하였습니다. 관리자에게 알려주십시오.");
+          }
+        });
+      }
+    });
+  });
+  /*
+  $("input").keyup(function()){
+  var pwd1 = $("#newPW").val();
+  var pwd2 = $("#newPWchk").val();
+  if(pwd1 != "" || pwd2 != ""){
+  if(pwd1 == pwd2){
+  $("#alert-success").show();
+  $("#alert-danger").hide();]
+  $("#changePW").removeAttr("disabled");
+  }else{
+  $("#alert-success").hide();
+  $("#alert-danger").show();]
+  $("#changePW").attr("disabled","disabled");
+  }
+  });*/
+  });

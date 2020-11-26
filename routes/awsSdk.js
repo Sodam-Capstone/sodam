@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const path = require('path');
 const python = require('./python'); //파이썬 모듈 불러오기
-const inputDatabase = require('../axios/toDatabase');
 
 /**
  * AWS-SDK 관련
@@ -28,7 +27,7 @@ let upload = multer({
     s3: s3,
     bucket: "speech.to.text",
     key: function (req, file, cb) {
-      let extension = path.extname(file.originalname); //확장자
+      let extension = path.extname(file.originalname);
       cb(null, file.originalname)
     },
     acl: 'public-read-write',
@@ -42,8 +41,7 @@ router.post('/upload', upload.single("wavFile"), async function (req, res, next)
   // 텍스트 필드가 있는 경우, req.body가 이를 포함할 것
   try {
     console.log("파일 정보 : ", req.file);
-    python.pythonRunAws(req, res, path); //파이썬 실행 
-    //inputDatabase.toDatabase(req, res);
+    python.pythonRunAws(req, res, path); 
   } catch (error) {
     console.error(error);
   }

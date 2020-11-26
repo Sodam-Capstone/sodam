@@ -15,15 +15,17 @@ head
   // GOOGLE FONTS
   link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700', rel='stylesheet')
   // ICONS
-  link(rel='apple-touch-icon', sizes='76x76', href='assets/img/apple-icon.png')
-  link(rel='icon', type='image/png', sizes='96x96', href='assets/img/favicon.png')
+  link(rel='apple-touch-icon', sizes='76x76', href='assets/img/favicon.png')
+
+  //favicon추가
+  link(rel='icon' type='image/png' sizes='96x96' href='assets/img/sodam.png')
 // WRAPPER
 #wrapper
   // NAVBAR
   nav.navbar.navbar-default.navbar-fixed-top
     .brand
       a(href='/')
-        img.img-responsive.logo(src='assets/img/logo-dark.png', alt='Klorofil Logo')
+        img.img-responsive.logo(src='assets/img/logo.png', alt='Klorofil Logo')
     include gnb
   // END NAVBAR
   // LEFT SIDEBAR
@@ -45,35 +47,76 @@ head
                 // START 회의정보 등록
                 form(action='/upload' method='post' enctype='multipart/form-data')
                   // action 임시로 해놓음
-                  input.form-control(type='text', placeholder='회의 제목' name="meet_title")
+                  input.form-control.right_button(type='text', placeholder='회의 제목', name='meet_title',style='width : 80%; margin-right:10px;')  
+                  button#selectlist.label.label-primary.right_button(type='button') 중복 검사
+                  br
                   br
                   input.form-control(type='date', placeholder='회의 날짜' name="meet_date")
                   br
                   .filebox
-                    input.upload-name(value='선택된 파일 없음', disabled='disabled')
-                    label(for='ex_filename') &#xD68C;&#xC758; &#xD30C;&#xC77C; &#xC120;&#xD0DD;
+                    input.upload-name(value='선택된 파일 없음', name='meet_voice', disabled='disabled')
+                    label(for='ex_filename',) &#xD68C;&#xC758; &#xD30C;&#xC77C; &#xC120;&#xD0DD;
                     input#ex_filename.upload-hidden(type='file', name='wavFile', accept='audio/*')
+                  br
+                  br
+
+                  // 초대기능
+                  h4 &#xD68C;&#xC758; &#xACF5;&#xC720;
+                  .input-group
+                    span.input-group-addon
+                      i.fa.fa-user
+                    input.form-control(placeholder='UserID', type='text', name ='shareID')
+                  br
+                  .input-group
+                    span.input-group-addon
+                      i.fa.fa-user
+                    input.form-control(placeholder='UserID', type='text', name ='shareID')
+                  br
+                  .input-group
+                    span.input-group-addon
+                      i.fa.fa-user
+                    input.form-control(placeholder='UserID', type='text', name ='shareID')
+                  br
+                  br
+
                   // HASHTAG
                   .content
                     table(class='table')
                       table#tag-list
                         h4 &#xD0DC;&#xADF8; &#xBAA9;&#xB85D;
                       div
-                        input#tag.btn.btn-default(type='text', size='12', maxlength='12', placeholder='태그입력')
+                        input#tag.btn.btn-default(type='text', size='12', maxlength='12', placeholder='태그입력', name='tagname1')
+                        | &nbsp;
+                        input#tag.btn.btn-default(type='text', size='12', maxlength='12', placeholder='태그입력', name='tagname2')
+                        | &nbsp;
+                        input#tag.btn.btn-default(type='text', size='12', maxlength='12', placeholder='태그입력', name='tagname3')
                   // END HASHTAG
                   br
-                  input.btn.btn-primary(type='submit')
+                  input#selectlist.btn.btn-primary(type='submit')
+
+
+                  br
+                  //- table
+                  //-   tr tr값
+                  //-     -for(var j = 0 ; j < row + 2 ; j++)
+                  //-       td 
+                  //-         | 확인용 #{j}
+                  table.listcheck(border='1')
+                    tr
+                      -for(var j = 0 ; j < row; j++)
+                        td 
+                          |#{meeting_data[j].meet_name}
                 // END 회의정보 등록
               // END INPUTS
     // END MAIN CONTENT
   // END MAIN
-  .clearfix
-  footer
-    .container-fluid
-      p.copyright
-        | Shared by
-        i.fa.fa-love
-        a(href='https://bootstrapthemes.co') BootstrapThemes
+  //- .clearfix
+  //- footer
+  //-   .container-fluid
+  //-     p.copyright
+  //-       | Shared by
+  //-       i.fa.fa-love
+  //-       a(href='https://bootstrapthemes.co') BootstrapThemes
 // END WRAPPER
 // Javascript
 script(src='assets/vendor/jquery/jquery.min.js')
@@ -84,3 +127,31 @@ script(src='assets/scripts/klorofil-common.js')
 script(src='assets/scripts/hashtag.js')
 // 녹음파일찾는 js
 script(src='assets/scripts/filesearch.js')
+
+script.
+  $('#selectlist').click(function(){
+
+    var title;
+    title = ' ' + $('input[name=meet_title]').val();
+
+    var check = 0;
+
+
+    if(title == ' '){
+      alert("제목을 입력하세요");
+    }
+    else{
+      for(var j = 0; j < #{row}; j++){
+        var name;
+        name = document.getElementsByTagName('td')[j].childNodes[0].nodeValue;
+        if(title == name){
+          check = 1;
+          alert("이미 등록된 제목 입니다.");
+        }
+      }
+      if(title != " " && check == 0){
+        alert("사용할 수 있는 제목입니다.");
+      }
+    }
+  });
+

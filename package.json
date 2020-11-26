@@ -8,6 +8,8 @@
   "dependencies": {
     "aws-sdk": "^2.792.0",
     "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "connect-redis": "^3.0.0",
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",

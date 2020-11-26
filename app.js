@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const logger = require('morgan');
 const passport = require('passport');
+const RedisStore = require('connect-redis')(session);
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
@@ -16,6 +17,8 @@ const awsSdkRouter = require('./routes/awsSdk');
 
 var app = express();
 passportConfig(passport);
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,8 +37,15 @@ app.use(session({
   cookie:{
     httpOnly : true,
     secure : false,
-  }
+  },
+  store: new RedisStore({
+    host : process.env.REDIS_HOST,
+    port : process.env.REDIS_PORT,
+    pass : process.env.REDIS_PASSWORD,
+    logErrors: true,
+  }),
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 

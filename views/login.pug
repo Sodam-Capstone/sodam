@@ -1,6 +1,6 @@
 doctype html
 head
-  title Login | Klorofil - Free Bootstrap Dashboard Template
+  title 로그인 | 소담
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
   meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
@@ -13,12 +13,12 @@ head
   // MAIN CSS
   link(rel='stylesheet' href='assets/css/main.css')
   // FOR DEMO PURPOSES ONLY. You should remove this in your project
-  link(rel='stylesheet' href='assets/css/demo.css')
+  //link(rel='stylesheet' href='assets/css/demo.css')
   // GOOGLE FONTS
   link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet')
   // ICONS
-  link(rel='apple-touch-icon' sizes='76x76' href='assets/img/apple-icon.png')
-  link(rel='icon' type='image/png' sizes='96x96' href='assets/img/favicon.png')
+  link(rel='apple-touch-icon' sizes='76x76' href='assets/img/favicon.png')
+  link(rel='icon' type='image/png' sizes='96x96' href='assets/img/sodam.png')
   script(src='https://code.jquery.com/jquery-3.5.1.min.js')
 // WRAPPER
 #wrapper
@@ -30,13 +30,13 @@ head
             input(type="hidden" class="email_check_hidden" val="false")
             input(type="hidden" class="id_check_hidden" val="false")
             .header
-              .logo.text-center
-                img(src='assets/img/logo-dark.png' alt='Klorofil Logo')
+              .logo.text-center.large_page
+                img(src='assets/img/logo.png' alt='Klorofil Logo')
               p.lead Login to your account
             form.form-auth-small(action='auth/login' method='post')
               .form-group
                 label.control-label.sr-only(for='signin-email') Email
-                input#signin-email.form-control(type='id' value='hyperadmin' placeholder='ID' name='email' class="email")
+                input#signin-email.form-control(type='id' value='' placeholder='ID' name='email' class="email")
               .form-group
                 label.control-label.sr-only(for='signin-password') Password
                 input#signin-password.form-control(type='password' value='' placeholder='Password' name="password" class="password")
@@ -44,7 +44,14 @@ head
                 label.fancy-checkbox.element-left
                   input(type='checkbox')
                   span Remember me
-              .btn.btn-primary.btn-lg.btn-block(class= "login_btn") LOGIN
+              //- .bottom
+              //-   span.helper-text
+              //-     i.fa.fa-lock &nbsp;
+              //-     a(href='/login-findpw') Forgot password? &emsp;
+              //-   span.helper-text &nbsp;
+              //-     i.fa.fa-lock
+              //-     a(href='/login-findid') Forgot ID?
+              button.btn.btn-primary.btn-lg.btn-block(class= "login_btn") LOGIN
               .bottom
                 span.helper-text
                   .modal-container
@@ -73,18 +80,18 @@ head
                           label.control-label.sr-only(for='signin-passwordchk') PasswordCheck
                           input#signin-passwordchk.form-control(type='password' value='' placeholder='Password Check' class="password_join_check")
                           label.modal-content-btn(class="join_btn" style="margin-top:30px;") 회원가입하기
-                p
-                span.helper-text
-                  i.fa.fa-lock
-                  a(href='#') Forgot password?
-                span.helper-text
-                  i.fa.fa-lock
-                  a(href='#') Forgot ID?
+
+                //- p
+                //- span.helper-text
+                //-   i.fa.fa-lock &nbsp;
+                //-   a(href='/login-findpw') Forgot password? &emsp;
+                //- span.helper-text
+                //-   i.fa.fa-lock &nbsp;
+                //-   a(href='/login-findid') Forgot ID?
         .right
           .overlay
           .content.text
-            h1.heading Free Bootstrap dashboard template
-            p by The Develovers
+            h1.heading SODAM
         .clearfix
 // END WRAPPER
 script.

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares.js');
 const inputDatabase = require('../axios/toDatabase');
+const bcrypt = require('bcrypt');
 /**
  * index 화면
  */
