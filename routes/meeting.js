@@ -145,6 +145,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   res.render('sentimental_total', {
     user_id : req.user[0].user_id,
     text_title : textdata[0].meet_name,
+    file_path : 'https://s3.ap-northeast-2.amazonaws.com/speech.to.text/'+getindex[0].meet_voice,
     user1_score : personal_score[0],
     user2_score : personal_score[1],
     user3_score : personal_score[2],
