@@ -280,7 +280,7 @@ script.
     var labels = new Array();
     var title = '#{text_title}'
     while(spk[i] != null) {
-      spk[i].addEventListener('input', function() {
+      spk[i].addEventListener('blur', function() {
         var j=0;
         var labels = document.getElementsByClassName(this.id);
         var form = document.createElement("form");
