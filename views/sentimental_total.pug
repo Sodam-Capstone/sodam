@@ -60,8 +60,7 @@ head
                     .row
                       .panel
                         #meeting_record
-                          audio#meetinglog_tab_audio(controls='', updatetracktime='updateTrackTime(this,"meetinglog_tab");', onended='endTrackTime("meetinglog_tab_audio","meetinglog_tab");')
-                            source(src='s1_sadness_M_s4.wav')
+                        <audio controls src='#{file_path}' />
                             | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD45C;&#xC2DC;&#xC548;&#xB428;
                     .row
                       #panel-scrolling-demo.panel
@@ -69,9 +68,9 @@ head
                           h3.panel-title &#xD68C;&#xC758; &#xB0B4;&#xC6A9;
                         #conference_log.panel-body
                         ul.list-unstyled.activity-timeline
-                          -for(var j=0; j< testdata.length; j++)
+                          -for(var j=0; j<testdata.length; j++)
                             li
-                              h4 #{testdata[j].speaker_label}
+                              h4(class=testdata[j].speaker_label) #{testdata[j].speaker_label}
                               p
                                 span.timestamp
                                   a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
@@ -237,7 +236,7 @@ head
                   ul.list-inline.social-icons
                     -for(var j = 0; j < speakerdata.length ; j++)
                       li
-                        span.label.label-info(contenteditable='true')  #{speakerdata[j].speaker_label}
+                        span.input.label-info(contenteditable='true' id=speakerdata[j].speaker_label )  #{speakerdata[j].speaker_label}
                 .profile-info
                   h4.heading &#xD0DC;&#xADF8;
                   ul.list-unstyled.list-justify
@@ -274,3 +273,45 @@ head
   script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js', crossorigin='anonymous')
   script(src='assets/demo/chart-bar-demo.js')
   script(src='assets/demo/chart-pie-demo.js')
+
+  script.
+    var i = 0;
+    var spk = document.getElementsByClassName('input label-info');
+    var labels = new Array();
+    var title = '#{text_title}'
+    while(spk[i] != null) {
+      spk[i].addEventListener('input', function() {
+        var j=0;
+        var labels = document.getElementsByClassName(this.id);
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/sentimental_total/real-time");
+        var old_spk = document.createElement("input");
+        old_spk.setAttribute("type", "hidden");
+        old_spk.setAttribute("name", "old_spk");
+        old_spk.setAttribute("value", labels[0].innerHTML)
+        form.appendChild(old_spk);
+        var new_spk = document.createElement("input");
+        new_spk.setAttribute("type", "hidden");
+        new_spk.setAttribute("name", "new_spk");
+        new_spk.setAttribute("value", this.innerHTML)
+        form.appendChild(new_spk);
+        var meet_title = document.createElement("input");
+        meet_title.setAttribute("type", "hidden");
+        meet_title.setAttribute("name", "meet_title");
+        meet_title.setAttribute("value", '#{text_title}');
+        form.appendChild(meet_title);
+
+        document.body.appendChild(form)
+
+        form.submit();
+        while(labels[j] != null) {
+          labels[j].innerHTML = this.innerHTML;
+          j += 1;
+        }
+
+
+      });
+
+      i+=1;
+    }

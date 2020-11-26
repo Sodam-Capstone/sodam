@@ -1,4 +1,6 @@
-# project-sodam
+
+![소담 아이콘](https://user-images.githubusercontent.com/63000843/99904801-aff92700-2d10-11eb-9cd3-b9606e8f71c3.png)
+
 # 사용방법
 1) npm i 를 터미널에서 실행하여 npm 들을 설치해줍니다.
 2) DB와 연동하기 위하여 .env에 다음과 같이 입력합니다.

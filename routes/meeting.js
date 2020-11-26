@@ -62,7 +62,7 @@ router.post('/meeting-list',isLoggedIn, async(req, res)=>{
 
   var meeting_list = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_share as m_s join ${process.env.DB_DATABASE}.meet_information as m_i ON (m_s.meet_index = m_i.meet_index) left join ${process.env.DB_DATABASE}.meet_hashing as m_h ON (m_s.meet_index = m_h.meet_index) WHERE m_s.user1_index = ${req.user[0].user_index}`);
   console.log(meeting_list);
-  
+
   var i;
   for(i=0;meeting_list[i]!=undefined;i++)
     console.log('rows : '+i);
@@ -144,7 +144,8 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   emotion_score = emotion_score.toFixed(1);
   res.render('sentimental_total', {
     user_id : req.user[0].user_id,
-    text_title : textdata[0].meet_name,
+    text_title : textdata[0].meet_title,
+    file_path : 'https://s3.ap-northeast-2.amazonaws.com/speech.to.text/'+getindex[0].meet_voice,
     user1_score : personal_score[0],
     user2_score : personal_score[1],
     user3_score : personal_score[2],
@@ -156,6 +157,11 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     emotion_score : emotion_score,
     time_score : time_score,
   });
+})
+router.post('/sentimental_total/real-time', isLoggedIn,  async(req, res, next) => {
+  var dd = await dbPool(`UPDATE ${process.env.DB_DATABASE}.meet_texts SET speaker_label='${req.body.new_spk}' WHERE speaker_label='${req.body.old_spk}' and meet_title='${req.body.meet_title}'`);
+
+  return false;
 })
 
 

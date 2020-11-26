@@ -2,8 +2,8 @@ const dbPool = require("../../config/config")
 
 /**
  * Select
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const pageProfileSelect = async (req, res) => {
     const result = await dbPool(`
@@ -19,38 +19,37 @@ const pageProfileSelect = async (req, res) => {
 }
 /**
  * Insert
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const pageProfileInsert = (req, res) => {
 
 }
 /**
  * Update
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const pageProfileUpdate = async (req, res, password_hash) => {
     await dbPool(`
         UPDATE ${process.env.DB_DATABASE}.user_information ui
-        SET 
+        SET
             ui.user_pw = '${password_hash}',
             ui.user_name = '${req.body.user_name}',
             ui.user_email = '${req.body.user_email}'
-        
-        WHERE 1=1
-            AND ui.user_index = ${req.user[0].user_index}
+
+        WHERE ui.user_index = ${req.user[0].user_index}
     `);
 
 }
 /**
  * Delete
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const pageProfileDelete = async (req, res) => {
     await dbPool(`
-        DELETE 
+        DELETE
             FROM ${process.env.DB_DATABASE}.user_information ui
             WHERE 1=1
                 AND ui.user_index = ${req.user[0].user_index}
@@ -59,8 +58,8 @@ const pageProfileDelete = async (req, res) => {
 
 /**
  * 탈퇴하기전 비밀번호 체크
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const pageProfilePasswordCheck = async (req, res) => {
     const query = `
