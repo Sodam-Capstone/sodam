@@ -240,15 +240,15 @@ head
                 .profile-info
                   h4.heading &#xD0DC;&#xADF8;
                   ul.list-unstyled.list-justify
-                    if hashdata.meet_hashtag1 != null
+                    if hashdata.meet_hashtag1 != null && hashdata.meet_hashtag1 != ''
                       li
-                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag1}
-                    if hashdata.meet_hashtag2 != null
+                        p.tagbox  #{'#'+hashdata.meet_hashtag1}
+                    if hashdata.meet_hashtag2 != null && hashdata.meet_hashtag2 != ''
                       li
-                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag2}
-                    if hashdata.meet_hashtag3 != null
+                        p.tagbox  #{'#'+hashdata.meet_hashtag2}
+                    if hashdata.meet_hashtag3 != null && hashdata.meet_hashtag3 != ''
                       li
-                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag3}
+                        p.tagbox  #{'#'+hashdata.meet_hashtag3}
             // END RIGHT COLUMN
     // END MAIN CONTENT
   // END MAIN
