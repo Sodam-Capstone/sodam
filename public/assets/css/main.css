@@ -2195,3 +2195,7 @@ ul.activity-timeline > li {
 .listcheck{
   display: none;
 }
+#tag{
+  width: 30%;
+  margin-right: 2%;
+}
