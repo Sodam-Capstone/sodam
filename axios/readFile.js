@@ -3,6 +3,7 @@ const path = require('path');
 const util = require('util');
 const csvToJson = require('./csvToJson');
 const cDB = require('./csvToDatabase');
+const csvjson = require('csvjson');
 
 json_path = path.join(__dirname, "../");
 const readFile = util.promisify(fs.readFile);
@@ -33,6 +34,7 @@ const readFileCsv = async (req, res , meet_voice, meet_index) => {
   });
   const resultCsv  = csvToJson.parseCsv(result);
   cDB.csvToDatabase(resultCsv, meet_index);
+
   return true;
 }
 
