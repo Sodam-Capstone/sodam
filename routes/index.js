@@ -3,11 +3,14 @@ var router = express.Router();
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares.js');
 const inputDatabase = require('../axios/toDatabase');
 const bcrypt = require('bcrypt');
+const python = require('./python');
+const path = require('path');
 /**
  * index 화면
  */
 
-router.get('/', async (req, res, next) => {
+router.get('/',  (req, res, next) => {
+  //python.pythonMain(req, res, path);
   if(req.user){
     res.render("index", {
       user_id: req.user[0].user_id,

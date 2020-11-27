@@ -1,4 +1,4 @@
-const axios = require('../axios/readFileJson');
+const axios = require('./readFile');
 const dbPool = require('../config/config');
 
 /**
@@ -19,10 +19,7 @@ const toDatabase = async (req, res) => {
         `
         await dbPool(query);
     }
-
-
-    //await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_text`);
-
+    
 }
 
 module.exports = {

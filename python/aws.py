@@ -1,8 +1,22 @@
 from __future__ import print_function
 import time
 import boto3
+import os.path
 import requests
 import sys
+from pydub import AudioSegment
+from pydub.utils import mediainfo
+
+### 로컬 파일 전처리
+# local_file = sys.argv[1]
+# sound = AudioSegment.from_file(local_file)
+
+# if sound.frame_rate != 16000:
+#     sound = sound.set_frame_rate(16000)
+
+# if '.wav' not in local_file:
+#     sound.export(sys.argv[1], format = "wav")
+#     local_file = sys.argv[1]
 
 ### 로컬 파일을 버킷에 업로드하기
 # s3 = boto3.client('s3')

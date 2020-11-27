@@ -3,6 +3,8 @@ var router = express.Router();
 const dbPool = require('../config/config.js') //DB 연결
 const passport = require('passport');
 const pageProfile = require('./page_profile/pageProfile');
+const python = require('./python');
+const path = require('path');
 const {
   isLoggedIn,
   isNotLoggedIn
@@ -89,6 +91,8 @@ router.post('/page-profile/update', isLoggedIn, async(req, res, next)=>{
 })
 
 router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
+  var meet_name = req.body.meet_name;
+  await python.pythonMain(req, res, meet_name);
   // 나중에 회의등록에서 넘어온 meet_title 일치하는것만 불러올 예정
   var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '${req.body.meet_name}'`);
   var getindex = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_information WHERE meet_name = '${req.body.meet_name}'`);

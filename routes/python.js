@@ -1,8 +1,10 @@
 const {PythonShell} = require('python-shell');
 const util = require('util');
 const inputDatabase = require('../axios/toDatabase');
-const toDatabaseSync = util.promisify(inputDatabase.toDatabase)
+const toDatabaseSync = util.promisify(inputDatabase.toDatabase);
 const dbPool = require('../config/config');
+const axios = require('../axios/readFile');
+const path = require('path');
   /**
    *
    * @param {*} req req.file
@@ -103,7 +105,42 @@ const pythonRunReformat = (req, res, path) => {
     });
 }
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} path 
+ */
+const pythonMain = async (req, res, meet_name) => {
+    const _path = path.join(__dirname, "../");
+    var result = await dbPool(`
+        SELECT 
+            meet_name,
+            meet_voice,
+            meet_index
+        FROM meet_information
+        WHERE meet_name = '${meet_name}'
+    `);
+
+    var meet_voice = result[0].meet_voice;
+    var meet_index = result[0].meet_index;
+    var options = {
+        mode: 'text',
+        scriptPath: path.join(__dirname, "../python/"),
+        args: [meet_voice, _path, meet_voice.replace(".wav","")]
+    };
+    console.log("pythonMain - options : ",options);
+    PythonShell.run('main.py', options, async function (err, results) {
+        if (err){
+            throw err;
+        }
+        console.log("----------파이썬 pythonMain 실행 완료---------");
+        await axios.readFileCsv(req, res, meet_voice, meet_index);
+    });
+}
+
 module.exports = {
     pythonRunAws,
     pythonRunReformat,
+    pythonMain,
 }
