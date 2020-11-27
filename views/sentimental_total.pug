@@ -88,22 +88,24 @@ head
                 #sentimental_total.tab-pane.fade
                   // 전체 감정 비율
                   .row
-                    .col-md-8
-                      .panel
-                        .card-header
-                          i.fas.fa-chart-pie.mr-1
-                          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                        br
-                        .card-body
-                          canvas#myPieChart(width='100%', height='50')
-                        .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                    .col-md-4
+                    .col-md-12
                       .panel
                         .panel-heading
-                          h3.panel-title &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                          h1  #{emotion_score}&#xC810;
+                          h4(align='center')  &lt; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBD84;&#xC11D;&#xB41C; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728; &gt;
                         .panel-body
-                          p 10&#xC810;
+                          canvas#anger.canvas_item(height='150' width='150')
+                          canvas#neutral.canvas_item(height='150' width='150')
+                          canvas#sad.canvas_item(height='150' width='150')
+                          canvas#happy.canvas_item(height='150' width='150')
+                        .panel-body
+                          hr
+                          p
+                            | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9;
+                            | &#xD68C;&#xC758;&#xB294; &#xD654;&#xB0A8; %% &#xBB34;&#xAC10;&#xC815; %% &#xC2AC;&#xD514; %% &#xAE30;&#xC068; %% &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;. &#xADF8;&#xB798;&#xC11C; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;&#xB85C;&#xB9CC; &#xACC4;&#xC0B0;&#xD588;&#xC744; &#xB54C;,
+                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xC810;&#xC218;&#xB294;
+                            b 70&#xC810;
+                            | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                          hr
                   // END 전체 감정 비율
                   // 전체 발언 비율
                   .row
