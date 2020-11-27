@@ -3,7 +3,6 @@ const dbPool = require("../config/config");
 const csvToDatabase = async(resultCsv, meet_index) =>{
     
     for(var k in resultCsv){
-        var time = resultCsv[0].time.replace(/\r/g, "");
         var query = `
         INSERT INTO ${process.env.DB_DATABASE}.meet_emotion(
             meet_index,
@@ -21,7 +20,7 @@ const csvToDatabase = async(resultCsv, meet_index) =>{
             '${resultCsv[k].happiness}',
             '${resultCsv[k].neutral}',
             '${resultCsv[k].sadness}',
-            '${time}'
+            '${resultCsv[k].time}'
         )
         `;
     

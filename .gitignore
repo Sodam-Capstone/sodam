@@ -5,3 +5,4 @@ package-lock.json
 reformat_json
 py_json
 python/content
+*.csv
