@@ -132,20 +132,21 @@ head
                   .custom-tabs-line.tabs-line-bottom.center-aligned
                     ul.nav.nav-pills(role='tablist')
                       li.active
-                        a(href='#first', sclass='label label-primary', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;1
-                      li
-                        a.label.label-primary(href='#second', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;2
-                      li
-                        a.label.label-primary(href='#third', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;3
-                      li
-                        a.label.label-primary(href='#fourth', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;4
+                        a(href='#user1', sclass='label label-primary', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;1
+                      -for(var i=2;i<=emotion.length;i++)
+                        li
+                          a.label.label-primary(href='#user'+i, role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790; #{i}
                   // 참석자 만족도 분석
                   .tab-content
                     // 참석자1 만족도 분석
-                    #first.tab-pane.fade.in.active
+                    #user1.tab-pane.fade.in.active
                       .row
                         .col-md-8
                           .panel
+                            .card-header
+                              i.fas.fa-chart-pie.mr-1
+                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;1 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
+                            br
                             .card-body
                               input#member1(type='hidden' value=emotion[0])
                               canvas#myPieChart1(width='100%', height='50')
@@ -156,10 +157,9 @@ head
                               h3.panel-title &#xCC38;&#xAC00;&#xC790;1 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
                               h1  #{user1_score}&#xC810;
                             .panel-body
-                              p 10&#xC810;
                     // END 참석자1 만족도 분석
                     // 참석자2 만족도 분석
-                    #second.tab-pane.fade
+                    #user2.tab-pane.fade
                       .row
                         .col-md-8
                           .panel
@@ -177,10 +177,9 @@ head
                               h3.panel-title &#xCC38;&#xAC00;&#xC790;2 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
                               h1  #{user2_score}&#xC810;
                             .panel-body
-                              p 10&#xC810;
                     // END 참석자2 만족도 분석
                     // 참석자3 만족도 분석
-                    #third.tab-pane.fade
+                    #user3.tab-pane.fade
                       .row
                         .col-md-8
                           .panel
@@ -198,10 +197,9 @@ head
                               h3.panel-title &#xCC38;&#xAC00;&#xC790;3 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
                               h1  #{user3_score}&#xC810;
                             .panel-body
-                              p 10&#xC810;
                     // END 참석자3 만족도 분석
                     // 참석자4 만족도 분석
-                    #fourth.tab-pane.fade
+                    #user4.tab-pane.fade
                       .row
                         .col-md-8
                           .panel
@@ -219,7 +217,6 @@ head
                               h3.panel-title &#xCC38;&#xAC00;&#xC790;4 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
                               h1  #{user4_score}&#xC810;
                             .panel-body
-                              p 10&#xC810;
                     // END 참석자4 만족도 분석
                   // END 참석자 만족도 분석
                 // END 회의 개인 평가
