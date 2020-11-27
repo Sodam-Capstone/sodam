@@ -62,7 +62,7 @@ router.post('/meeting-list',isLoggedIn, async(req, res)=>{
 
   var meeting_list = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_share as m_s join ${process.env.DB_DATABASE}.meet_information as m_i ON (m_s.meet_index = m_i.meet_index) left join ${process.env.DB_DATABASE}.meet_hashing as m_h ON (m_s.meet_index = m_h.meet_index) WHERE m_s.user1_index = ${req.user[0].user_index}`);
   console.log(meeting_list);
-  
+
   var i;
   for(i=0;meeting_list[i]!=undefined;i++)
     console.log('rows : '+i);
@@ -115,17 +115,19 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var total_sad = 0;
   var total_time = 0;
   var score = 0;
-  var personal_score = new Array(i);
+  var em = new Array();
   for(i=0;emotion[i]!=undefined;i++) {
     total_anger += emotion[i].anger *= 1;
     total_happy += emotion[i].happiness *= 1;
     total_neutral += emotion[i].neutral *= 1;
     total_sad += emotion[i].sadness *= 1;
     total_time += emotion[i].time *= 1;
+    em[i] = emotion[i].anger +','+ emotion[i].neutral +','+ emotion[i].sadness +','+ emotion[i].happiness;
   }
   var num = 100 / i;
   var avg_time = total_time / i;
   var time_percent = new Array(i);
+  var personal_score = new Array(i);
   var personal_score = new Array(i);
   var v = 0;
   for(i=0;emotion[i]!=undefined;i++) {
@@ -149,6 +151,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     user2_score : personal_score[1],
     user3_score : personal_score[2],
     user4_score : personal_score[3],
+    emotion : em,
 
     hashdata : hashdata[0],
     testdata : textdata,
@@ -162,7 +165,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
 router.get('/login-findid', isNotLoggedIn, (req, res, next) => {
   res.render('login-findid', {
   });
-}) 
+})
 
 router.get('/login-findpw', isNotLoggedIn, (req, res, next) => {
   res.render('login-findpw', {
