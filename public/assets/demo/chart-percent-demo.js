@@ -1,11 +1,8 @@
 
 
-
-
 var donutOptions = {
   responsive: false,
   cutoutPercentage: 95,
-  events: [],
   legend: {
       labels: {
           boxWidth: 0,
@@ -13,10 +10,13 @@ var donutOptions = {
           fontColor: 'rgba(0,0,0, 0.80)',
       },
       position: 'bottom'
+    }
 };
-
 // 회의 전체 4가지 감정 비율 퍼센트
-var ctx = document.getElementById("anger");
+var ctx = document.getElementById('angera');
+var ctx2 = document.getElementById("neutral");
+var ctx3 = document.getElementById("sad");
+var ctx4 = document.getElementById("happy");
 var myChart = new Chart(ctx, {
 type: 'doughnut',
 data: {
@@ -32,7 +32,9 @@ data: {
 },
 options: donutOptions});
 
-var ctx2 = document.getElementById("neutral");
+alert('a');
+
+
 var myChart2 = new Chart(ctx2, {
     type: 'doughnut',
     data: {
@@ -60,7 +62,6 @@ var myChart2 = new Chart(ctx2, {
         }
     },
 });
-var ctx3 = document.getElementById("sad");
 var myChart3 = new Chart(ctx3, {
     type: 'doughnut',
     data: {
@@ -88,7 +89,6 @@ var myChart3 = new Chart(ctx3, {
         }
     },
 });
-var ctx4 = document.getElementById("happy");
 var myChart4 = new Chart(ctx4, {
     type: 'doughnut',
     data: {
