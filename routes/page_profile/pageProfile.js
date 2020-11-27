@@ -19,7 +19,6 @@ const pageProfileMerge = async (req, res) =>{
     }else if(req.body.mode === 'delete'){
         console.log("pageProfileResult delete 입니다.");
         const result = await pageProfileService.pageProfileDelete(req, res);
-        console.log(result);
         return result;
     }
 }

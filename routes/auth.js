@@ -29,9 +29,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
                 console.error(loginError);
                 return next(loginError);
             }
-            return res.json({
-                message : '요청 성공',
-            });
+            res.redirect('/');
         });
     })(req, res, next);
 });
