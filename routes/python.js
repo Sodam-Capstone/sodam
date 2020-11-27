@@ -1,3 +1,4 @@
+const { info } = require('console');
 const {PythonShell} = require('python-shell');
 const util = require('util');
 const inputDatabase = require('../axios/toDatabase');
@@ -12,13 +13,28 @@ const path = require('path');
    * @param {*} path
    */
 const pythonRunAws = async(req, res, path) => {
+
     _path = path.join(__dirname, "../");
+
+
+    const schema = process.env.DB_DATABASE;
+
+    //이름 겹치는게 있으면 작동하지 않음
+    var findmeet = await dbPool(`SELECT * FROM ${schema}.meet_share as m_s join ${schema}.meet_information as m_i ON (m_s.meet_index = m_i.meet_index) WHERE m_s.user1_index =  ${req.user[0].user_index}`);
+    var len =  findmeet.length;
+    for(var i = 0 ; i < len; i++){
+        if(findmeet[i].meet_name == req.body.meet_title){
+            console.log("겹침");
+            return;
+        }
+    }
+    
+
     var options = {
         mode: 'text',
         scriptPath: path.join(__dirname, "../python/"),
         args: [`${req.file.originalname}`,_path]
     };
-    const schema = process.env.DB_DATABASE;
 
     //meet_information 추가
     var meet_information_query = `

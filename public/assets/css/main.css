@@ -1157,7 +1157,7 @@ ul.activity-list > li {
     height: 100%;
     position: relative;
     /* background-image: url("../../assets/img/login-bg.jpg"); */
-    background-image: url("../../assets/img/banner2.png");
+    background-image: url("../../assets/img/logininfo.png");
     background-repeat: no-repeat;
     background-size: cover; }
     .auth-box .right:before {
@@ -2187,4 +2187,11 @@ ul.activity-timeline > li {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.right_button {
+  display: inline-block;
+}
+.listcheck{
+  display: none;
 }
