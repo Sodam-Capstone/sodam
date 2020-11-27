@@ -12,11 +12,11 @@ const path = require('path');
    * @param {*} path
    */
 const pythonRunAws = async(req, res, path) => {
-
+    _path = path.join(__dirname, "../");
     var options = {
         mode: 'text',
         scriptPath: path.join(__dirname, "../python/"),
-        args: [`${req.file.originalname}`]
+        args: [`${req.file.originalname}`,_path]
     };
     const schema = process.env.DB_DATABASE;
 
@@ -119,7 +119,8 @@ const pythonMain = async (req, res, meet_name) => {
             meet_voice,
             meet_index
         FROM meet_information
-        WHERE meet_name = '${meet_name}'
+        WHERE 1=1
+         AND meet_name = '${meet_name}'
     `);
 
     var meet_voice = result[0].meet_voice;
