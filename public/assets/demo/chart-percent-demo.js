@@ -1,22 +1,7 @@
 
 
-var donutOptions = {
-  responsive: false,
-  cutoutPercentage: 95,
-  legend: {
-      labels: {
-          boxWidth: 0,
-          fontSize: 20,
-          fontColor: 'rgba(0,0,0, 0.80)',
-      },
-      position: 'bottom'
-    }
-};
 // 회의 전체 4가지 감정 비율 퍼센트
-var ctx = document.getElementById('angera');
-var ctx2 = document.getElementById("neutral");
-var ctx3 = document.getElementById("sad");
-var ctx4 = document.getElementById("happy");
+var ctx = document.getElementById("화남");
 var myChart = new Chart(ctx, {
 type: 'doughnut',
 data: {
@@ -30,11 +15,22 @@ data: {
         borderWidth: 0
     }]
 },
-options: donutOptions});
+options: {
+    responsive: false,
+    cutoutPercentage: 95,
+    events: [],
+    legend: {
+        labels: {
+            boxWidth: 0,
+            fontSize: 20,
+            fontColor: 'rgba(0,0,0, 0.80)',
+        },
+        position: 'bottom'
+    }
+},
+});
 
-alert('a');
-
-
+var ctx2 = document.getElementById("무감정");
 var myChart2 = new Chart(ctx2, {
     type: 'doughnut',
     data: {
@@ -62,6 +58,8 @@ var myChart2 = new Chart(ctx2, {
         }
     },
 });
+
+var ctx3 = document.getElementById("슬픔");
 var myChart3 = new Chart(ctx3, {
     type: 'doughnut',
     data: {
@@ -89,6 +87,8 @@ var myChart3 = new Chart(ctx3, {
         }
     },
 });
+
+var ctx4 = document.getElementById("기쁨");
 var myChart4 = new Chart(ctx4, {
     type: 'doughnut',
     data: {
@@ -303,151 +303,609 @@ Chart.pluginService.register({
 
 
 
+//// 참여자 A~D의 감정
+
+// 참여자 A의 4가지 감정
+var Actx = document.getElementById("화남A");
+var AChart = new Chart(Actx, {
+type: 'doughnut',
+data: {
+    labels: ['화남'],
+    datasets: [{
+        data: [20, 80],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(255, 99, 132, 0.1)',
+        ],
+        borderWidth: 0
+    }]
+},
+options: {
+    responsive: false,
+    cutoutPercentage: 95,
+    events: [],
+    legend: {
+        labels: {
+            boxWidth: 0,
+            fontSize: 20,
+            fontColor: 'rgba(0,0,0, 0.80)',
+        },
+        position: 'bottom'
+    }
+},
+});
+
+var Actx2 = document.getElementById("무감정A");
+var AChart2 = new Chart(Actx2, {
+    type: 'doughnut',
+    data: {
+        labels: ['무감정'],
+        datasets: [{
+            data: [40, 60],
+            backgroundColor: [
+                'rgba(255, 193, 7, 0.8)',
+                'rgba(255, 193, 7, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Actx3 = document.getElementById("슬픔A");
+var AChart3 = new Chart(Actx3, {
+    type: 'doughnut',
+    data: {
+        labels: ['슬픔'],
+        datasets: [{
+            data: [30, 70],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(54, 162, 235, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Actx4 = document.getElementById("기쁨A");
+var AChart4 = new Chart(Actx4, {
+    type: 'doughnut',
+    data: {
+        labels: ['기쁨'],
+        datasets: [{
+            data: [10, 90],
+            backgroundColor: [
+                'rgba(40, 167, 69, 0.8)',
+                'rgba(40, 167, 69, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Acharts = [{
+              current: AChart
+            , text: '20%'
+            }, {
+              current: AChart2
+            , text: '40%'
+            }, {
+              current: AChart3
+            , text: '30%'
+            }, {
+              current: AChart4
+            , text: '10%'
+            }];
+
+Chart.pluginService.register({
+    beforeDraw: function(chart) {
+        for (var iterator of Acharts) {
+            var width = iterator.current.chart.width,
+                height = iterator.current.chart.height,
+                ctx = iterator.current.chart.ctx;
+                var fontSize = (height / 114).toFixed(2);
+                ctx.font = fontSize + "em lato";
+                ctx.fillStyle = "rgba(0,0,0, 0.85)"
+                ctx.textBaseline = "middle";
+                var text = iterator.text,
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2.5;
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+        }
+    }
+});
+
+
+// 참여자 B의 4가지 감정
+var Bctx = document.getElementById("화남B");
+var BChart = new Chart(Bctx, {
+type: 'doughnut',
+data: {
+    labels: ['화남'],
+    datasets: [{
+        data: [20, 80],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(255, 99, 132, 0.1)',
+        ],
+        borderWidth: 0
+    }]
+},
+options: {
+    responsive: false,
+    cutoutPercentage: 95,
+    events: [],
+    legend: {
+        labels: {
+            boxWidth: 0,
+            fontSize: 20,
+            fontColor: 'rgba(0,0,0, 0.80)',
+        },
+        position: 'bottom'
+    }
+},
+});
+
+var Bctx2 = document.getElementById("무감정B");
+var BChart2 = new Chart(Bctx2, {
+    type: 'doughnut',
+    data: {
+        labels: ['무감정'],
+        datasets: [{
+            data: [40, 60],
+            backgroundColor: [
+                'rgba(255, 193, 7, 0.8)',
+                'rgba(255, 193, 7, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Bctx3 = document.getElementById("슬픔B");
+var BChart3 = new Chart(Bctx3, {
+    type: 'doughnut',
+    data: {
+        labels: ['슬픔'],
+        datasets: [{
+            data: [30, 70],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(54, 162, 235, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Bctx4 = document.getElementById("기쁨B");
+var BChart4 = new Chart(Bctx4, {
+    type: 'doughnut',
+    data: {
+        labels: ['기쁨'],
+        datasets: [{
+            data: [10, 90],
+            backgroundColor: [
+                'rgba(40, 167, 69, 0.8)',
+                'rgba(40, 167, 69, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Bcharts = [{
+              current: BChart
+            , text: '20%'
+            }, {
+              current: BChart2
+            , text: '40%'
+            }, {
+              current: BChart3
+            , text: '30%'
+            }, {
+              current: BChart4
+            , text: '10%'
+            }];
+
+Chart.pluginService.register({
+    beforeDraw: function(chart) {
+        for (var iterator of Bcharts) {
+            var width = iterator.current.chart.width,
+                height = iterator.current.chart.height,
+                ctx = iterator.current.chart.ctx;
+                var fontSize = (height / 114).toFixed(2);
+                ctx.font = fontSize + "em lato";
+                ctx.fillStyle = "rgba(0,0,0, 0.85)"
+                ctx.textBaseline = "middle";
+                var text = iterator.text,
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2.5;
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+        }
+    }
+});
 
 
 
+// 참여자 C의 4가지 감정
+var Cctx = document.getElementById("화남C");
+var CChart = new Chart(Cctx, {
+type: 'doughnut',
+data: {
+    labels: ['화남'],
+    datasets: [{
+        data: [20, 80],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(255, 99, 132, 0.1)',
+        ],
+        borderWidth: 0
+    }]
+},
+options: {
+    responsive: false,
+    cutoutPercentage: 95,
+    events: [],
+    legend: {
+        labels: {
+            boxWidth: 0,
+            fontSize: 20,
+            fontColor: 'rgba(0,0,0, 0.80)',
+        },
+        position: 'bottom'
+    }
+},
+});
 
-// ///////////차트
+var Cctx2 = document.getElementById("무감정C");
+var CChart2 = new Chart(Cctx2, {
+    type: 'doughnut',
+    data: {
+        labels: ['무감정'],
+        datasets: [{
+            data: [40, 60],
+            backgroundColor: [
+                'rgba(255, 193, 7, 0.8)',
+                'rgba(255, 193, 7, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Cctx3 = document.getElementById("슬픔C");
+var CChart3 = new Chart(Cctx3, {
+    type: 'doughnut',
+    data: {
+        labels: ['슬픔'],
+        datasets: [{
+            data: [30, 70],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(54, 162, 235, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Cctx4 = document.getElementById("기쁨C");
+var CChart4 = new Chart(Cctx4, {
+    type: 'doughnut',
+    data: {
+        labels: ['기쁨'],
+        datasets: [{
+            data: [10, 90],
+            backgroundColor: [
+                'rgba(40, 167, 69, 0.8)',
+                'rgba(40, 167, 69, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
+
+var Ccharts = [{
+              current: CChart
+            , text: '20%'
+            }, {
+              current: CChart2
+            , text: '40%'
+            }, {
+              current: CChart3
+            , text: '30%'
+            }, {
+              current: CChart4
+            , text: '10%'
+            }];
+
+Chart.pluginService.register({
+    beforeDraw: function(chart) {
+        for (var iterator of Ccharts) {
+            var width = iterator.current.chart.width,
+                height = iterator.current.chart.height,
+                ctx = iterator.current.chart.ctx;
+                var fontSize = (height / 114).toFixed(2);
+                ctx.font = fontSize + "em lato";
+                ctx.fillStyle = "rgba(0,0,0, 0.85)"
+                ctx.textBaseline = "middle";
+                var text = iterator.text,
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2.5;
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+        }
+    }
+});
 
 
 
-// var senti_value = 40;
-// var parti_value = 60;
+// 참여자 D의 4가지 감정
+var Dctx = document.getElementById("화남D");
+var DChart = new Chart(Dctx, {
+type: 'doughnut',
+data: {
+    labels: ['화남'],
+    datasets: [{
+        data: [20, 80],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(255, 99, 132, 0.1)',
+        ],
+        borderWidth: 0
+    }]
+},
+options: {
+    responsive: false,
+    cutoutPercentage: 95,
+    events: [],
+    legend: {
+        labels: {
+            boxWidth: 0,
+            fontSize: 20,
+            fontColor: 'rgba(0,0,0, 0.80)',
+        },
+        position: 'bottom'
+    }
+},
+});
 
-// var senti_data = {
-//   labels: [
-//     "My val",
-//     ""
-//   ],
-//   datasets: [
-//     {
-//       data: [senti_value, 100-senti_value],
-//       backgroundColor: [
-//         "#FF6384",
-//         "#AAAAAA"
-//       ],
-//       hoverBackgroundColor: [
-//         "#FF6384",
-//         "#AAAAAA"
-//       ],
-//       hoverBorderColor: [
-//         "#FF6384",
-//         "#ffffff"
-//       ]
-//     }]
-// };
+var Dctx2 = document.getElementById("무감정D");
+var DChart2 = new Chart(Dctx2, {
+    type: 'doughnut',
+    data: {
+        labels: ['무감정'],
+        datasets: [{
+            data: [40, 60],
+            backgroundColor: [
+                'rgba(255, 193, 7, 0.8)',
+                'rgba(255, 193, 7, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
 
-// var parti_data = {
-//   labels: [
-//     "My val",
-//     ""
-//   ],
-//   datasets: [
-//     {
-//       data: [parti_value, 100-parti_value],
-//       backgroundColor: [
-//         "#FF6384",
-//         "#AAAAAA"
-//       ],
-//       hoverBackgroundColor: [
-//         "#FF6384",
-//         "#AAAAAA"
-//       ],
-//       hoverBorderColor: [
-//         "#FF6384",
-//         "#ffffff"
-//       ]
-//     }]
-// };
+var Dctx3 = document.getElementById("슬픔D");
+var DChart3 = new Chart(Dctx3, {
+    type: 'doughnut',
+    data: {
+        labels: ['슬픔'],
+        datasets: [{
+            data: [30, 70],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(54, 162, 235, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
 
-// var myChart = new Chart(document.getElementById('myChart'), {
-//     type: 'doughnut',
-//     data: senti_data,
-//     options: {
-//         responsive: true,
-//       legend: {
-//         display: false
-//       },
-//       cutoutPercentage: 80,
-//       tooltips: {
-//           filter: function(item, senti_data) {
-//           var label = senti_data.labels[item.index];
-//           if (label) return item;
-//         }
-//       }
-//     }
-//   });
+var Dctx4 = document.getElementById("기쁨D");
+var DChart4 = new Chart(Dctx4, {
+    type: 'doughnut',
+    data: {
+        labels: ['기쁨'],
+        datasets: [{
+            data: [10, 90],
+            backgroundColor: [
+                'rgba(40, 167, 69, 0.8)',
+                'rgba(40, 167, 69, 0.1)',
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: false,
+        cutoutPercentage: 95,
+        events: [],
+        legend: {
+            labels: {
+                boxWidth: 0,
+                fontSize: 20,
+                fontColor: 'rgba(0,0,0, 0.80)',
+            },
+            position: 'bottom'
+        }
+    },
+});
 
-// if(myChart){
-//   textCenter(senti_value);
+var Dcharts = [{
+              current: DChart
+            , text: '20%'
+            }, {
+              current: DChart2
+            , text: '40%'
+            }, {
+              current: DChart3
+            , text: '30%'
+            }, {
+              current: DChart4
+            , text: '10%'
+            }];
 
-//   function textCenter(val) {
-//     Chart.pluginService.register({
-//       beforeDraw: function(chart) {
-//         var width = chart.chart.width,
-//             height = chart.chart.height,
-//             ctx = chart.chart.ctx;
-
-//         ctx.restore();
-//         var fontSize = (height / 114).toFixed(2);
-//         ctx.font = fontSize + "em sans-serif";
-//         ctx.textBaseline = "middle";
-
-//         var text = val+"점",
-//             textX = Math.round((width - ctx.measureText(text).width) / 2),
-//             textY = height / 2;
-
-//         ctx.fillText(text, textX, textY);
-//         ctx.save();
-//       }
-//     });
-//   }
-// }
-
-
-
-
-// // 차트 2
-//   var myChart2 = new Chart(document.getElementById('myChart2'), {
-//     type: 'doughnut',
-//     data: parti_data,
-//     options: {
-//         responsive: true,
-//       legend: {
-//         display: false
-//       },
-//       cutoutPercentage: 80,
-//       tooltips: {
-//           filter: function(item, parti_data) {
-//           var label = parti_data.labels[item.index];
-//           if (label) return item;
-//         }
-//       }
-//     }
-//   });
-
-// if(myChart2){
-//   textCenter(parti_value);
-
-//   function textCenter(val) {
-//     Chart.pluginService.register({
-//       beforeDraw: function(chart) {
-//         var width = chart.chart.width,
-//             height = chart.chart.height,
-//             ctx = chart.chart.ctx;
-
-//         ctx.restore();
-//         var fontSize = (height / 114).toFixed(2);
-//         ctx.font = fontSize + "em sans-serif";
-//         ctx.textBaseline = "middle";
-
-//         var text = val+"점",
-//             textX = Math.round((width - ctx.measureText(text).width) / 2),
-//             textY = height / 2;
-
-//         ctx.fillText(text, textX, textY);
-//         ctx.save();
-//       }
-//     });
-//   }
-// }
+Chart.pluginService.register({
+    beforeDraw: function(chart) {
+        for (var iterator of Dcharts) {
+            var width = iterator.current.chart.width,
+                height = iterator.current.chart.height,
+                ctx = iterator.current.chart.ctx;
+                var fontSize = (height / 114).toFixed(2);
+                ctx.font = fontSize + "em lato";
+                ctx.fillStyle = "rgba(0,0,0, 0.85)"
+                ctx.textBaseline = "middle";
+                var text = iterator.text,
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2.5;
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+        }
+    }
+});

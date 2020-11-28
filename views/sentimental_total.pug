@@ -1,40 +1,116 @@
 doctype html
 head
-  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
-  title Charts | Klorofil - Free Bootstrap Dashboard Template
+  title &#xD68C;&#xC758;&#xBD84;&#xC11D; | &#xC18C;&#xB2F4;
   meta(charset='utf-8')
-  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
   // VENDOR CSS
-  link(rel='stylesheet', href='assets/vendor/bootstrap/css/bootstrap.min.css')
-  link(rel='stylesheet', href='assets/vendor/font-awesome/css/font-awesome.min.css')
-  link(rel='stylesheet', href='assets/vendor/linearicons/style.css')
-  link(rel='stylesheet', href='assets/vendor/chartist/css/chartist-custom.css')
+  link(rel='stylesheet' href='assets/vendor/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' href='assets/vendor/font-awesome/css/font-awesome.min.css')
+  link(rel='stylesheet' href='assets/vendor/linearicons/style.css')
+  link(rel='stylesheet' href='assets/vendor/chartist/css/chartist-custom.css')
   // MAIN CSS
-  link(rel='stylesheet', href='assets/css/main.css')
+  link(rel='stylesheet' href='assets/css/main.css')
+  link(rel='stylesheet' href='assets/css/piechart.css')
   // FOR DEMO PURPOSES ONLY. You should remove this in your project
-  link(rel='stylesheet', href='assets/css/demo.css')
+  link(rel='stylesheet' href='assets/css/demo.css')
   // GOOGLE FONTS
-  link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700', rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet')
   // ICONS
-  link(rel='apple-touch-icon', sizes='76x76', href='assets/img/apple-icon.png')
-  link(rel='icon' type='image/png' sizes='96x96' href='assets/img/sodam.png')
+  link(rel='apple-touch-icon' sizes='76x76' href='assets/img/apple-icon.png')
+  link(rel='icon' type='image/png' sizes='96x96' href='assets/img/favicon.png')
   // d3.js
   script(src='http://d3js.org/d3.v3.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js', crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js' crossorigin='anonymous')
+  script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
 // WRAPPER
 #wrapper
   // NAVBAR
   nav.navbar.navbar-default.navbar-fixed-top
     .brand
-      a(href='/')
-        img.img-responsive.logo(src='assets/img/logo.png', alt='Klorofil Logo')
-    include gnb
+      a(href='index.html')
+        img.img-responsive.logo(src='assets/img/logo-dark.png' alt='Klorofil Logo')
+    .container-fluid
+      .navbar-btn
+        button.btn-toggle-fullwidth(type='button')
+          i.lnr.lnr-arrow-left-circle
+      #navbar-menu
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            a.dropdown-toggle.icon-menu(href='#' data-toggle='dropdown')
+              i.lnr.lnr-alarm
+              span.badge.bg-danger 5
+            ul.dropdown-menu.notifications
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-warning
+                  | System space is almost full
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-danger
+                  | You have 9 unfinished tasks
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-success
+                  | Monthly report is available
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-warning
+                  | Weekly meeting in 1 hour
+              li
+                a.notification-item(href='#')
+                  span.dot.bg-success
+                  | Your request has been approved
+              li
+                a.more(href='#') See all notifications
+          li.dropdown
+            a.dropdown-toggle(href='#' data-toggle='dropdown')
+              img.img-circle(src='assets/img/user.png' alt='Avatar')
+              span Samuel
+              i.icon-submenu.lnr.lnr-chevron-down
+            ul.dropdown-menu
+              li
+                a(href='#')
+                  i.lnr.lnr-user
+                  span My Profile
+              li
+                a(href='#')
+                  i.lnr.lnr-envelope
+                  span Message
+              li
+                a(href='#')
+                  i.lnr.lnr-exit
+                  span Logout
   // END NAVBAR
   // LEFT SIDEBAR
   include lnb
+  #sidebar-nav.sidebar
+    .sidebar-scroll
+      nav
+        ul.nav
+          li
+            a(href='index')
+              i.lnr.lnr-home
+              span Dashboard
+          li
+            a(href='enrollment')
+              i.lnr.lnr-code
+              span &#xD68C;&#xC758;&#xB4F1;&#xB85D;
+          li
+            a(href='meeting-list')
+              i.lnr.lnr-dice
+              span &#xD68C;&#xC758;&#xBAA9;&#xB85D;
+          li
+            a(href='sentimental_total')
+              i.lnr.lnr-chart-bars
+              span &#xD68C;&#xC758;&#xBD84;&#xC11D;
+          li
+            a(href='page-profile')
+              i.lnr.lnr-file-empty
+              span Profile
   // END LEFT SIDEBAR
-
   // MAIN
   .main
     // MAIN CONTENT
@@ -48,11 +124,11 @@ head
               .custom-tabs-line.tabs-line-bottom.left-aligned
                 ul.nav.nav-pills(role='tablist')
                   li.active
-                    a(href='#meeting_log', role='tab', data-toggle='tab') &#xD68C;&#xC758;&#xB85D;
+                    a(href='#meeting_log' role='tab' data-toggle='tab') &#xD68C;&#xC758;&#xB85D;
                   li
-                    a(href='#sentimental_total', role='tab', data-toggle='tab') &#xC804;&#xCCB4; &#xD3C9;&#xAC00;
+                    a(href='#sentimental_total' role='tab' data-toggle='tab') &#xC804;&#xCCB4; &#xD3C9;&#xAC00;
                   li
-                    a(href='#sentimental_personal', role='tab', data-toggle='tab') &#xAC1C;&#xC778; &#xD3C9;&#xAC00;
+                    a(href='#sentimental_personal' role='tab' data-toggle='tab') &#xAC1C;&#xC778; &#xD3C9;&#xAC00;
               .tab-content
                 // 회의록
                 #meeting_log.tab-pane.fade.in.active
@@ -60,7 +136,7 @@ head
                     .row
                       .panel
                         #meeting_record
-                          audio#meetinglog_tab_audio(controls='', updatetracktime='updateTrackTime(this,"meetinglog_tab");', onended='endTrackTime("meetinglog_tab_audio","meetinglog_tab");')
+                          audio#meetinglog_tab_audio(controls='' updatetracktime='updateTrackTime(this,"meetinglog_tab");' onended='endTrackTime("meetinglog_tab_audio","meetinglog_tab");')
                             source(src='s1_sadness_M_s4.wav')
                             | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD45C;&#xC2DC;&#xC548;&#xB428;
                     .row
@@ -68,24 +144,46 @@ head
                         .panel-heading
                           h3.panel-title &#xD68C;&#xC758; &#xB0B4;&#xC6A9;
                         #conference_log.panel-body
-                        ul.list-unstyled.activity-timeline
-                          -for(var j=0; j< testdata.length; j++)
-                            li
-                              h4 #{testdata[j].speaker_label}
-                              p
-                                span.timestamp
+                          ul.list-unstyled.activity-timeline
+                            -for(var j=0; j<testdata.length;j++)
+                              li
+                                h4 #{testdata[j].speaker_label}
+                                p
+                                  span.timestamp
                                   a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
                                     span#start_time  #{testdata[j].start_time}
                                   span#end_time
                                   a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
                                     span  #{testdata[j].end_time}
                                 | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{testdata[j].result}
-                          h4
-                            //#{JSON.stringify(speakerdata[0])}
-                          //button.btn.btn-primary.btn-bottom.center-block(type='button') Load More
+                        h4
+
                 // END 회의록
                 // 전체 감정 점수
                 #sentimental_total.tab-pane.fade
+                  .row
+                    .col-md-6
+                      .panel
+                        .panel-heading
+                          h4(align='center')
+                            span.lnr.lnr-heart
+                        .panel-body
+                          p(align='center')
+                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xBD84;&#xC704;&#xAE30;&#xB294;
+                            b 70&#xC810;
+                            |  &#xC785;&#xB2C8;&#xB2E4;.
+                          hr
+                    .col-md-6
+                      .panel
+                        .panel-heading
+                          h4(align='center')
+                            span.lnr.lnr-user
+                        .panel-body
+                          p(align='center')
+                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xB3C4;&#xB294;
+                            b 70&#xC810;
+                            |  &#xC785;&#xB2C8;&#xB2E4;.
+                          hr
                   // 전체 감정 비율
                   .row
                     .col-md-12
@@ -93,10 +191,10 @@ head
                         .panel-heading
                           h4(align='center')  &lt; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBD84;&#xC11D;&#xB41C; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728; &gt;
                         .panel-body
-                          canvas#angera(height='150' width='150')
-                          canvas#neutral(height='150' width='150')
-                          canvas#sad(height='150' width='150')
-                          canvas#happy(height='150' width='150')
+                          canvas.canvas_item(id='화남' height='150' width='150')
+                          canvas.canvas_item(id='무감정' height='150' width='150')
+                          canvas.canvas_item(id='슬픔' height='150' width='150')
+                          canvas.canvas_item(id='기쁨' height='150' width='150')
                         .panel-body
                           hr
                           p
@@ -106,119 +204,142 @@ head
                             b 70&#xC810;
                             | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                           hr
+                        //
+                          <div class="panel-body">
+                          <div class="col-md-6">
+                          <canvas id="myPieChart0"  width="100%" height="50"></canvas>
+                          </div>
+                          <div class="col-md-6">
+                          <canvas id="myBarChart_senti"  width="100%" height="50"></canvas>
+                          </div>
+                          </div>
                   // END 전체 감정 비율
                   // 전체 발언 비율
                   .row
-                    .col-md-8
-                      .panel
-                        .card-header
-                          i.fas.fa-chart-bar.mr-1
-                          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xC804;&#xCCB4; &#xC801;&#xADF9;&#xB3C4; &#xC21C;&#xC704;
-                        br
-                        .card-body
-                          canvas#myBarChart(width='100%', height='50')
-                        .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                    .col-md-4
+                    .col-md-12
                       .panel
                         .panel-heading
-                          h3.panel-title &#xD68C;&#xC758; &#xC801;&#xADF9;&#xB3C4; &#xBD84;&#xC11D;
-                          h1  #{time_score}&#xC810;
+                          h4(align='center')  &lt; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBD84;&#xC11D;&#xB41C; &#xCC38;&#xC5EC;&#xC790; &#xBC1C;&#xC5B8; &#xC810;&#xC218; &gt;
                         .panel-body
-                          #demo-line-chart.ct-chart
-                          p  @@ &#xC810;
+                          canvas#A.canvas_item(height='150' width='150')
+                          canvas#B.canvas_item(height='150' width='150')
+                          canvas#C.canvas_item(height='150' width='150')
+                          canvas#D.canvas_item(height='150' width='150')
+                        .panel-body
+                          hr
+                          p
+                            | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xB300;&#xD654; &#xBE44;&#xC728;&#xC744; &#xACC4;&#xC0B0;&#xD574; &#xC810;&#xC218;&#xB85C; &#xB9E4;&#xACA8;&#xBD24;&#xC744; &#xB54C;, &#xD574;&#xB2F9;
+                            | &#xD68C;&#xC758;&#xB294; &#xCC38;&#xC5EC;&#xC790; A&#xB294; XX&#xC810;, &#xCC38;&#xC5EC;&#xC790; B&#xB294; XX&#xC810;, &#xCC38;&#xC5EC;&#xC790; C&#xB294; XX&#xC810;, &#xCC38;&#xC5EC;&#xC790; D&#xB294; XX&#xC810;&#xC73C;&#xB85C; &#xACC4;&#xC0B0;&#xB429;&#xB2C8;&#xB2E4;.
+                            | &#xADF8;&#xB798;&#xC11C; &#xBC1C;&#xC5B8; &#xBE44;&#xC728; &#xBD84;&#xC11D; &#xACB0;&#xACFC;&#xB85C;&#xB9CC; &#xACC4;&#xC0B0;&#xD588;&#xC744; &#xB54C;,
+                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xC810;&#xC218;&#xB294;
+                            b 70&#xC810;
+                            | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                          hr
+                          canvas#myBarChart(width='100%' height='40')
                   // END 전체 발언 비율
                 // END 전체 감정 점수
                 // 회의 개인 평가
                 #sentimental_personal.tab-pane.fade
                   // TABBED CONTENT
                   .custom-tabs-line.tabs-line-bottom.center-aligned
-                    ul.nav.nav-pills(role='tablist')
-                      li.active
-                        a(href='#user1', sclass='label label-primary', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;1
-                      -for(var i=2;i<=emotion.length;i++)
-                        li
-                          a.label.label-primary(href='#user'+i, role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790; #{i}
+                    ul#pills-tab.nav.nav-pills.mb-3(role='tablist')
+                      li.nav-item
+                        a.nav-link.active(id='pills-참여자A-tab' data-toggle='pill' href='#first' role='tab' aria-controls='참여자A' aria-selected='true') &#xCC38;&#xC5EC;&#xC790;A
+                      li.nav-item
+                        a.nav-link(id='pills-참여자B-tab' data-toggle='pill' href='#second' role='tab' aria-controls='참여자B' aria-selected='false') &#xCC38;&#xC5EC;&#xC790;B
+                      li.nav-item
+                        a.nav-link(id='pills-참여자C-tab' data-toggle='pill' href='#third' role='tab' aria-controls='참여자C' aria-selected='false') &#xCC38;&#xC5EC;&#xC790;C
+                      li.nav-item
+                        a.nav-link(id='pills-참여자D-tab' data-toggle='pill' href='#fourth' role='tab' aria-controls='참여자D' aria-selected='false') &#xCC38;&#xC5EC;&#xC790;D
                   // 참석자 만족도 분석
-                  .tab-content
+                  #personal-Content.tab-content
                     // 참석자1 만족도 분석
-                    #user1.tab-pane.fade.in.active
+                    #first.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='pills-참여자A-tab')
                       .row
-                        .col-md-8
+                        .col-md-12
                           .panel
-                            .card-header
-                              i.fas.fa-chart-pie.mr-1
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;1 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                            br
-                            .card-body
-                              input#member1(type='hidden' value=emotion[0])
-                              canvas#myPieChart1(width='100%', height='50')
-                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                        .col-md-4
-                          .panel
-                            .panel-heading
-                              h3.panel-title &#xCC38;&#xAC00;&#xC790;1 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                              h1  #{user1_score}&#xC810;
+                            .card-title
+                              h4(align='center')  &lt; &#xCC38;&#xC5EC;&#xC790; A&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC; &gt;
                             .panel-body
+                              canvas.canvas_item(id='화남A' height='150' width='150')
+                              canvas.canvas_item(id='무감정A' height='150' width='150')
+                              canvas.canvas_item(id='슬픔A' height='150' width='150')
+                              canvas.canvas_item(id='기쁨A' height='150' width='150')
+                            .panel-body
+                              hr
+                              p
+                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; %%, &#xBB34;&#xAC10;&#xC815; %%, &#xC2AC;&#xD514; %%, &#xAE30;&#xC068;%%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                b 70&#xC810;
+                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                              hr
                     // END 참석자1 만족도 분석
                     // 참석자2 만족도 분석
-                    #user2.tab-pane.fade
+                    #second.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자B-tab')
                       .row
-                        .col-md-8
+                        .col-md-12
                           .panel
-                            .card-header
-                              i.fas.fa-chart-pie.mr-1
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;2 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                            br
-                            .card-body
-                              input#member2(type='hidden' value=emotion[1])
-                              canvas#myPieChart2(width='100%', height='50')
-                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                        .col-md-4
-                          .panel
-                            .panel-heading
-                              h3.panel-title &#xCC38;&#xAC00;&#xC790;2 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                              h1  #{user2_score}&#xC810;
+                            .card-title
+                              h4(align='center')  &lt; &#xCC38;&#xC5EC;&#xC790; B&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC; &gt;
                             .panel-body
+                              canvas.canvas_item(id='화남B' height='150' width='150')
+                              canvas.canvas_item(id='무감정B' height='150' width='150')
+                              canvas.canvas_item(id='슬픔B' height='150' width='150')
+                              canvas.canvas_item(id='기쁨B' height='150' width='150')
+                            .panel-body
+                              hr
+                              p
+                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; %%, &#xBB34;&#xAC10;&#xC815; %%, &#xC2AC;&#xD514; %%, &#xAE30;&#xC068;%%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                b 70&#xC810;
+                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                              hr
                     // END 참석자2 만족도 분석
                     // 참석자3 만족도 분석
-                    #user3.tab-pane.fade
+                    #third.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
                       .row
-                        .col-md-8
+                        .col-md-12
                           .panel
-                            .card-header
-                              i.fas.fa-chart-pie.mr-1
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;3 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                            br
-                            .card-body
-                              input#member3(type='hidden' value=emotion[2])
-                              canvas#myPieChart3(width='100%', height='50')
-                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                        .col-md-4
-                          .panel
-                            .panel-heading
-                              h3.panel-title &#xCC38;&#xAC00;&#xC790;3 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                              h1  #{user3_score}&#xC810;
+                            .card-title
+                              h4(align='center')  &lt; &#xCC38;&#xC5EC;&#xC790; C&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC; &gt;
                             .panel-body
+                              canvas.canvas_item(id='화남C' height='150' width='150')
+                              canvas.canvas_item(id='무감정C' height='150' width='150')
+                              canvas.canvas_item(id='슬픔C' height='150' width='150')
+                              canvas.canvas_item(id='기쁨C' height='150' width='150')
+                            .panel-body
+                              hr
+                              p
+                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; %%, &#xBB34;&#xAC10;&#xC815; %%, &#xC2AC;&#xD514; %%, &#xAE30;&#xC068;%%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                b 70&#xC810;
+                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                              hr
                     // END 참석자3 만족도 분석
                     // 참석자4 만족도 분석
-                    #user4.tab-pane.fade
+                    #fourth.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
                       .row
-                        .col-md-8
+                        .col-md-12
                           .panel
-                            .card-header
-                              i.fas.fa-chart-pie.mr-1
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;4 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                            br
-                            .card-body
-                              input#member4(type='hidden' value=emotion[3])
-                              canvas#myPieChart4(width='100%', height='50')
-                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                        .col-md-4
-                          .panel
-                            .panel-heading
-                              h3.panel-title &#xCC38;&#xAC00;&#xC790;4 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                              h1  #{user4_score}&#xC810;
+                            .card-title
+                              h4(align='center')  &lt; &#xCC38;&#xC5EC;&#xC790; D&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC; &gt;
                             .panel-body
+                              canvas.canvas_item(id='화남D' height='150' width='150')
+                              canvas.canvas_item(id='무감정D' height='150' width='150')
+                              canvas.canvas_item(id='슬픔D' height='150' width='150')
+                              canvas.canvas_item(id='기쁨D' height='150' width='150')
+                            .panel-body
+                              hr
+                              p
+                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; %%, &#xBB34;&#xAC10;&#xC815; %%, &#xC2AC;&#xD514; %%, &#xAE30;&#xC068;%%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                b 70&#xC810;
+                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                              hr
                     // END 참석자4 만족도 분석
                   // END 참석자 만족도 분석
                 // END 회의 개인 평가
@@ -233,47 +354,66 @@ head
                 a.navbar-btn-right(href='#')
                   i.lnr.lnr-cog
                 .profile-info
-                  h4.heading &#xD68C;&#xC758; Info
-                  p #{text_title}
-                .profile-info
-                  h4.heading &#xCC38;&#xC5EC;&#xC790;
-                  ul.list-inline.social-icons
-                    -for(var j = 0; j < speakerdata.length ; j++)
-                      li
-                        span.label.label-info(contenteditable='true')  #{speakerdata[j].speaker_label}
+                  h4.heading About &#xD68C;&#xC758;
+                  p #{testdata[0].meet_title}
                 .profile-info
                   h4.heading &#xD0DC;&#xADF8;
                   ul.list-unstyled.list-justify
-                    if hashdata.meet_hashtag1 != null
-                      li
-                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag1}
-                    if hashdata.meet_hashtag2 != null
-                      li
-                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag2}
-                    if hashdata.meet_hashtag3 != null
-                      li
-                        a.badge(contenteditable='true')  #{'#'+hashdata.meet_hashtag3}
+                    li
+                      a.badge(contenteditable='true')  &#xD0DC;&#xADF8; &#xC815;&#xBCF4;
+                    li
+                      a.badge(contenteditable='true')  &#xD0DC;&#xADF8; &#xC815;&#xBCF4;
+                    li
+                      a.badge(contenteditable='true')  &#xD0DC;&#xADF8; &#xC815;&#xBCF4;
+                    li
+                      a.badge(contenteditable='true')  &#xD0DC;&#xADF8; &#xC815;&#xBCF4;
+                .profile-info
+                  h4.heading &#xCC38;&#xC5EC;&#xC790;
+                  ul.list-inline.social-icons
+                    -for(var i=0;i<speakerdata.length;i++)
+                      li.col-md-7.my-1
+                        .input-group
+                          span.input-group-addon
+                            i.fa.fa-user
+                          input.form-control(placeholder=speakerdata[i].speaker_label type='text')
+
+                    br
+                    //
+                      <li class="col-md-7 my-1">
+                      <div class="input-group">
+                      <span class="input-group-btn"><span class="label label-primary" >@</span></span>
+                      <input class="form-control"  type="text" placeholder="참여자A" >
+                      </div>
+                      </li>
             // END RIGHT COLUMN
     // END MAIN CONTENT
   // END MAIN
-    .clearfix
-    footer
-      .container-fluid
-        p.copyright
-          | Shared by
-          i.fa.fa-love
-          a(href='https://bootstrapthemes.co') BootstrapThemes
-  // END WRAPPER
-  // Javascript
-  script(src='assets/vendor/jquery/jquery.min.js')
-  script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
-  script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
-  script(src='assets/vendor/chartist/js/chartist.min.js')
-  script(src='assets/scripts/klorofil-common.js')
-  // chart
-  script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', crossorigin='anonymous')
-  script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js', crossorigin='anonymous')
-  script(src='js/scripts.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js', crossorigin='anonymous')
-  script(src='assets/demo/chart-percent-demo.js')
-  script(src='assets/demo/chart-pie-demo.js')
+// WRAPPER
+//
+  END MAIN
+  <div class="clearfix"></div>
+  <footer>
+  <div class="container-fluid">
+  <p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+  </div>
+  </footer>
+  </div>
+  END WRAPPER
+// Javascript
+script(src='assets/vendor/jquery/jquery.min.js')
+script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
+script(src='assets/vendor/bootstrap/js/bootstrap.min2.js')
+script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
+script(src='assets/scripts/klorofil-common.js')
+// chart
+script(src='assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')
+script(src='assets/vendor/chartist/js/chartist.min.js')
+script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' crossorigin='anonymous')
+script(src='js/scripts.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js' crossorigin='anonymous')
+script(src='assets/demo/chart-bar-demo.js')
+script(src='assets/demo/chart-pie-demo.js')
+script(src='assets/demo/chart-percent-demo.js')
+script.
+  $('.pmd-textfield').pmdTextfield();

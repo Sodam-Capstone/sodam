@@ -146,7 +146,6 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   emotion_score = emotion_score.toFixed(1);
   res.render('sentimental_total', {
     user_id : req.user[0].user_id,
-    text_title : textdata[0].meet_name,
     user1_score : personal_score[0],
     user2_score : personal_score[1],
     user3_score : personal_score[2],
