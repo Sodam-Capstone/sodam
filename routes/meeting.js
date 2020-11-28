@@ -106,7 +106,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   console.log('asdfds');
   var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts where meet_title = '${req.body.meet_name}'`);
 
-  var emotion = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_emotion where meet_index=1`)
+  var emotion = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_emotion where meet_index= '${getindex[0].meet_index}'`)
 
   var i;
   var total_anger = 0;
@@ -122,7 +122,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     total_neutral += emotion[i].neutral *= 1;
     total_sad += emotion[i].sadness *= 1;
     total_time += emotion[i].time *= 1;
-    em[i] = emotion[i].anger +','+ emotion[i].neutral +','+ emotion[i].sadness +','+ emotion[i].happiness;
+    em[i] = (emotion[i].anger/emotion[i].time*100).toFixed(1) +','+(emotion[i].neutral/emotion[i].time*100).toFixed(1) +','+(emotion[i].sadness/emotion[i].time*100).toFixed(1) +','+(emotion[i].happiness/emotion[i].time*100).toFixed(1)
   }
   var num = 100 / i;
   var avg_time = total_time / i;
@@ -130,6 +130,8 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var personal_score = new Array(i);
   var personal_score = new Array(i);
   var v = 0;
+  var total = (total_anger / total_time * 100).toFixed(1)+','+(total_neutral / total_time * 100).toFixed(1)+','+(total_sad / total_time * 100).toFixed(1)+','+(total_happy / total_time * 100).toFixed(1);
+
   for(i=0;emotion[i]!=undefined;i++) {
     time_percent[i] = emotion[i].time / total_time * 100;
     v += (time_percent[i] - num) * (time_percent[i] - num);
@@ -138,10 +140,10 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     console.log(personal_score[i]);
   }
   v /= i;
-
   time_score = 100 - (Math.sqrt(v) * 2);
   time_score = time_score.toFixed(0);
   console.log(time_score);
+  console.log('dddddddddddddddddddddddddddddddddddd'+em[0]);
   emotion_score = ((total_happy/total_time*1.0) + (total_neutral/total_time*0.67) + (total_sad/total_time*0.33)) * 100;
   emotion_score = emotion_score.toFixed(1);
   res.render('sentimental_total', {
@@ -151,6 +153,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     user3_score : personal_score[2],
     user4_score : personal_score[3],
     emotion : em,
+    total : total,
 
     hashdata : hashdata[0],
     testdata : textdata,
