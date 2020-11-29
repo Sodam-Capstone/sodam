@@ -106,9 +106,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '${req.body.meet_name}'`);
   var getindex = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_information WHERE meet_name = '${req.body.meet_name}'`);
   var hashdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_hashing WHERE meet_index = ${getindex[0].meet_index}`);
-  //console.log(getindex[0].meet_index);
-  console.log(`${req.body.meet_name}`);
-  console.log('asdfds');
+
   var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts where meet_title = '${req.body.meet_name}'`);
 
   var emotion = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_emotion where meet_index=1`)

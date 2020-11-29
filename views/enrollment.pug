@@ -47,7 +47,7 @@ head
                 // START 회의정보 등록
                 form(action='/upload' method='post' enctype='multipart/form-data')
                   // action 임시로 해놓음
-                  input.form-control.right_button(type='text', placeholder='회의 제목', name='meet_title',style='width : 80%; margin-right:10px;')  
+                  input.form-control.right_button.enroll_title(type='text', placeholder='회의 제목', name='meet_title',style='width : 80%; margin-right:10px;')  
                   button#selectlist.label.label-primary.right_button(type='button') 중복 검사
                   br
                   br
@@ -55,7 +55,7 @@ head
                   br
                   .filebox
                     input.upload-name(value='선택된 파일 없음', name='meet_voice', disabled='disabled')
-                    label(for='ex_filename',) &#xD68C;&#xC758; &#xD30C;&#xC77C; &#xC120;&#xD0DD;
+                    label.enroll_label(for='ex_filename',) &#xD68C;&#xC758; &#xD30C;&#xC77C; &#xC120;&#xD0DD;
                     input#ex_filename.upload-hidden(type='file', name='wavFile', accept='audio/*')
                   br
                   br
@@ -92,7 +92,7 @@ head
                         input#tag.form-control.right_button(type='text', size='12', maxlength='12', placeholder='태그입력', name='tagname3')
                   // END HASHTAG
                   br
-                  input#selectlist.btn.btn-primary(type='submit')
+                  div#selectlist.btn.btn-primary(class='enroll_btn') 제출
 
 
                   br
@@ -153,5 +153,17 @@ script.
         alert("사용할 수 있는 제목입니다.");
       }
     }
+  });
+
+  $(()=>{
+    $('.enroll_btn').click(()=>{
+      if($('.enroll_title').val() === ''){
+        alert("회의 제목을 입력해주세요.");
+      }else if($('.upload-name').val() === '선택된 파일 없음'){
+        alert("파일을 제출해 주세요.");
+      }else{
+        $('.enroll_btn').submit();
+      }
+    });
   });
 

@@ -33,7 +33,7 @@ head
               .logo.text-center.large_page
                 img(src='assets/img/logo.png' alt='Klorofil Logo')
               p.lead Login to your account
-            .form-auth-small
+            form.form-auth-small(action='auth/login' method='post')
               .form-group
                 label.control-label.sr-only(for='signin-email') Email
                 input#signin-email.form-control(type='id' value='' placeholder='ID' name='email' class="email")
@@ -206,9 +206,9 @@ script.
           password : $('.password').val(),
         },
         success : function(res){
-          if(res.message === '요청 실패'){
+          if(res.message == '요청 실패'){
             alert("아이디 또는 비밀번호를 확인해주세요.");
-          }else if(res.message === '요청 성공'){
+          }else if(res.message == '요청 성공'){
             $(location).attr('href','/success');
           }
         },
