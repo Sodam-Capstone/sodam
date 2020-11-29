@@ -45,15 +45,15 @@ const pythonRunAws = async(req, res, path) => {
     `
     await dbPool(meet_information_query);
 
-    var lastindex = await dbPool('SELECT LAST_INSERT_ID() as keyindex');
+    var lastindex = await dbPool(`SELECT * FROM ${schema}.meet_information WHERE meet_name = '${req.body.meet_title}' ORDER BY reg_date DESC`);
 
-    console.log(lastindex[0].keyindex);
+    console.log(lastindex);
 
     //meet_share 추가
     var meet_share_query = `
     INSERT INTO
         ${schema}.meet_share(user1_index, meet_index)
-    VALUES('${req.user[0].user_index}','${lastindex[0].keyindex}')
+    VALUES('${req.user[0].user_index}','${lastindex[0].meet_index}')
     `
     await dbPool(meet_share_query);
 
@@ -61,7 +61,7 @@ const pythonRunAws = async(req, res, path) => {
     var meet_hash_query = `
     INSERT INTO
         ${schema}.meet_hashing(meet_index, meet_hashtag1, meet_hashtag2, meet_hashtag3)
-    VALUES('${lastindex[0].keyindex}','${req.body.tagname1}','${req.body.tagname2}','${req.body.tagname3}')
+    VALUES('${lastindex[0].meet_index}','${req.body.tagname1}','${req.body.tagname2}','${req.body.tagname3}')
     `
     await dbPool(meet_hash_query);
 
@@ -85,7 +85,7 @@ const pythonRunAws = async(req, res, path) => {
         var user_share_query = `
         INSERT INTO
             ${schema}.meet_share(user1_index, meet_index)
-        VALUES('${user_index[0].user_index}','${lastindex[0].keyindex}')
+        VALUES('${user_index[0].user_index}','${lastindex[0].meet_index}')
         `
         await dbPool(user_share_query);
     }
