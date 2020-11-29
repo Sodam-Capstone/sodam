@@ -1,26 +1,16 @@
 var express = require('express');
 var router = express.Router();
 const path = require('path');
-const python = require('./python'); //파이썬 모듈 불러오기
-
-/**
- * AWS-SDK 관련
- */
+const python = require('./python');
+const fs = require('fs');
 const AWS = require("aws-sdk");
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const path_now = path.join(__dirname, "../");
 
 AWS.config.loadFromPath(__dirname + "/../config/awsconfig.json");
 let s3 = new AWS.S3();
 json_path = path.join(__dirname, "../");
-/*
-./config/awsconfig.json ==> .gitignore 처리 꼭!!
-{
-    "accessKeyId": "",
-    "secretAccessKey": "",
-    "region": ""
-  }
-*/
 
 let upload = multer({
   storage: multerS3({
@@ -32,13 +22,20 @@ let upload = multer({
     },
     acl: 'public-read-write',
   })
-})
+});
 
-router.post('/upload', upload.single("wavFile"), async function (req, res, next) {
-  // req.file 은 `wavFile` 라는 필드의 파일 정보
-  // wavFile은 form 태그의 input file의 name
-  // input(type='file' name='imgFile')
-  // 텍스트 필드가 있는 경우, req.body가 이를 포함할 것
+let local_upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null,  path_now + '/python/content');
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.originalname);
+    },
+  }),
+});
+
+router.post('/upload', upload.single("wavFile"),async function (req, res, next) {
   try {
     console.log("파일 정보 : ", req.file);
     python.pythonRunAws(req, res, path); 

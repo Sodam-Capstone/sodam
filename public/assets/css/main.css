@@ -1,6 +1,6 @@
-/*	
+/*
 *	############################################################################################
-*	
+*
 *	KLOROFIL - Free Bootstrap Dashboard Template
 *	---------------------------------------------------------------------
 *
@@ -9,7 +9,7 @@
 *	Website: 	https://www.themeineed.com/
 *	Copyright: 	Copyright 2016 The Develovers
 *	License: 	Creative Common Attribution 4.0 https://creativecommons.org/licenses/by/4.0/
-*	
+*
 *	############################################################################################
 */
 /********************
@@ -450,7 +450,7 @@ ul.list-justify > li {
  ********************/
 
 
- 
+
 
 
 .form-control {
@@ -477,7 +477,7 @@ ul.list-justify > li {
   -moz-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
-   
+
 }
 /* 별 수정 */
 
@@ -498,59 +498,59 @@ ul.list-justify > li {
 
 
 
-/* 
+/*
   file 첨부
 */
-.filebox input[type="file"] { 
-  position: absolute; 
-  width: 1px; 
-  height: 1px; padding: 0; 
-  margin: -1px; 
-  overflow: hidden; 
-  clip:rect(0,0,0,0); 
+.filebox input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px; padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
   border: 0; }
 
-  .filebox label { 
-    display: inline-block; 
-    padding: .5em .75em; 
-    color: #999; 
-    font-size: inherit; 
-    line-height: normal; 
-    vertical-align: middle; 
-    background-color: #fdfdfd; 
-    cursor: pointer; 
-    border: 1px solid #ebebeb; 
-    border-bottom-color: #e2e2e2; 
-    border-radius: .25em; } 
+  .filebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em; }
 
-    .filebox input[type="file"] 
-    { /* 파일 필드 숨기기 */ 
-      position: absolute; 
-      width: 1px; 
-      height: 1px; 
-      padding: 0; 
-      margin: -1px; 
-      overflow: hidden; 
-      clip:rect(0,0,0,0); 
+    .filebox input[type="file"]
+    { /* 파일 필드 숨기기 */
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip:rect(0,0,0,0);
       border: 0; }
 
-      .filebox .upload-name { 
-        display: inline-block; 
-        padding: .5em .75em; /* label의 패딩값과 일치 */ 
-        font-size: inherit; 
-        font-family: inherit; 
-        line-height: normal; 
-        vertical-align: middle; 
-        background-color: #f5f5f5; 
-        border: 1px solid #ebebeb; 
-        border-bottom-color: #e2e2e2; 
-        border-radius: .25em; 
-        -webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+      .filebox .upload-name {
+        display: inline-block;
+        padding: .5em .75em; /* label의 패딩값과 일치 */
+        font-size: inherit;
+        font-family: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #f5f5f5;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
         -moz-appearance: none; appearance: none; }
 
 
 
-        
+
 /* fancy checkbox and radio button */
 .fancy-checkbox {
   display: block;
@@ -651,7 +651,7 @@ ul.list-justify > li {
   -moz-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
-  padding: 6px 22px; 
+  padding: 6px 22px;
   margin-top : 10px;
   size : 30% }
 
@@ -669,7 +669,7 @@ ul.list-justify > li {
 
 .btn-primary {
   background-color: #00AAFF;
-  border-color: #00a0f0; 
+  border-color: #00a0f0;
   }
   .btn-primary:hover, .btn-primary:focus {
     background-color: #00a0f0;
@@ -1378,7 +1378,7 @@ ul.activity-list > li {
  * PAGE: PROFILE
  ********************/
 .panel-profile {
-  position: relative; 
+  position: relative;
   margin-top : 2%;
   width : 95%;}
 
@@ -2016,28 +2016,28 @@ ul.activity-timeline > li {
 /******************/
 
 /*슬라이드 */
-#container-slide { 
-  width: 1000px; 
+#container-slide {
+  width: 1000px;
   margin: auto; }
-.slide_wrap { 
-  position: relative; 
-  width: 800px; 
-  margin: auto; 
+.slide_wrap {
+  position: relative;
+  width: 800px;
+  margin: auto;
   padding-bottom: 30px; }
-.slide_box { 
-  width: 100%; 
-  margin: auto; 
+.slide_box {
+  width: 100%;
+  margin: auto;
   overflow-x: hidden; }
-.slide_content { 
-  display: table; 
-  float: left; width: 800px; 
+.slide_content {
+  display: table;
+  float: left; width: 800px;
   height: 400px; }
-.slide_content > p { 
-  display: table-cell; 
-  vertical-align: middle; 
-  text-align: center; 
-  font-size: 50px; 
-  font-weight: bold; 
+.slide_content > p {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
   color: #555; }
 .slide_content.slide01 { background: #ddbdff; }
 .slide_content.slide02 { background: #9fd6c2; }
@@ -2045,16 +2045,16 @@ ul.activity-timeline > li {
 .slide_content.slide04 { background: #f08c78; }
 
 /*.slide_content.slide05 { background: #fbdb65; }*/
-.slide_btn_box > button { 
-  position: absolute; 
-  top: 50%; 
-  margin-top: -45px; 
-  width: 60px; 
-  height: 60px; 
-  font-size: 25px; 
-  color: rgb(0, 0, 0); 
-  background : none; 
-  border: none; 
+.slide_btn_box > button {
+  position: absolute;
+  top: 50%;
+  margin-top: -45px;
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+  background : none;
+  border: none;
   cursor: pointer; }
 .slide_btn_box > .slide_btn_prev { left: -60px; }
 .slide_btn_box > .slide_btn_next { right: -60px; }
@@ -2087,12 +2087,12 @@ ul.activity-timeline > li {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */   
-  height: 50%:                       
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 50%:
 }
 
-.modal-backdrop { 
-  /* display: block; 검은색레이어*/ 
+.modal-backdrop {
+  /* display: block; 검은색레이어*/
   display: none; /* background clickable */ }
 
 .modal-dialog {
@@ -2120,7 +2120,7 @@ ul.activity-timeline > li {
 .group-canvas {
   margin: 0 auto;
   text-align: center; /*inline-block의 장점은 폰트의 성질도 포함되고 있어서 text-align으로 정렬을 쉽게 할수가 있다.*/
-  font-size: 
+  font-size:
 }
 
 .canvas_item {
@@ -2129,5 +2129,5 @@ ul.activity-timeline > li {
   margin-right: 2%;
   margin-top : 2%;
   margin-bottom : 2%;/*이부분에 성질을 inline-block로 바꿔줘서 가로배치를 해줬다.*/
-  vertical-align: top; 
+  vertical-align: top;
 }

@@ -136,8 +136,7 @@ head
                     .row
                       .panel
                         #meeting_record
-                          audio#meetinglog_tab_audio(controls='' updatetracktime='updateTrackTime(this,"meetinglog_tab");' onended='endTrackTime("meetinglog_tab_audio","meetinglog_tab");')
-                            source(src='s1_sadness_M_s4.wav')
+                          <audio controls src='#{file_path}'>
                             | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD45C;&#xC2DC;&#xC548;&#xB428;
                     .row
                       #panel-scrolling-demo.panel
@@ -414,66 +413,89 @@ head
                 a.navbar-btn-right(href='#')
                   i.lnr.lnr-cog
                 .profile-info
-                  h4.heading About &#xD68C;&#xC758;
-                  p #{testdata[0].meet_title}
-                .profile-info
-                  h4.heading &#xD0DC;&#xADF8;
-                  ul.list-unstyled.list-justify
-                    li
-                      a.badge(contenteditable='true')  &#xD0DC;&#xADF8; &#xC815;&#xBCF4;
-                    li
-                      a.badge(contenteditable='true')  &#xD0DC;&#xADF8; &#xC815;&#xBCF4;
-                    li
-                      a.badge(contenteditable='true')  &#xD0DC;&#xADF8; &#xC815;&#xBCF4;
-                    li
-                      a.badge(contenteditable='true')  &#xD0DC;&#xADF8; &#xC815;&#xBCF4;
+                  h4.heading &#xD68C;&#xC758; Info
+                  p #{text_title}
                 .profile-info
                   h4.heading &#xCC38;&#xC5EC;&#xC790;
                   ul.list-inline.social-icons
-                    -for(var i=0;i<speakerdata.length;i++)
-                      li.col-md-7.my-1
-                        .input-group
-                          span.input-group-addon
-                            i.fa.fa-user
-                          input.form-control(value=speakerdata[i] type='text')
-
-                    br
-                    //
-                      <li class="col-md-7 my-1">
-                      <div class="input-group">
-                      <span class="input-group-btn"><span class="label label-primary" >@</span></span>
-                      <input class="form-control"  type="text" placeholder="참여자A" >
-                      </div>
-                      </li>
+                    -for(var j = 0; j < speakerdata.length ; j++)
+                      li
+                        span.input.label-info(contenteditable='true' id=speakerdata[j].speaker_label )  #{speakerdata[j].speaker_label}
+                .profile-info
+                  h4.heading &#xD0DC;&#xADF8;
+                  ul.list-unstyled.list-justify
+                    if hashdata.meet_hashtag1 != null && hashdata.meet_hashtag1 != ''
+                      li
+                        p.tagbox  #{'#'+hashdata.meet_hashtag1}
+                    if hashdata.meet_hashtag2 != null && hashdata.meet_hashtag2 != ''
+                      li
+                        p.tagbox  #{'#'+hashdata.meet_hashtag2}
+                    if hashdata.meet_hashtag3 != null && hashdata.meet_hashtag3 != ''
+                      li
+                        p.tagbox  #{'#'+hashdata.meet_hashtag3}
             // END RIGHT COLUMN
     // END MAIN CONTENT
   // END MAIN
-// WRAPPER
-//
-  END MAIN
-  <div class="clearfix"></div>
-  <footer>
-  <div class="container-fluid">
-  <p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
-  </div>
-  </footer>
-  </div>
-  END WRAPPER
-// Javascript
-script(src='assets/vendor/jquery/jquery.min.js')
-script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
-script(src='assets/vendor/bootstrap/js/bootstrap.min2.js')
-script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
-script(src='assets/scripts/klorofil-common.js')
-// chart
-script(src='assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')
-script(src='assets/vendor/chartist/js/chartist.min.js')
-script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js' crossorigin='anonymous')
-script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' crossorigin='anonymous')
-script(src='js/scripts.js')
-script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js' crossorigin='anonymous')
-script(src='assets/demo/chart-bar-demo.js')
-script(src='assets/demo/chart-pie-demo.js')
-script(src='assets/demo/chart-percent-demo.js')
+    .clearfix
+    footer
+      .container-fluid
+        p.copyright
+          | Shared by
+          i.fa.fa-love
+          a(href='https://bootstrapthemes.co') BootstrapThemes
+  // END WRAPPER
+  // Javascript
+  script(src='assets/vendor/jquery/jquery.min.js')
+  script(src='assets/vendor/bootstrap/js/bootstrap.min.js')
+  script(src='assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')
+  script(src='assets/vendor/chartist/js/chartist.min.js')
+  script(src='assets/scripts/klorofil-common.js')
+  // chart
+  script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js', crossorigin='anonymous')
+  script(src='js/scripts.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js', crossorigin='anonymous')
+  script(src='assets/demo/chart-bar-demo.js')
+  script(src='assets/demo/chart-pie-demo.js')
+
 script.
-  $('.pmd-textfield').pmdTextfield();
+    var i = 0;
+    var spk = document.getElementsByClassName('input label-info');
+    var labels = new Array();
+    var title = '#{text_title}'
+    while(spk[i] != null) {
+      spk[i].addEventListener('blur', function() {
+        var j=0;
+        var labels = document.getElementsByClassName(this.id);
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/sentimental_total/real-time");
+        var old_spk = document.createElement("input");
+        old_spk.setAttribute("type", "hidden");
+        old_spk.setAttribute("name", "old_spk");
+        old_spk.setAttribute("value", labels[0].innerHTML)
+        form.appendChild(old_spk);
+        var new_spk = document.createElement("input");
+        new_spk.setAttribute("type", "hidden");
+        new_spk.setAttribute("name", "new_spk");
+        new_spk.setAttribute("value", this.innerHTML)
+        form.appendChild(new_spk);
+        var meet_title = document.createElement("input");
+        meet_title.setAttribute("type", "hidden");
+        meet_title.setAttribute("name", "meet_title");
+        meet_title.setAttribute("value", '#{text_title}');
+        form.appendChild(meet_title);
+
+        document.body.appendChild(form)
+
+        form.submit();
+        while(labels[j] != null) {
+          labels[j].innerHTML = this.innerHTML;
+          j += 1;
+        }
+
+
+      });
+
+      i+=1;
+    }
