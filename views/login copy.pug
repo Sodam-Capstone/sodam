@@ -33,7 +33,7 @@ head
               .logo.text-center.large_page
                 img(src='assets/img/logo.png' alt='Klorofil Logo')
               p.lead Login to your account
-            .form-auth-small
+            form.form-auth-small(action='auth/login' method='post')
               .form-group
                 label.control-label.sr-only(for='signin-email') Email
                 input#signin-email.form-control(type='id' value='' placeholder='ID' name='email' class="email")
@@ -44,6 +44,13 @@ head
                 label.fancy-checkbox.element-left
                   input(type='checkbox')
                   span Remember me
+              //- .bottom
+              //-   span.helper-text
+              //-     i.fa.fa-lock &nbsp;
+              //-     a(href='/login-findpw') Forgot password? &emsp;
+              //-   span.helper-text &nbsp;
+              //-     i.fa.fa-lock
+              //-     a(href='/login-findid') Forgot ID?
               button.btn.btn-primary.btn-lg.btn-block(class= "login_btn") LOGIN
               .bottom
                 span.helper-text
@@ -51,7 +58,7 @@ head
                     input#modal-toggle(type='checkbox')
                     label.modal-btn(for='modal-toggle') JOIN
                     label.modal-backdrop(for='modal-toggle')
-                    .modal-content(style='position : fixed; top: -10%')
+                    .modal-content
                       form.form-auth-small
                         h4(style="padding-top:50px;") JOIN
                         .form-group
@@ -199,9 +206,9 @@ script.
           password : $('.password').val(),
         },
         success : function(res){
-          if(res.message === '요청 실패'){
+          if(res.message == '요청 실패'){
             alert("아이디 또는 비밀번호를 확인해주세요.");
-          }else if(res.message === '요청 성공'){
+          }else if(res.message == '요청 성공'){
             $(location).attr('href','/success');
           }
         },

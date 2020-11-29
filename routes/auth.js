@@ -20,7 +20,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
         }
         if (!user) {
             console.log(info);
-            return res.json({
+            res.json({
                 message : '요청 실패',
             });
         }
@@ -29,7 +29,9 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
                 console.error(loginError);
                 return next(loginError);
             }
-            res.redirect('/');
+            res.json({
+                message : '요청 성공',
+            });
         });
     })(req, res, next);
 });
