@@ -189,7 +189,9 @@ html.fullscreen-bg #wrapper {
 
 .navbar-btn {
   float: left;
-  padding: 16px 0; }
+  padding: 16px 0; 
+  margin-top: 12px;
+}
   .navbar-btn button {
     font-size: 24px;
     padding: 4px 8px;
@@ -299,7 +301,7 @@ float: left; }
       .navbar-nav > li > a .icon-submenu {
         display: none; }
       .navbar-nav > li > a .icon-submenu {
-        margin-top: 2%;
+        margin-top: 5px;
         display: block;
       }
     .navbar-nav .open .dropdown-menu {
@@ -2214,4 +2216,9 @@ ul.activity-timeline > li {
   margin-top : 2%;
   margin-bottom : 2%; */
   vertical-align: top; 
+}
+
+
+.dropdown-toggle{
+  margin-top: 6px;
 }
