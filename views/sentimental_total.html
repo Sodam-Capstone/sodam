@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>회의분석 | 소담 </title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/piechart.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="assets/css/demo.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<!-- d3.js -->
+	<script src="http://d3js.org/d3.v3.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="brand">
+				<a href="index.html"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+			</div>
+			<div class="container-fluid">
+				<div class="navbar-btn">
+					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+				</div>
+				
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+								<i class="lnr lnr-alarm"></i>
+								<span class="badge bg-danger">5</span>
+							</a>
+							<ul class="dropdown-menu notifications">
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
+								<li><a href="#" class="more">See all notifications</a></li>
+							</ul>
+						</li>
+						
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END NAVBAR -->
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="enrollment.html" class=""><i class="lnr lnr-code"></i> <span>회의등록</span></a></li>
+						<li><a href="meeting-list.html" class=""><i class="lnr lnr-dice"></i> <span>회의목록</span></a></li>
+						<li><a href="sentimental_total.html" class=""><i class="lnr lnr-chart-bars"></i> <span>회의분석</span></a></li>
+						<li><a href="page-profile.html" class=""><i class="lnr lnr-file-empty"></i> <span>Profile</span></a></li>
+						
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- END LEFT SIDEBAR -->
+	
+
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<div class="panel panel-profile">
+						<div class="clearfix">
+
+							<!-- LEFT COLUMN -->
+							<div class="sentimental-left">
+
+								<!-- TABBED CONTENT -->
+								<div class="custom-tabs-line tabs-line-bottom left-aligned">
+									<ul class="nav nav-pills" role="tablist">
+										<li class="active"><a href="#meeting_log" role="tab" data-toggle="tab" >회의록</a></li>
+										<li><a href="#sentimental_total" role="tab" data-toggle="tab">전체 평가 </span></a></li>
+										<li><a href="#sentimental_personal" role="tab" data-toggle="tab">개인 평가 </span></a></li>		
+									</ul>
+								</div>
+								
+								<div class="tab-content">
+									<!-- 회의록 -->
+									<div class="tab-pane fade in active" id="meeting_log">
+										<div class="col-md-12">
+											<div class="row">
+												<div class="panel">			
+													<div id="meeting_record">
+														<audio  controls id="meetinglog_tab_audio"
+																updateTrackTime ='updateTrackTime(this,"meetinglog_tab");'
+																onended='endTrackTime("meetinglog_tab_audio","meetinglog_tab");'>
+																<source src="s1_sadness_M_s4.wav" >
+																표시안됨
+														</audio>
+													</div>
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="panel" id="panel-scrolling-demo" >
+													<div class="panel-heading">
+														<h3 class="panel-title">회의 내용</h3>
+													</div>
+													<div class="panel-body" id="conference_log">
+													
+														<ul class="list-unstyled activity-timeline">
+															<li>
+																<i class="fa fa-comment activity-icon"></i>
+																<p>
+																	<span class="timestamp">
+																		<a href="javascript:"  id="meetinglog_tab_desc_0"  onclick="mediaSeek('news_tab_audio', 0)" >
+																			<span id="start_time"> &nbsp; 00 : 00 </span> 
+																		</a>
+																		<span id="end_time"> - </span>
+																		<a href="javascript:" id="meetinglog_tab_desc_0"  onclick="mediaSeek('news_tab_audio', 0)" >
+																			<span> 00 : 30 </span> 
+																		</a>
+																	</span>
+																	Objectively network visionary methodologies via best-of-breed users.
+																	Phosfluorescently initiate go forward leadership skills before an expanded array of infomediaries.
+																</p>
+															</li>
+															<li>
+																<i class="fa fa-comment activity-icon"></i>
+																<p>
+																	<span class="timestamp">
+																		<a href="javascript:"  id="meetinglog_tab_desc_0"  onclick="mediaSeek('news_tab_audio', 0)" >
+																			<span id="start_time"> &nbsp; 00 : 00 </span> 
+																		</a>
+																		<span id="end_time"> - </span>
+																		<a href="javascript:" id="meetinglog_tab_desc_0"  onclick="mediaSeek('news_tab_audio', 0)" >
+																			<span> 00 : 30 </span> 
+																		</a>
+																	</span>
+																	Objectively network visionary methodologies via best-of-breed users.
+																	Phosfluorescently initiate go forward leadership skills before an expanded array of infomediaries.
+																</p>
+															</li>
+															<li>
+																<i class="fa fa-comment activity-icon"></i>
+																<p>
+																	<span class="timestamp">
+																		<a href="javascript:"  id="meetinglog_tab_desc_0"  onclick="mediaSeek('news_tab_audio', 0)" >
+																			<span id="start_time"> &nbsp; 00 : 00 </span> 
+																		</a>
+																		<span id="end_time"> - </span>
+																		<a href="javascript:" id="meetinglog_tab_desc_0"  onclick="mediaSeek('news_tab_audio', 0)" >
+																			<span> 00 : 30 </span> 
+																		</a>
+																	</span>
+																	Objectively network visionary methodologies via best-of-breed users.
+																	Phosfluorescently initiate go forward leadership skills before an expanded array of infomediaries.
+																</p>
+															</li>
+														</ul>
+														<button type="button" class="btn btn-primary btn-bottom center-block">Load More</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- END 회의록 -->
+
+									<!-- 전체 감정 점수-->
+									<div class="tab-pane fade" id="sentimental_total">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="panel">
+													<div class="panel-heading">
+														<h4 align="center">  <span class="lnr lnr-heart"></span> </h4>
+													</div>
+													<div class="panel-body">
+														<p align="center"> 
+															해당 회의의 분위기는 <b>70점</b> 입니다.
+														</p>
+														<hr>
+													</div>
+													
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="panel">
+													<div class="panel-heading">
+														<h4 align="center">  <span class="lnr lnr-user"></span> </h4>
+													</div>
+													<div class="panel-body">
+														<p align="center"> 
+															해당 회의의 참여도는 <b>70점</b> 입니다.
+														</p>
+														<hr>
+													</div>
+													
+												</div>
+											</div>
+										</div>
+										<!-- 전체 감정 비율-->
+										<div class="row">
+											<div class="col-md-12">
+												<div class="panel">
+													<div class="panel-heading">
+														<h4 align="center"> < 해당 회의에서 분석된 4가지 감정 비율 > </h4>
+													</div>
+													<div class="panel-body">
+														<canvas class="canvas_item" id="화남" height="150" width="150"></canvas> 
+														<canvas class="canvas_item" id="무감정" height="150" width="150"></canvas>
+														<canvas class="canvas_item" id="슬픔" height="150" width="150"></canvas>
+														<canvas class="canvas_item" id="기쁨" height="150" width="150"></canvas>
+													</div>
+													<div class="panel-body">
+														<hr>
+														<p> 이 회의의 대화에서의 감정을 화남, 무감정, 슬픔, 기쁨 의 총 4가지 감정으로 분석하였을 때, 해당 
+														    회의는 화남 %% 무감정 %% 슬픔 %% 기쁨 %% 의 비율로 분석됩니다. 그래서 감정 분석 결과로만 계산했을 때,
+															해당 회의의 점수는 <b>70점</b>이라고 할 수 있습니다.
+															</p>
+														<hr>
+													</div>
+													<!-- <div class="panel-body">
+														<div class="col-md-6">
+															<canvas id="myPieChart0"  width="100%" height="50"></canvas>
+														</div>
+														<div class="col-md-6">
+															<canvas id="myBarChart_senti"  width="100%" height="50"></canvas>
+														</div>
+													</div> -->
+												</div>
+											</div>
+										</div>		
+										<!-- END 전체 감정 비율-->
+										
+										<!-- 전체 발언 비율 -->
+										<div class="row">
+											<div class="col-md-12">
+												<div class="panel">
+													<div class="panel-heading">
+														<h4 align="center"> < 해당 회의에서 분석된 참여자 발언 점수 > </h4>
+													</div>
+													<div class="panel-body">
+														<canvas class="canvas_item" id="A" height="150" width="150"></canvas> 
+														<canvas class="canvas_item" id="B" height="150" width="150"></canvas>
+														<canvas class="canvas_item" id="C" height="150" width="150"></canvas>
+														<canvas class="canvas_item" id="D" height="150" width="150"></canvas>
+													</div>
+													<div class="panel-body">
+														<hr>
+														<p> 이 회의의 대화에서의 대화 비율을 계산해 점수로 매겨봤을 때, 해당 
+														    회의는 참여자 A는 XX점, 참여자 B는 XX점, 참여자 C는 XX점, 참여자 D는 XX점으로 계산됩니다. 
+															그래서 발언 비율 분석 결과로만 계산했을 때,
+															해당 회의의 점수는 <b>70점</b>이라고 할 수 있습니다.
+															</p>
+														<hr>
+														<canvas id="myBarChart" width="100%" height="40"></canvas> 
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- END 전체 발언 비율 -->	
+									</div>
+									<!-- END 전체 감정 점수-->
+									
+									
+									<!-- 회의 개인 평가 -->
+									<div class="tab-pane fade" id="sentimental_personal">
+										<!-- TABBED CONTENT -->
+										<div class="custom-tabs-line tabs-line-bottom center-aligned">
+											<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+												<li class="nav-item">
+													<a class="nav-link active" id="pills-참여자A-tab" data-toggle="pill" href="#first" role="tab" aria-controls="참여자A" aria-selected="true">참여자A</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" id="pills-참여자B-tab" data-toggle="pill" href="#second" role="tab" aria-controls="참여자B" aria-selected="false">참여자B</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" id="pills-참여자C-tab" data-toggle="pill" href="#third" role="tab" aria-controls="참여자C" aria-selected="false">참여자C</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" id="pills-참여자D-tab" data-toggle="pill" href="#fourth" role="tab" aria-controls="참여자D" aria-selected="false">참여자D</a>
+												</li>
+											</ul>
+										</div>
+											
+
+										<!-- 참석자 만족도 분석 -->
+										<div class="tab-content" id="personal-Content">
+											<!-- 참석자1 만족도 분석-->
+											<div class="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="pills-참여자A-tab">
+												<div class="row">
+													<div class="col-md-12">
+														<div class="panel">
+															<div class="card-title">
+																<h4 align="center"> < 참여자 A의 감정 분석 결과 > </h4>
+															</div>
+															<div class="panel-body">
+																<canvas class="canvas_item" id="화남A" height="150" width="150"></canvas> 
+																<canvas class="canvas_item" id="무감정A" height="150" width="150"></canvas>
+																<canvas class="canvas_item" id="슬픔A" height="150" width="150"></canvas>
+																<canvas class="canvas_item" id="기쁨A" height="150" width="150"></canvas>
+															</div>
+															
+															
+															<div class="panel-body">
+															<hr>
+															<p> 이 회의에서의 참여자A의 발언에서의 4가지 감정 비율을 분석한 결과 입니다.
+															    화남 감정 %%, 무감정 %%, 슬픔 %%, 기쁨%%로 분석이 되었습니다. 이 결과를 토대로 참여자A의 회의 만족도를
+																분석해 보았을 때, <b>70점</b>이라고 할 수 있습니다.
+																</p>
+															<hr>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END 참석자1 만족도 분석 -->
+											
+											<!-- 참석자2 만족도 분석-->
+											<div class="tab-pane fade" id="second" role="tabpanel" aria-labelledby="pills-참여자B-tab">
+												<div class="row">
+													<div class="col-md-12">
+														<div class="panel">
+															<div class="card-title">
+																<h4 align="center"> < 참여자 B의 감정 분석 결과 > </h4>
+															</div>
+															<div class="panel-body">
+																<canvas class="canvas_item" id="화남B" height="150" width="150"></canvas> 
+																<canvas class="canvas_item" id="무감정B" height="150" width="150"></canvas>
+																<canvas class="canvas_item" id="슬픔B" height="150" width="150"></canvas>
+																<canvas class="canvas_item" id="기쁨B" height="150" width="150"></canvas>
+															</div>
+															
+															<div class="panel-body">
+															<hr>
+															<p> 이 회의에서의 참여자A의 발언에서의 4가지 감정 비율을 분석한 결과 입니다.
+															    화남 감정 %%, 무감정 %%, 슬픔 %%, 기쁨%%로 분석이 되었습니다. 이 결과를 토대로 참여자A의 회의 만족도를
+																분석해 보았을 때, <b>70점</b>이라고 할 수 있습니다.
+																</p>
+															<hr>
+															</div>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+											<!-- END 참석자2 만족도 분석 -->
+
+											<!-- 참석자3 만족도 분석-->
+											<div class="tab-pane fade" id="third" role="tabpanel" aria-labelledby="pills-참여자C-tab">
+												<div class="row">
+													<div class="col-md-12">
+														<div class="panel">
+															<div class="card-title">
+																<h4 align="center"> < 참여자 C의 감정 분석 결과 > </h4>
+															</div>
+															<div class="panel-body">
+																<canvas class="canvas_item" id="화남C" height="150" width="150"></canvas> 
+																<canvas class="canvas_item" id="무감정C" height="150" width="150"></canvas>
+																<canvas class="canvas_item" id="슬픔C" height="150" width="150"></canvas>
+																<canvas class="canvas_item" id="기쁨C" height="150" width="150"></canvas>
+															</div>
+															
+															<div class="panel-body">
+															<hr>
+															<p> 이 회의에서의 참여자A의 발언에서의 4가지 감정 비율을 분석한 결과 입니다.
+															    화남 감정 %%, 무감정 %%, 슬픔 %%, 기쁨%%로 분석이 되었습니다. 이 결과를 토대로 참여자A의 회의 만족도를
+																분석해 보았을 때, <b>70점</b>이라고 할 수 있습니다.
+																</p>
+															<hr>
+															</div>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+											<!-- END 참석자3 만족도 분석 -->
+
+											<!-- 참석자4 만족도 분석-->
+											<div class="tab-pane fade" id="fourth" role="tabpanel" aria-labelledby="pills-참여자C-tab">
+												<div class="row">
+													<div class="col-md-12">
+														<div class="panel">
+															<div class="card-title">
+																<h4 align="center"> < 참여자 D의 감정 분석 결과 > </h4>
+															</div>
+															<div class="panel-body">
+																<canvas class="canvas_item" id="화남D" height="150" width="150"></canvas> 
+																<canvas class="canvas_item" id="무감정D" height="150" width="150"></canvas>
+																<canvas class="canvas_item" id="슬픔D" height="150" width="150"></canvas>
+																<canvas class="canvas_item" id="기쁨D" height="150" width="150"></canvas>
+															</div>
+															
+															<div class="panel-body">
+															<hr>
+															<p> 이 회의에서의 참여자A의 발언에서의 4가지 감정 비율을 분석한 결과 입니다.
+															    화남 감정 %%, 무감정 %%, 슬픔 %%, 기쁨%%로 분석이 되었습니다. 이 결과를 토대로 참여자A의 회의 만족도를
+																분석해 보았을 때, <b>70점</b>이라고 할 수 있습니다.
+																</p>
+															<hr>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END 참석자4 만족도 분석 -->
+										</div>
+										<!-- END 참석자 만족도 분석 -->
+									</div>
+									<!-- END 회의 개인 평가 -->
+								</div>
+								<!-- END TABBED CONTENT -->
+							</div>
+							<!-- END LEFT COLUMN -->
+
+
+							<Br><Br>
+							<!-- RIGHT COLUMN -->
+							<div class="sentimental-right">
+								
+								
+								<!-- LABELS -->
+								<div class="profile-detail">
+									<a href="#" class="navbar-btn-right"> <i class="lnr lnr-cog"></i> </a>
+									<div class="profile-info">
+										<h4 class="heading">About 회의</h4>
+										<p>회의 제목</p>
+									</div>
+
+									<div class="profile-info">
+										<h4 class="heading">태그</h4>
+										<ul class="list-unstyled list-justify">
+											<li>
+												<a class="badge"  contenteditable= "true"> 태그 정보 </a>
+											</li>
+											<li>
+												<a class="badge" contenteditable= "true"> 태그 정보 </a>
+											</li>
+											<li>
+												<a class="badge" contenteditable= "true"> 태그 정보 </a>
+											</li>
+											<li>
+												<a class="badge" contenteditable= "true"> 태그 정보 </a>
+											</li>
+										</ul>
+									</div>
+								
+									<div class="profile-info">
+										<h4 class="heading">참여자</h4>
+										<ul class="list-inline social-icons">
+											<li class="col-md-7 my-1">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input class="form-control" placeholder="Username" type="text">
+												</div>
+											</li>
+											<Br>
+											<li class="col-md-7 my-1">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input class="form-control" placeholder="Username" type="text">
+												</div>
+											</li>
+											<Br>
+											<li class="col-md-7 my-1">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input class="form-control" placeholder="Username" type="text">
+												</div>
+											</li>
+											<Br>
+											<li class="col-md-7 my-1">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input class="form-control" placeholder="Username" type="text">
+												</div>
+											</li>
+											<br>
+											<!-- <li class="col-md-7 my-1">
+												<div class="input-group">
+													<span class="input-group-btn"><span class="label label-primary" >@</span></span>
+													<input class="form-control"  type="text" placeholder="참여자A" >
+												</div>
+											</li> -->
+										</ul>
+									</div>
+									
+								
+								</div>		
+							</div>
+							<!-- END RIGHT COLUMN -->
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		
+		
+
+
+	</div>
+	<!-- WRAPPER -->
+
+
+
+
+	<!-- END MAIN 
+		<div class="clearfix"></div>
+			<footer>
+				<div class="container-fluid">
+					<p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+				</div>
+			</footer>
+		</div>
+	END WRAPPER -->
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min2.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+	
+	
+	<!-- chart -->
+	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script src="assets/demo/chart-pie-demo.js"></script>
+	<script src="assets/demo/chart-percent-demo.js"></script>
+	
+	<Script>
+	$('.pmd-textfield').pmdTextfield();
+	</script>
+</body>
+
+</html>
+
+

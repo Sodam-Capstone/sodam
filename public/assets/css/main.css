@@ -1,6 +1,6 @@
-/*	
+/*
 *	############################################################################################
-*	
+*
 *	KLOROFIL - Free Bootstrap Dashboard Template
 *	---------------------------------------------------------------------
 *
@@ -9,7 +9,7 @@
 *	Website: 	https://www.themeineed.com/
 *	Copyright: 	Copyright 2016 The Develovers
 *	License: 	Creative Common Attribution 4.0 https://creativecommons.org/licenses/by/4.0/
-*	
+*
 *	############################################################################################
 */
 /********************
@@ -86,12 +86,12 @@ footer {
 
 #wrapper #sidebar-nav,
 #wrapper .main {
-  padding-top: 100px; }
+  padding-top: 80px; }
 
 @media screen and (max-width: 767px) {
   #wrapper #sidebar-nav,
   #wrapper .main {
-    padding-top: 100px; } }
+    padding-top: 130px; } }
 
 .layout-fullwidth #wrapper .sidebar {
   left: -260px; }
@@ -278,16 +278,12 @@ float: left; }
 
 @media screen and (min-width: 768px) {
   .navbar-nav.navbar-right {
-    margin-right: 0; } 
-    .large_page{
-      margin-top: 30px;
-    }
-  }
+    margin-right: 0; } }
 
 @media screen and (max-width: 767px) {
   .navbar-nav {
     width: 100%;
-    margin-left: 45%; }
+    margin: 0; }
     .navbar-nav > li {
       display: table-cell;
       width: 1%;
@@ -298,10 +294,6 @@ float: left; }
       .navbar-nav > li > a span:not(.badge),
       .navbar-nav > li > a .icon-submenu {
         display: none; }
-      .navbar-nav > li > a .icon-submenu {
-        margin-top: 2%;
-        display: block;
-      }
     .navbar-nav .open .dropdown-menu {
       -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -317,13 +309,11 @@ float: left; }
       padding-bottom: 15px; }
       .navbar-nav .icon-menu .badge {
         top: 10px;
-        right: 15px; } 
-      }
+        right: 15px; } }
 
 .navbar-toggle {
   padding: 5px 8px;
-  margin: 20px 15px 20px 0; 
-}
+  margin: 20px 15px 20px 0; }
   .navbar-toggle .icon-nav {
     font-size: 24px; }
 
@@ -460,7 +450,7 @@ ul.list-justify > li {
  ********************/
 
 
- 
+
 
 
 .form-control {
@@ -470,7 +460,7 @@ ul.list-justify > li {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-
+  margin-top:10px;
   /* 별 수정 */
 
   border-color: #eaeaea;
@@ -487,7 +477,7 @@ ul.list-justify > li {
   -moz-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
-   
+
 }
 /* 별 수정 */
 
@@ -508,59 +498,59 @@ ul.list-justify > li {
 
 
 
-/* 
+/*
   file 첨부
 */
-.filebox input[type="file"] { 
-  position: absolute; 
-  width: 1px; 
-  height: 1px; padding: 0; 
-  margin: -1px; 
-  overflow: hidden; 
-  clip:rect(0,0,0,0); 
+.filebox input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px; padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
   border: 0; }
 
-  .filebox label { 
-    display: inline-block; 
-    padding: .5em .75em; 
-    color: #999; 
-    font-size: inherit; 
-    line-height: normal; 
-    vertical-align: middle; 
-    background-color: #fdfdfd; 
-    cursor: pointer; 
-    border: 1px solid #ebebeb; 
-    border-bottom-color: #e2e2e2; 
-    border-radius: .25em; } 
+  .filebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em; }
 
-    .filebox input[type="file"] 
-    { /* 파일 필드 숨기기 */ 
-      position: absolute; 
-      width: 1px; 
-      height: 1px; 
-      padding: 0; 
-      margin: -1px; 
-      overflow: hidden; 
-      clip:rect(0,0,0,0); 
+    .filebox input[type="file"]
+    { /* 파일 필드 숨기기 */
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip:rect(0,0,0,0);
       border: 0; }
 
-      .filebox .upload-name { 
-        display: inline-block; 
-        padding: .5em .75em; /* label의 패딩값과 일치 */ 
-        font-size: inherit; 
-        font-family: inherit; 
-        line-height: normal; 
-        vertical-align: middle; 
-        background-color: #f5f5f5; 
-        border: 1px solid #ebebeb; 
-        border-bottom-color: #e2e2e2; 
-        border-radius: .25em; 
-        -webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+      .filebox .upload-name {
+        display: inline-block;
+        padding: .5em .75em; /* label의 패딩값과 일치 */
+        font-size: inherit;
+        font-family: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #f5f5f5;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
         -moz-appearance: none; appearance: none; }
 
 
 
-        
+
 /* fancy checkbox and radio button */
 .fancy-checkbox {
   display: block;
@@ -661,7 +651,7 @@ ul.list-justify > li {
   -moz-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2);
-  padding: 6px 22px; 
+  padding: 6px 22px;
   margin-top : 10px;
   size : 30% }
 
@@ -679,7 +669,7 @@ ul.list-justify > li {
 
 .btn-primary {
   background-color: #00AAFF;
-  border-color: #00a0f0; 
+  border-color: #00a0f0;
   }
   .btn-primary:hover, .btn-primary:focus {
     background-color: #00a0f0;
@@ -776,42 +766,15 @@ fieldset[disabled] .btn {
   .panel .table > tbody > tr > th:first-child,
   .panel .table > tfoot > tr > td:first-child,
   .panel .table > tfoot > tr > th:first-child {
-    padding-left: 10px; }
+    padding-left: 25px; }
   .panel .table > thead > tr > td:last-child,
   .panel .table > thead > tr > th:last-child,
   .panel .table > tbody > tr > td:last-child,
   .panel .table > tbody > tr > th:last-child,
   .panel .table > tfoot > tr > td:last-child,
   .panel .table > tfoot > tr > th:last-child {
-    padding-left: 10px; }
-  .infopanel {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
-  }
-  .infopanel > img{
-    width: 100%;
-    padding: 3%;
-    position: relative;
-  }
-  .bannerpanel {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
-  }
-  .bannerpanel > img{
-    padding: 2%;
-    width: 100%;
-    position: relative;
-  }
+    padding-left: 25px; }
+
 .panel-footer {
   background-color: #fafafa; }
 
@@ -1156,8 +1119,7 @@ ul.activity-list > li {
     width: 58%;
     height: 100%;
     position: relative;
-    /* background-image: url("../../assets/img/login-bg.jpg"); */
-    background-image: url("../../assets/img/logininfo.png");
+    background-image: url("../../assets/img/login-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover; }
     .auth-box .right:before {
@@ -1188,7 +1150,7 @@ ul.activity-list > li {
       display: block;
       width: 100%;
       height: 100%;
-      background: rgba(99, 156, 185, 0.72); }
+      background: rgba(99, 156, 185, 0.92); }
   .auth-box .header {
     margin-bottom: 30px; }
   .auth-box .lead {
@@ -1241,9 +1203,7 @@ ul.activity-list > li {
       .auth-box .content {
         width: 95%; }
       .auth-box.lockscreen {
-        width: 90%; } 
-      
-      }
+        width: 90%; } }
 
 /******************/
 
@@ -1332,49 +1292,32 @@ ul.activity-list > li {
         margin-top: 10px; }
   @media screen and (min-width: 1440px) {
     .auth-box2.lockscreen {
-      width: 35%; } 
-      .large_page{
-        margin-top: 30px;
-      }
-    }
+      width: 35%; } }
   @media screen and (max-width: 1279px) {
     .auth-box2 {
       width: 90%; }
       .auth-box2 .left {
-        top: 3.3em; } 
-        .large_page{
-          margin-top: 30px;
-        }
-      }
+        top: 3.3em; } }
   @media screen and (max-width: 1023px) {
     .auth-box2 .left {
       width: 100%;
       position: inherit;
       padding: 30px; }
     .auth-box2 .right {
-      display: none; } 
-      .large_page{
-        margin-top: 30px;
-      }
-    }
+      display: none; } }
   @media screen and (max-width: 992px) {
     .auth-box2 {
       width: 70%; }
       .auth-box2.lockscreen {
         width: 50%;
-        padding: 40px 20px; }
-        .large_page{
-          margin-top: 30px;
-        } 
-      }
+        padding: 40px 20px; } }
   @media screen and (max-width: 640px) {
     .auth-box2 {
       width: 90%; }
       .auth-box2 .content {
         width: 95%; }
       .auth-box2.lockscreen {
-        width: 90%; } 
-      }
+        width: 90%; } }
 
 /******************/
 
@@ -1435,16 +1378,19 @@ ul.activity-list > li {
  * PAGE: PROFILE
  ********************/
 .panel-profile {
-  position: relative; 
+  position: relative;
   margin-top : 2%;
-  width : 100%;
-}
+  width : 95%;}
 
 .profile-left {
+  margin-right: 30%;
   padding-left: 0%;
   padding-right: 00%;
+  float: left;
+  width: 50%;
   height: 100%;
- }
+  position: absolute;
+  background-color: #F8F8F8; }
 
 .profile-right {
   float: right;
@@ -1460,7 +1406,7 @@ ul.activity-list > li {
     width: 100%; }
   .profile-left {
     position: relative;
-    margin-bottom: 0px; } }
+    margin-bottom: 30px; } }
 
 .profile-header {
   position: relative;
@@ -1477,7 +1423,7 @@ ul.activity-list > li {
   .profile-header .profile-main {
     position: relative;
     padding: 20px;
-    background-image: rgba(178, 178, 178, 0.2);;
+    background-image: url("../../assets/img/profile-bg.png");
     background-repeat: no-repeat;
     background-size: cover; }
   .profile-header .name {
@@ -2069,69 +2015,46 @@ ul.activity-timeline > li {
 
 /******************/
 
-/* container - body */
-#container-slide { 
-  width: auto; 
-  margin: auto; 
-}
-.slidepanel {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  margin-bottom: 30px;
-  width: 100%; 
-  margin: auto; 
-}
-/* .slidepanel > img{
-  width: 100%;
+/*슬라이드 */
+#container-slide {
+  width: 1000px;
+  margin: auto; }
+.slide_wrap {
   position: relative;
-} */
-.slide_wrap { 
-  position: relative; 
-  width: 80%; 
-  margin: auto; 
+  width: 800px;
+  margin: auto;
   padding-bottom: 30px; }
-.slide_box { 
-  width: 100%; 
-  margin: auto; 
+.slide_box {
+  width: 100%;
+  margin: auto;
   overflow-x: hidden; }
-.slide_content > img{
-  position: relative;
+.slide_content {
   display: table;
-  width: 800px; 
-}
-.slide_content > p { 
-  display: table-cell; 
-  vertical-align: middle; 
-  text-align: center; 
-  font-size: 50px; 
-  font-weight: bold; 
+  float: left; width: 800px;
+  height: 400px; }
+.slide_content > p {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
   color: #555; }
-.slide_content.slide01 { 
-  float: left;
-
-}
-.slide_content.slide02 {
-  float: left;
-}
-.slide_content.slide03 {
-  float: left;
-}
+.slide_content.slide01 { background: #ddbdff; }
+.slide_content.slide02 { background: #9fd6c2; }
+.slide_content.slide03 { background: #abe2f7; }
+.slide_content.slide04 { background: #f08c78; }
 
 /*.slide_content.slide05 { background: #fbdb65; }*/
-.slide_btn_box > button { 
-  position: absolute; 
-  top: 50%; 
-  margin-top: -45px; 
-  width: 60px; 
-  height: 60px; 
-  font-size: 25px; 
-  color: rgb(0, 0, 0); 
-  background : none; 
-  border: none; 
+.slide_btn_box > button {
+  position: absolute;
+  top: 50%;
+  margin-top: -45px;
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+  background : none;
+  border: none;
   cursor: pointer; }
 .slide_btn_box > .slide_btn_prev { left: -60px; }
 .slide_btn_box > .slide_btn_next { right: -60px; }
@@ -2161,15 +2084,15 @@ ul.activity-timeline > li {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 25% auto; /* 15% from the top and centered */
+  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */   
-  height: 50%;                       
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 50%:
 }
 
-.modal-backdrop { 
-  /* display: block; 검은색레이어*/ 
+.modal-backdrop {
+  /* display: block; 검은색레이어*/
   display: none; /* background clickable */ }
 
 .modal-dialog {
@@ -2189,13 +2112,22 @@ ul.activity-timeline > li {
   cursor: pointer;
 }
 
-.right_button {
-  display: inline-block;
+
+
+/*group-canvas css*/
+
+
+.group-canvas {
+  margin: 0 auto;
+  text-align: center; /*inline-block의 장점은 폰트의 성질도 포함되고 있어서 text-align으로 정렬을 쉽게 할수가 있다.*/
+  font-size:
 }
-.listcheck{
-  display: none;
-}
-#tag{
-  width: 30%;
+
+.canvas_item {
+  float : left;
+  margin-left: 2%;
   margin-right: 2%;
+  margin-top : 2%;
+  margin-bottom : 2%;/*이부분에 성질을 inline-block로 바꿔줘서 가로배치를 해줬다.*/
+  vertical-align: top;
 }
