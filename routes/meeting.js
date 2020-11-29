@@ -129,6 +129,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var people = new Array(i);
   var num = 100 / i;
   var avg_time = total_time / i;
+  console.log('ddddddddddddddddddddddddddddddddddddddddddddd'+avg_time);
   var time_percent = new Array(i);
   var personal_score = new Array(i);
   var v = 0;
@@ -142,10 +143,10 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var personal_emotion = new Array(i);
   for(i=0;emotion[i]!=undefined;i++) {
     personal_emotion[i] = new Array();
-    personal_emotion[i][0] = ''+(emotion[i].anger/emotion[i].time*100).toFixed(1);
-    personal_emotion[i][1] = ''+(emotion[i].neutral/emotion[i].time*100).toFixed(1);
-    personal_emotion[i][2] = ''+(emotion[i].sadness/emotion[i].time*100).toFixed(1);
-    personal_emotion[i][3] = ''+(emotion[i].happiness/emotion[i].time*100).toFixed(1);
+    personal_emotion[i][0] = (emotion[i].anger/emotion[i].time*100).toFixed(1);
+    personal_emotion[i][1] = (emotion[i].neutral/emotion[i].time*100).toFixed(1);
+    personal_emotion[i][2] = (emotion[i].sadness/emotion[i].time*100).toFixed(1);
+    personal_emotion[i][3] = (emotion[i].happiness/emotion[i].time*100).toFixed(1);
     timedata[i] = emotion[i].time;
     time_percent[i] = emotion[i].time / total_time * 100;
     v += (time_percent[i] - num) * (time_percent[i] - num);
@@ -153,7 +154,6 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     personal_score[i] = personal_score[i].toFixed(1);
     people[i] = speakerdata[i].speaker_label;
   }
-
   v /= i;
   time_score = 100 - (Math.sqrt(v) * 2);
   time_score = time_score.toFixed(0);
@@ -171,6 +171,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     total : total,
     timedata : timedata,
     personal_emotion : personal_emotion,
+    avg_time : avg_time,
 
     hashdata : hashdata[0],
     testdata : textdata,

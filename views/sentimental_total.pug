@@ -238,18 +238,13 @@ head
                   // TABBED CONTENT
                   .custom-tabs-line.tabs-line-bottom.center-aligned
                     ul#pills-tab.nav.nav-pills.mb-3(role='tablist')
-                      li.nav-item
-                        a.nav-link.active(id='pills-참여자A-tab' data-toggle='pill' href='#first' role='tab' aria-controls='참여자A' aria-selected='true') &#xCC38;&#xC5EC;&#xC790;A
-                      li.nav-item
-                        a.nav-link(id='pills-참여자B-tab' data-toggle='pill' href='#second' role='tab' aria-controls='참여자B' aria-selected='false') &#xCC38;&#xC5EC;&#xC790;B
-                      li.nav-item
-                        a.nav-link(id='pills-참여자C-tab' data-toggle='pill' href='#third' role='tab' aria-controls='참여자C' aria-selected='false') &#xCC38;&#xC5EC;&#xC790;C
-                      li.nav-item
-                        a.nav-link(id='pills-참여자D-tab' data-toggle='pill' href='#fourth' role='tab' aria-controls='참여자D' aria-selected='false') &#xCC38;&#xC5EC;&#xC790;D
+                      -for(var i=0;i<speakerdata.length;i++)
+                        li.nav-item
+                          a.nav-link.active(id='pills-참여자A-tab' data-toggle='pill' href='#user'+(i+1) role='tab' aria-controls=speakerdata[i] aria-selected='true') #{speakerdata[i]}
                   // 참석자 만족도 분석
                   #personal-Content.tab-content
                     // 참석자1 만족도 분석
-                    #first.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='pills-참여자A-tab')
+                    #user1.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자A-tab')
                       .row
                         .col-md-12
                           .panel
@@ -270,9 +265,25 @@ head
                                 b #{user1_score}&#xC810;
                                 | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                               hr
+                              .row
+                                .col-md-12
+                                  .panel
+                                    .panel-heading
+                                      h4(align='center')  &lt; &#xCC38;&#xC5EC;&#xC790;D&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D; &gt;
+                                    .panel-body
+                                      canvas#myBarChart1(width='100%' height='40')
+                                    .panel-body
+                                      hr
+                                      p
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
+                                        b #{avg_time}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#xCC38;&#xC5EC;&#xC790;D&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
+                                        b #{timedata[0]}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
                     // END 참석자1 만족도 분석
                     // 참석자2 만족도 분석
-                    #second.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자B-tab')
+                    #user2.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자B-tab')
                       .row
                         .col-md-12
                           .panel
@@ -293,9 +304,25 @@ head
                                 b #{user2_score[1]}&#xC810;
                                 | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                               hr
+                              .row
+                                .col-md-12
+                                  .panel
+                                    .panel-heading
+                                      h4(align='center')  &lt; &#xCC38;&#xC5EC;&#xC790;D&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D; &gt;
+                                    .panel-body
+                                      canvas#myBarChart2(width='100%' height='40')
+                                    .panel-body
+                                      hr
+                                      p
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
+                                        b #{avg_time}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#xCC38;&#xC5EC;&#xC790;D&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
+                                        b #{timedata[1]}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
                     // END 참석자2 만족도 분석
                     // 참석자3 만족도 분석
-                    #third.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
+                    #user3.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
                       .row
                         .col-md-12
                           .panel
@@ -317,9 +344,25 @@ head
                                   b #{user3_score}&#xC810;
                                   | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                               hr
+                              .row
+                                .col-md-12
+                                  .panel
+                                    .panel-heading
+                                      h4(align='center')  &lt; &#xCC38;&#xC5EC;&#xC790;D&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D; &gt;
+                                    .panel-body
+                                      canvas#myBarChart3(width='100%' height='40')
+                                    .panel-body
+                                      hr
+                                      p
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
+                                        b #{avg_time}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#xCC38;&#xC5EC;&#xC790;D&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
+                                        b #{timedata[2]}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
                     // END 참석자3 만족도 분석
                     // 참석자4 만족도 분석
-                    #fourth.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
+                    #user4.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
                       .row
                         .col-md-12
                           .panel
@@ -341,6 +384,22 @@ head
                                   b #{user4_score}&#xC810;
                                   | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                               hr
+                      .row
+                        .col-md-12
+                          .panel
+                            .panel-heading
+                              h4(align='center')  &lt; &#xCC38;&#xC5EC;&#xC790;D&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D; &gt;
+                            .panel-body
+                              canvas#myBarChart4(width='100%' height='40')
+                            .panel-body
+                              hr
+                              p
+                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
+                                b #{avg_time}
+                                | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
+                                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#xCC38;&#xC5EC;&#xC790;D&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
+                                b #{timedata[3]}
+                                | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
                     // END 참석자4 만족도 분석
                   // END 참석자 만족도 분석
                 // END 회의 개인 평가
@@ -376,7 +435,7 @@ head
                         .input-group
                           span.input-group-addon
                             i.fa.fa-user
-                          input.form-control(placeholder=speakerdata[i] type='text')
+                          input.form-control(value=speakerdata[i] type='text')
 
                     br
                     //

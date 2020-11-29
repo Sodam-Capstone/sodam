@@ -17,18 +17,20 @@ data_total[1] = document.getElementById("timedata2").value;
 data_total[2] = document.getElementById("timedata3").value;
 data_total[3] = document.getElementById("timedata4").value;
 
+var avg = 0;
 var max = 0;
 var i = 0;
 while(people[i]!='') {
-  max+=data_total[i]*1.0;
+  avg+=data_total[i]*1.0;
+  if(max < data_total[i])
+    max = data_total[i]*1.0;
   i+=1;
 }
-
+avg = ((avg / i)*1.0).toFixed(1);
 
 // for(var i=0;temp[i]!=undefined;i++) {
 //   people[i] = temp[i];
 // }
-
 
 var BarOptions = {
   scales: {
@@ -63,7 +65,6 @@ var BarOptions = {
 };
 
 
-
 var chBarData = {
   labels: people.slice(0,i),
   datasets: [{
@@ -89,21 +90,96 @@ var myLineChart = new Chart(ctx, {
 });
 
 
+// 참여자 A
+var chBarData1 = {
+  labels: [people[0], '평균'],
+  datasets: [{
+    //label: "Revenue",
+    backgroundColor: colors.slice(0,2),
+    borderColor: colors.slice(0,2),
+    data: [data_total[0],avg],
+
+    barPercentage: 0.5,
+    barThickness: 6,
+    maxBarThickness: 8,
+    minBarLength: 2,
+  }]
+};
+
+var ctx1 = document.getElementById("myBarChart1");
+var myLineChart = new Chart(ctx1, {
+  type: 'bar',
+  data: chBarData1,
+  options: BarOptions
+});
 
 
-// var color_senti = ["rgba(255, 99, 132)", "rgba(255, 193, 7)", "rgba(54, 162, 235)", "rbga(40, 167, 150)"];
-// // Bar Chart Example2
-// var ctx2 = document.getElementById("myBarChart_senti");
-// var myLineChart2 = new Chart(ctx2, {
-//   type: 'bar',
-//   data: {
-//     labels: ["화남", "무감정", "슬픔", "기쁨"],
-//     datasets: [{
-//       label: "Revenue",
-//       backgroundColor: color_senti.slice(0,4),
-//       borderColor: "rgba(2,117,216,0.5)",
-//       data: [20, 40, 30, 10],
-//     }],
-//   },
-//   options: BarOptions
-// });
+// 참여자 B
+var chBarData2 = {
+  labels: [people[1], '평균'],
+  datasets: [{
+    //label: "Revenue",
+    backgroundColor: colors.slice(0,2),
+    borderColor: colors.slice(0,2),
+    data: [data_total[1], avg],
+
+    barPercentage: 0.5,
+    barThickness: 6,
+    maxBarThickness: 8,
+    minBarLength: 2,
+  }]
+};
+
+var ctx2 = document.getElementById("myBarChart2");
+var myLineChart = new Chart(ctx2, {
+  type: 'bar',
+  data: chBarData2,
+  options: BarOptions
+});
+
+
+// 참여자 C
+var chBarData3 = {
+  labels: [people[2], '평균'],
+  datasets: [{
+    //label: "Revenue",
+    backgroundColor: colors.slice(0,2),
+    borderColor: colors.slice(0,2),
+    data: [data_total[2], avg],
+
+    barPercentage: 0.5,
+    barThickness: 6,
+    maxBarThickness: 8,
+    minBarLength: 2,
+  }]
+};
+
+var ctx3 = document.getElementById("myBarChart3");
+var myLineChart = new Chart(ctx3, {
+  type: 'bar',
+  data: chBarData3,
+  options: BarOptions
+});
+
+// 참여자 D
+var chBarData4 = {
+  labels: [people[3], '평균'],
+  datasets: [{
+    //label: "Revenue",
+    backgroundColor: colors.slice(0,2),
+    borderColor: colors.slice(0,2),
+    data: [data_total[3], avg],
+
+    barPercentage: 0.5,
+    barThickness: 6,
+    maxBarThickness: 8,
+    minBarLength: 2,
+  }]
+};
+
+var ctx4 = document.getElementById("myBarChart4");
+var myLineChart = new Chart(ctx4, {
+  type: 'bar',
+  data: chBarData4,
+  options: BarOptions
+});
