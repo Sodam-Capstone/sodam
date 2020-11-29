@@ -122,6 +122,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var score = 0;
   var em = new Array();
   var emsplit = new Array();
+  var tt = 0;
   for(i=0;emotion[i]!=undefined;i++) {
     total_anger += emotion[i].anger *= 1;
     total_happy += emotion[i].happiness *= 1;
@@ -129,7 +130,6 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     total_sad += emotion[i].sadness *= 1;
     total_time += emotion[i].time *= 1;
     em[i] = (emotion[i].anger/emotion[i].time*100).toFixed(1) +','+(emotion[i].neutral/emotion[i].time*100).toFixed(1) +','+(emotion[i].sadness/emotion[i].time*100).toFixed(1) +','+(emotion[i].happiness/emotion[i].time*100).toFixed(1)
-
   }
   var people = new Array(i);
   var num = 100 / i;
@@ -161,6 +161,9 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   for(i=0;i<spk_num;i++){
     people[i] = speakerdata[i].speaker_label;
   }
+  for(i=0;i<spk_num;i++){
+    tt += emotion[i].time;
+  }
   var spklist = new Array(i);
   for(i=0;i<speakerlist.length;i++){
     spklist[i] = speakerlist[i].speaker_label;
@@ -185,6 +188,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     personal_emotion : personal_emotion,
     avg_time : avg_time,
     text_title : req.body.meet_name,
+    total_time : tt,
 
     hashdata : hashdata[0],
     testdata : textdata,

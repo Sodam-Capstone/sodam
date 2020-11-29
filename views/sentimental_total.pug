@@ -121,11 +121,21 @@ head
                         .panel-body
                           hr
                           p
-                            | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9;
-                            | &#xD68C;&#xC758;&#xB294; &#xD654;&#xB0A8; #{total_emotion[0]}% &#xBB34;&#xAC10;&#xC815; #{total_emotion[1]}% &#xC2AC;&#xD514; #{total_emotion[2]}% &#xAE30;&#xC068; #{total_emotion[3]}% &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;. &#xADF8;&#xB798;&#xC11C; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;&#xB85C;&#xB9CC; &#xACC4;&#xC0B0;&#xD588;&#xC744; &#xB54C;,
-                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xC810;&#xC218;&#xB294;
-                            b 40.1&#xC810;
-                            | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                            | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
+                            | &#xD68C;&#xC758;&#xB294; 
+                            b &#xD654;&#xB0A8; #{total_emotion[0]}%
+                            | , 
+                            b &#xBB34;&#xAC10;&#xC815; #{total_emotion[1]}%
+                            | , 
+                            b &#xC2AC;&#xD514; #{total_emotion[2]}%
+                            | , 
+                            b &#xAE30;&#xC068; #{total_emotion[3]}%
+                            |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;. 
+                            br
+                            br
+                            | &#xC774;&#xB97C; &#xBC14;&#xD0D5;&#xC73C;&#xB85C; &#xACC4;&#xC0B0;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;, &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xC804;&#xCCB4; &#xB9CC;&#xC871;&#xB3C4;&#xB294; 
+                            b #{emotion_score}&#xC810;
+                            | &#xC785;&#xB2C8;&#xB2E4;.
                           hr
                         //
                           <div class="panel-body">
@@ -153,6 +163,24 @@ head
                           input#timedata3(type="hidden" value=timedata[2])
                           input#timedata4(type="hidden" value=timedata[3])
                           canvas#myBarChart(width='100%' height='40')
+                        .panel-body
+                          hr
+                          p
+                            | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
+                            b #{total_time}&#xCD08;
+                            |  &#xC785;&#xB2C8;&#xB2E4;.
+                            |  &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790; &#xC801;&#xADF9;&#xB3C4; &#xC801;&#xADF9;&#xB3C4;&#xB97C; &#xBD84;&#xC11D;&#xC744; &#xC704;&#xD574; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC744; &#xACC4;&#xC0B0;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;
+                            
+                            -for(var j=0; j<testdata.length;j++)
+                              | ,#{speakerdata[j]}&#xB294; 
+                              b #{timedata[j]}&#xCD08;
+                            | &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;. 
+                            br
+                            br
+                            | &#xC774;&#xB97C; &#xBC14;&#xD0D5;&#xC73C;&#xB85C; &#xC801;&#xADF9;&#xB3C4;&#xB97C; &#xACC4;&#xC0B0;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;, &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xC801;&#xADF9;&#xB3C4; &#xC810;&#xC218;&#xB294; 
+                            b #{time_score}&#xC810;
+                            | &#xC785;&#xB2C8;&#xB2E4;.
+
                   // END 전체 발언 비율
                 // END 전체 감정 점수
                 // 회의 개인 평가
@@ -181,11 +209,17 @@ head
                             .panel-body
                               hr
                               p
-                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; #{speakerdata[0]}&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
-                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[0][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[0][1]}%, &#xC2AC;&#xD514; #{personal_emotion[0][2]}%, &#xAE30;&#xC068;#{personal_emotion[0][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; #{speakerdata[0]}&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
-                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
-                                b #{user1_score}&#xC810;
-                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
+                                | &#xD68C;&#xC758;&#xB294; 
+                                b &#xD654;&#xB0A8; #{personal_emotion[0][0]}%
+                                | , 
+                                b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[0][1]}%
+                                | , 
+                                b &#xC2AC;&#xD514; #{personal_emotion[0][2]}%
+                                | , 
+                                b &#xAE30;&#xC068; #{personal_emotion[0][3]}%
+                                |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+
                               hr
                               .row
                                 .col-md-12
@@ -197,12 +231,15 @@ head
                                     .panel-body
                                       hr
                                       p
-                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
-                                        b #{avg_time}
-                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
-                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    #{speakerdata[0]}&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
-                                        b #{timedata[0]}
-                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
+                                        b #{total_time}&#xCD08;
+                                        |  &#xC785;&#xB2C8;&#xB2E4;.
+                                        |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[0]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
+                                        b #{timedata[0]}&#xCD08;
+                                        | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
+                                        b #{avg_time}&#xCD08;
+                                        |  &#xC785;&#xB2C8;&#xB2E4;.
+
                     // END 참석자1 만족도 분석
                     // 참석자2 만족도 분석
                     #user2.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자B-tab')
