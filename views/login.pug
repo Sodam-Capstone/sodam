@@ -44,13 +44,6 @@ head
                 label.fancy-checkbox.element-left
                   input(type='checkbox')
                   span Remember me
-              //- .bottom
-              //-   span.helper-text
-              //-     i.fa.fa-lock &nbsp;
-              //-     a(href='/login-findpw') Forgot password? &emsp;
-              //-   span.helper-text &nbsp;
-              //-     i.fa.fa-lock
-              //-     a(href='/login-findid') Forgot ID?
               button.btn.btn-primary.btn-lg.btn-block(class= "login_btn") LOGIN
               .bottom
                 span.helper-text
@@ -58,7 +51,7 @@ head
                     input#modal-toggle(type='checkbox')
                     label.modal-btn(for='modal-toggle') JOIN
                     label.modal-backdrop(for='modal-toggle')
-                    .modal-content
+                    .modal-content(style='position : fixed; top: -10%')
                       form.form-auth-small
                         h4(style="padding-top:50px;") JOIN
                         .form-group
