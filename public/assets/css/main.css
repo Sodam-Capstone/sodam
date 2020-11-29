@@ -1528,7 +1528,7 @@ ul.activity-list > li {
       display: none; } }
 
 .profile-detail {
-  padding-bottom: 30px; }
+  padding-bottom: 0px; }
 
 .profile-info {
   padding: 0 20px;
@@ -2221,4 +2221,14 @@ ul.activity-timeline > li {
 
 .dropdown-toggle{
   margin-top: 6px;
+}
+
+.score{
+  font-size: 25px;
+}
+.contents{
+  font-size: 20px;
+}
+.line{
+  display: inline;
 }

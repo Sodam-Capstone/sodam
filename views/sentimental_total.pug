@@ -66,18 +66,20 @@ head
                         .panel-heading
                           h3.panel-title &#xD68C;&#xC758; &#xB0B4;&#xC6A9;
                         #conference_log.panel-body
-                          ul.list-unstyled.activity-timeline
+                          ul.list-unstyled
                             -for(var j=0; j<testdata.length;j++)
                               li
-                                h4(class=speakerlist[j]) #{speakerlist[j]}
+                                hr
+                                h4.line(class=speakerlist[j]) #{speakerlist[j]}
                                 p
                                   span.timestamp
                                   a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
-                                    span#start_time  #{testdata[j].start_time}
+                                    span#start_time  #{testdata[j].start_time}-
                                   span#end_time
                                   a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
                                     span  #{testdata[j].end_time}
-                                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{testdata[j].result}
+                                p(style='font-size:17px')
+                                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{testdata[j].result}
                         h4
 
                 // END 회의록
@@ -85,7 +87,7 @@ head
                 #sentimental_total.tab-pane.fade
                   .row
                     .col-md-6
-                      .panel
+                      .panel.score
                         .panel-heading
                           h4(align='center')
                             span.lnr.lnr-heart
@@ -96,7 +98,7 @@ head
                             |  &#xC785;&#xB2C8;&#xB2E4;.
                           hr
                     .col-md-6
-                      .panel
+                      .panel.score
                         .panel-heading
                           h4(align='center')
                             span.lnr.lnr-user
@@ -120,7 +122,7 @@ head
                           canvas.canvas_item(id='기쁨' height='150' width='150')
                         .panel-body
                           hr
-                          p
+                          p.contents
                             | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
                             | &#xD68C;&#xC758;&#xB294; 
                             b &#xD654;&#xB0A8; #{total_emotion[0]}%
@@ -165,7 +167,7 @@ head
                           canvas#myBarChart(width='100%' height='40')
                         .panel-body
                           hr
-                          p
+                          p.contents
                             | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
                             b #{total_time}&#xCD08;
                             |  &#xC785;&#xB2C8;&#xB2E4;.
@@ -208,7 +210,7 @@ head
                               canvas.canvas_item(id='기쁨A' height='150' width='150')
                             .panel-body
                               hr
-                              p
+                              p.contents
                                 | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
                                 | &#xD68C;&#xC758;&#xB294; 
                                 b &#xD654;&#xB0A8; #{personal_emotion[0][0]}%
@@ -230,7 +232,7 @@ head
                                       canvas#myBarChart1(width='100%' height='40')
                                     .panel-body
                                       hr
-                                      p
+                                      p.contents
                                         | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
                                         b #{total_time}&#xCD08;
                                         |  &#xC785;&#xB2C8;&#xB2E4;.
@@ -256,7 +258,7 @@ head
                               canvas.canvas_item(id='기쁨B' height='150' width='150')
                             .panel-body
                               hr
-                              p
+                              p.contents
                                 | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; #{speakerdata[1]}&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
                                 | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[1][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[1][1]}%, &#xC2AC;&#xD514; #{personal_emotion[1][2]}%, &#xAE30;&#xC068;#{personal_emotion[1][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; #{speakerdata[2]}&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
                                 | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
@@ -272,7 +274,7 @@ head
                                       canvas#myBarChart2(width='100%' height='40')
                                     .panel-body
                                       hr
-                                      p
+                                      p.contents
                                         | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
                                         b #{avg_time}
                                         | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
@@ -295,7 +297,7 @@ head
                               canvas.canvas_item(id='기쁨C' height='150' width='150')
                             .panel-body
                               hr
-                              p
+                              p.contents
                                 -if (personal_emotion.length >= 3)
                                   | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; speakerdata[2]&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
                                   | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[2][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[2][1]}%, &#xC2AC;&#xD514; #{personal_emotion[2][2]}%, &#xAE30;&#xC068;#{personal_emotion[2][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; #{speakerdata[2]}&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
@@ -312,7 +314,7 @@ head
                                       canvas#myBarChart3(width='100%' height='40')
                                     .panel-body
                                       hr
-                                      p
+                                      p.contents
                                         | &#xC774; &#xD68C;&#xC758;&#xC758; speakerdata[2]&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
                                         b #{avg_time}
                                         | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
@@ -335,7 +337,7 @@ head
                               canvas.canvas_item(id='기쁨D' height='150' width='150')
                             .panel-body
                               hr
-                              p
+                              p.contents
                                 -if (personal_emotion.length >= 4)
                                   | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; speakerdata[3]&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
                                   | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[3][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[3][1]}%, &#xC2AC;&#xD514; #{personal_emotion[3][2]}%, &#xAE30;&#xC068;#{personal_emotion[3][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; speakerdatap3[A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
@@ -352,7 +354,7 @@ head
                               canvas#myBarChart4(width='100%' height='40')
                             .panel-body
                               hr
-                              p
+                              p.contents
                                 | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
                                 b #{avg_time}
                                 | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
@@ -378,7 +380,7 @@ head
                 .profile-info
                   h4.heading &#xCC38;&#xC5EC;&#xC790;
                   ul.list-inline.social-icons
-                    -for(var j = 0; j < speakerdata.length ; j++)
+                    -for(var j = 0; j < spk_num ; j++)
                       li
                         span.input.label-info(contenteditable='true' id=speakerdata[j] value=speakerdata[j])  #{speakerdata[j]}
                 .profile-info
