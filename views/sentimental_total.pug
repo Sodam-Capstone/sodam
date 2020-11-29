@@ -47,7 +47,7 @@ head
               .custom-tabs-line.tabs-line-bottom.left-aligned
                 ul.nav.nav-pills(role='tablist')
                   li.active
-                    a(href='#meeting_log' role='tab' data-toggle='tab') &#xD68C;&#xC758;&#xB85D;
+                    a.savespk(href='#meeting_log' role='tab' data-toggle='tab') &#xD68C;&#xC758;&#xB85D;
                   li
                     a(href='#sentimental_total' role='tab' data-toggle='tab') &#xC804;&#xCCB4; &#xD3C9;&#xAC00;
                   li
@@ -69,7 +69,7 @@ head
                           ul.list-unstyled.activity-timeline
                             -for(var j=0; j<testdata.length;j++)
                               li
-                                h4(class=speakerdata[j]) #{speakerdata[j]}
+                                h4(class=speakerlist[j]) #{speakerlist[j]}
                                 p
                                   span.timestamp
                                   a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
@@ -113,7 +113,7 @@ head
                         .panel-heading
                           input#total(type='hidden' value=total)
                           h4(align='center')  &lt; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBD84;&#xC11D;&#xB41C; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728; &gt;
-                        .panel-body
+                        .panel-body.group-canvas
                           canvas.canvas_item(id='화남' height='150' width='150')
                           canvas.canvas_item(id='무감정' height='150' width='150')
                           canvas.canvas_item(id='슬픔' height='150' width='150')
@@ -160,7 +160,7 @@ head
                   // TABBED CONTENT
                   .custom-tabs-line.tabs-line-bottom.center-aligned
                     ul#pills-tab.nav.nav-pills.mb-3(role='tablist')
-                      -for(var i=0;i<speakerdata.length;i++)
+                      -for(var i=0;i<spk_num;i++)
                         li.nav-item
                           a(class=speakerdata[i] data-toggle='pill' href='#user'+(i+1) role='tab' aria-controls=speakerdata[i] aria-selected='true') #{speakerdata[i]}
                   // 참석자 만족도 분석
@@ -422,3 +422,7 @@ script.
 
       i+=1;
     }
+script.
+  $('.savespk').click((e)=>{
+    window.location.reload();
+  });

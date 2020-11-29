@@ -110,7 +110,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   //console.log(getindex[0].meet_index);
   console.log(`${req.body.meet_name}`);
   var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts where meet_title = '${req.body.meet_name}'`);
-
+  var speakerlist = await dbPool(`SELECT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts where meet_title = '${req.body.meet_name}'`);
   var emotion = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_emotion where meet_index= '${getindex[0].meet_index}'`)
 
   var i;
@@ -157,10 +157,14 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     personal_score[i] = ((emotion[i].happiness/emotion[i].time*1.0) + (emotion[i].neutral/emotion[i].time*0.67) + (emotion[i].sadness/emotion[i].time*0.33))*100;
     personal_score[i] = personal_score[i].toFixed(1);
   }
-  for(i=0;i<speakerdata.length;i++){
+  var spk_num = speakerdata.length;
+  for(i=0;i<spk_num;i++){
     people[i] = speakerdata[i].speaker_label;
   }
-  console.log(people);
+  var spklist = new Array(i);
+  for(i=0;i<speakerlist.length;i++){
+    spklist[i] = speakerlist[i].speaker_label;
+  }
   
   v /= i;
   time_score = 100 - (Math.sqrt(v) * 2);
@@ -184,9 +188,12 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
 
     hashdata : hashdata[0],
     testdata : textdata,
+    // file_path : 'https://s3.ap-northeast-2.amazonaws.com/speech.to.text/jw1.wav',
     speakerdata : people,
+    speakerlist : spklist,
     emotion_score : emotion_score,
     time_score : time_score,
+    spk_num : spk_num,
   });
 })
 router.post('/sentimental_total/real-time', isLoggedIn,  async(req, res, next) => {

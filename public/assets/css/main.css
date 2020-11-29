@@ -2199,3 +2199,19 @@ ul.activity-timeline > li {
   width: 30%;
   margin-right: 2%;
 }
+/*group-canvas css*/
+.group-canvas {
+  display: inline;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.canvas_item {
+  float : left;
+  width: 25%;
+  /* margin-left: 2%;
+  margin-right: 1%;
+  margin-top : 2%;
+  margin-bottom : 2%; */
+  vertical-align: top; 
+}
