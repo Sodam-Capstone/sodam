@@ -103,9 +103,14 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var meet_name = req.body.meet_name;
   await python.pythonMain(req, res, meet_name);
 
-  // 나중에 회의등록에서 넘어온 meet_title 일치하는것만 불러올 예정
-  var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '${req.body.meet_name}'`);
-  var getindex = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_information WHERE meet_name = '${req.body.meet_name}'`);
+
+  //user id의 목록에서만 select 해서 회의이름 중복 예외처리
+  var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '${req.body.meet_name}' && reg_mber = '${req.user[0].user_id}'`);
+
+  //user index의 목록에서만 select 해서 회의이름 중복 예외처리
+  var getindex = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_information as m_i join ${process.env.DB_DATABASE}.meet_share 
+  as m_s ON (m_i.meet_index = m_s.meet_index) WHERE user1_index = '${req.user[0].user_index}' and meet_name = '${req.body.meet_name}'`);
+
   var hashdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_hashing WHERE meet_index = ${getindex[0].meet_index}`);
   //console.log(getindex[0].meet_index);
   console.log(`${req.body.meet_name}`);
