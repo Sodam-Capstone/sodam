@@ -188,12 +188,12 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
 
     hashdata : hashdata[0],
     testdata : textdata,
-    // file_path : 'https://s3.ap-northeast-2.amazonaws.com/speech.to.text/jw1.wav',
     speakerdata : people,
     speakerlist : spklist,
     emotion_score : emotion_score,
     time_score : time_score,
     spk_num : spk_num,
+    file_path : 'https://s3.ap-northeast-2.amazonaws.com/speech.to.text/'+getindex[0].meet_voice,
   });
 })
 router.post('/sentimental_total/real-time', isLoggedIn,  async(req, res, next) => {
