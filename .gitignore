@@ -2,8 +2,8 @@
 config/*.json
 node_modules
 package-lock.json
-reformat_json
-py_json
-python/content
+reformat_json/*.json
+py_json/*.json
+python/content/*.wav
 *.csv
 csv
