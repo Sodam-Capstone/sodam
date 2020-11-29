@@ -170,7 +170,7 @@ head
                         .panel-body
                           p(align='center')
                             | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xBD84;&#xC704;&#xAE30;&#xB294;
-                            b 70&#xC810;
+                            b #{emotion_score}&#xC810;
                             |  &#xC785;&#xB2C8;&#xB2E4;.
                           hr
                     .col-md-6
@@ -181,7 +181,7 @@ head
                         .panel-body
                           p(align='center')
                             | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xB3C4;&#xB294;
-                            b 70&#xC810;
+                            b #{time_score}&#xC810;
                             |  &#xC785;&#xB2C8;&#xB2E4;.
                           hr
                   // 전체 감정 비율
@@ -200,9 +200,9 @@ head
                           hr
                           p
                             | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9;
-                            | &#xD68C;&#xC758;&#xB294; &#xD654;&#xB0A8; %% &#xBB34;&#xAC10;&#xC815; %% &#xC2AC;&#xD514; %% &#xAE30;&#xC068; %% &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;. &#xADF8;&#xB798;&#xC11C; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;&#xB85C;&#xB9CC; &#xACC4;&#xC0B0;&#xD588;&#xC744; &#xB54C;,
+                            | &#xD68C;&#xC758;&#xB294; &#xD654;&#xB0A8; #{total_emotion[0]}% &#xBB34;&#xAC10;&#xC815; #{total_emotion[1]}% &#xC2AC;&#xD514; #{total_emotion[2]}% &#xAE30;&#xC068; #{total_emotion[3]}% &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;. &#xADF8;&#xB798;&#xC11C; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;&#xB85C;&#xB9CC; &#xACC4;&#xC0B0;&#xD588;&#xC744; &#xB54C;,
                             | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xC810;&#xC218;&#xB294;
-                            b 70&#xC810;
+                            b 40.1&#xC810;
                             | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                           hr
                         //
@@ -222,20 +222,14 @@ head
                         .panel-heading
                           h4(align='center')  &lt; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBD84;&#xC11D;&#xB41C; &#xCC38;&#xC5EC;&#xC790; &#xBC1C;&#xC5B8; &#xC810;&#xC218; &gt;
                         .panel-body
-                          canvas#A.canvas_item(height='150' width='150')
-                          canvas#B.canvas_item(height='150' width='150')
-                          canvas#C.canvas_item(height='150' width='150')
-                          canvas#D.canvas_item(height='150' width='150')
-                        .panel-body
-                          hr
-                          p
-                            | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xB300;&#xD654; &#xBE44;&#xC728;&#xC744; &#xACC4;&#xC0B0;&#xD574; &#xC810;&#xC218;&#xB85C; &#xB9E4;&#xACA8;&#xBD24;&#xC744; &#xB54C;, &#xD574;&#xB2F9;
-                            | &#xD68C;&#xC758;&#xB294; &#xCC38;&#xC5EC;&#xC790; A&#xB294; XX&#xC810;, &#xCC38;&#xC5EC;&#xC790; B&#xB294; XX&#xC810;, &#xCC38;&#xC5EC;&#xC790; C&#xB294; XX&#xC810;, &#xCC38;&#xC5EC;&#xC790; D&#xB294; XX&#xC810;&#xC73C;&#xB85C; &#xACC4;&#xC0B0;&#xB429;&#xB2C8;&#xB2E4;.
-                            | &#xADF8;&#xB798;&#xC11C; &#xBC1C;&#xC5B8; &#xBE44;&#xC728; &#xBD84;&#xC11D; &#xACB0;&#xACFC;&#xB85C;&#xB9CC; &#xACC4;&#xC0B0;&#xD588;&#xC744; &#xB54C;,
-                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xC810;&#xC218;&#xB294;
-                            b 70&#xC810;
-                            | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
-                          hr
+                          input#memberdata1(type="hidden" value=speakerdata[0])
+                          input#memberdata2(type="hidden" value=speakerdata[1])
+                          input#memberdata3(type="hidden" value=speakerdata[2])
+                          input#memberdata4(type="hidden" value=speakerdata[3])
+                          input#timedata1(type="hidden" value=timedata[0])
+                          input#timedata2(type="hidden" value=timedata[1])
+                          input#timedata3(type="hidden" value=timedata[2])
+                          input#timedata4(type="hidden" value=timedata[3])
                           canvas#myBarChart(width='100%' height='40')
                   // END 전체 발언 비율
                 // END 전체 감정 점수
@@ -271,9 +265,9 @@ head
                               hr
                               p
                                 | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
-                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; %%, &#xBB34;&#xAC10;&#xC815; %%, &#xC2AC;&#xD514; %%, &#xAE30;&#xC068;%%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[0][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[0][1]}%, &#xC2AC;&#xD514; #{personal_emotion[0][2]}%, &#xAE30;&#xC068;#{personal_emotion[0][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
                                 | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
-                                b 70&#xC810;
+                                b #{user1_score}&#xC810;
                                 | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                               hr
                     // END 참석자1 만족도 분석
@@ -294,9 +288,9 @@ head
                               hr
                               p
                                 | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
-                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; %%, &#xBB34;&#xAC10;&#xC815; %%, &#xC2AC;&#xD514; %%, &#xAE30;&#xC068;%%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[1][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[1][1]}%, &#xC2AC;&#xD514; #{personal_emotion[1][2]}%, &#xAE30;&#xC068;#{personal_emotion[1][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
                                 | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
-                                b 70&#xC810;
+                                b #{user2_score[1]}&#xC810;
                                 | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                               hr
                     // END 참석자2 만족도 분석
@@ -316,11 +310,12 @@ head
                             .panel-body
                               hr
                               p
-                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
-                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; %%, &#xBB34;&#xAC10;&#xC815; %%, &#xC2AC;&#xD514; %%, &#xAE30;&#xC068;%%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
-                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
-                                b 70&#xC810;
-                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                                -if (personal_emotion.length >= 3)
+                                  | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                  | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[2][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[2][1]}%, &#xC2AC;&#xD514; #{personal_emotion[2][2]}%, &#xAE30;&#xC068;#{personal_emotion[2][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                  | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                  b #{user3_score}&#xC810;
+                                  | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                               hr
                     // END 참석자3 만족도 분석
                     // 참석자4 만족도 분석
@@ -339,11 +334,12 @@ head
                             .panel-body
                               hr
                               p
-                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
-                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; %%, &#xBB34;&#xAC10;&#xC815; %%, &#xC2AC;&#xD514; %%, &#xAE30;&#xC068;%%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
-                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
-                                b 70&#xC810;
-                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                                -if (personal_emotion.length >= 4)
+                                  | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                  | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[3][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[3][1]}%, &#xC2AC;&#xD514; #{personal_emotion[3][2]}%, &#xAE30;&#xC068;#{personal_emotion[3][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; &#xCC38;&#xC5EC;&#xC790;A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                  | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                  b #{user4_score}&#xC810;
+                                  | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
                               hr
                     // END 참석자4 만족도 분석
                   // END 참석자 만족도 분석
@@ -380,7 +376,7 @@ head
                         .input-group
                           span.input-group-addon
                             i.fa.fa-user
-                          input.form-control(placeholder=speakerdata[i].speaker_label type='text')
+                          input.form-control(placeholder=speakerdata[i] type='text')
 
                     br
                     //

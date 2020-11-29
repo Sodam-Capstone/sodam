@@ -116,6 +116,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var total_time = 0;
   var score = 0;
   var em = new Array();
+  var emsplit = new Array();
   for(i=0;emotion[i]!=undefined;i++) {
     total_anger += emotion[i].anger *= 1;
     total_happy += emotion[i].happiness *= 1;
@@ -123,27 +124,41 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     total_sad += emotion[i].sadness *= 1;
     total_time += emotion[i].time *= 1;
     em[i] = (emotion[i].anger/emotion[i].time*100).toFixed(1) +','+(emotion[i].neutral/emotion[i].time*100).toFixed(1) +','+(emotion[i].sadness/emotion[i].time*100).toFixed(1) +','+(emotion[i].happiness/emotion[i].time*100).toFixed(1)
+
   }
+  var people = new Array(i);
   var num = 100 / i;
   var avg_time = total_time / i;
   var time_percent = new Array(i);
   var personal_score = new Array(i);
-  var personal_score = new Array(i);
   var v = 0;
   var total = (total_anger / total_time * 100).toFixed(1)+','+(total_neutral / total_time * 100).toFixed(1)+','+(total_sad / total_time * 100).toFixed(1)+','+(total_happy / total_time * 100).toFixed(1);
-
+  var total_emotion = new Array();
+  total_emotion[0] = (total_anger / total_time * 100).toFixed(1);
+  total_emotion[1] = (total_neutral / total_time * 100).toFixed(1);
+  total_emotion[2] = (total_sad / total_time * 100).toFixed(1);
+  total_emotion[3] = (total_happy / total_time * 100).toFixed(1);
+  var timedata = new Array();
+  var personal_emotion = new Array();
   for(i=0;emotion[i]!=undefined;i++) {
+    personal_emotion[i] = new Array();
+    personal_emotion[i][0] = ''+(emotion[i].anger/emotion[i].time*100).toFixed(1);
+    personal_emotion[i][1] = ''+(emotion[i].neutral/emotion[i].time*100).toFixed(1);
+    personal_emotion[i][2] = ''+(emotion[i].sadness/emotion[i].time*100).toFixed(1);
+    personal_emotion[i][3] = ''+(emotion[i].happiness/emotion[i].time*100).toFixed(1);
+    timedata[i] = emotion[i].time;
     time_percent[i] = emotion[i].time / total_time * 100;
     v += (time_percent[i] - num) * (time_percent[i] - num);
     personal_score[i] = ((emotion[i].happiness/emotion[i].time*1.0) + (emotion[i].neutral/emotion[i].time*0.67) + (emotion[i].sadness/emotion[i].time*0.33))*100;
     personal_score[i] = personal_score[i].toFixed(1);
-    console.log(personal_score[i]);
+    people[i] = speakerdata[i].speaker_label;
+    console.log('dddddddddddddddddddddddddddddddddddddddddd'+timedata[i]);
   }
+
   v /= i;
   time_score = 100 - (Math.sqrt(v) * 2);
   time_score = time_score.toFixed(0);
   console.log(time_score);
-  console.log('dddddddddddddddddddddddddddddddddddd'+em[0]);
   emotion_score = ((total_happy/total_time*1.0) + (total_neutral/total_time*0.67) + (total_sad/total_time*0.33)) * 100;
   emotion_score = emotion_score.toFixed(1);
   res.render('sentimental_total', {
@@ -153,11 +168,14 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     user3_score : personal_score[2],
     user4_score : personal_score[3],
     emotion : em,
+    total_emotion : total_emotion,
     total : total,
+    timedata : timedata,
+    personal_emotion : personal_emotion,
 
     hashdata : hashdata[0],
     testdata : textdata,
-    speakerdata : speakerdata,
+    speakerdata : people,
     emotion_score : emotion_score,
     time_score : time_score,
   });
