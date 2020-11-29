@@ -33,8 +33,31 @@ head
   // END NAVBAR
   // LEFT SIDEBAR
   include lnb
+  #sidebar-nav.sidebar
+    .sidebar-scroll
+      nav
+        ul.nav
+          li
+            a(href='index')
+              i.lnr.lnr-home
+              span Dashboard
+          li
+            a(href='enrollment')
+              i.lnr.lnr-code
+              span &#xD68C;&#xC758;&#xB4F1;&#xB85D;
+          li
+            a(href='meeting-list')
+              i.lnr.lnr-dice
+              span &#xD68C;&#xC758;&#xBAA9;&#xB85D;
+          li
+            a(href='sentimental_total')
+              i.lnr.lnr-chart-bars
+              span &#xD68C;&#xC758;&#xBD84;&#xC11D;
+          li
+            a(href='page-profile')
+              i.lnr.lnr-file-empty
+              span Profile
   // END LEFT SIDEBAR
-
   // MAIN
   .main
     // MAIN CONTENT
@@ -48,11 +71,11 @@ head
               .custom-tabs-line.tabs-line-bottom.left-aligned
                 ul.nav.nav-pills(role='tablist')
                   li.active
-                    a(href='#meeting_log', role='tab', data-toggle='tab') &#xD68C;&#xC758;&#xB85D;
+                    a(href='#meeting_log' role='tab' data-toggle='tab') &#xD68C;&#xC758;&#xB85D;
                   li
-                    a(href='#sentimental_total', role='tab', data-toggle='tab') &#xC804;&#xCCB4; &#xD3C9;&#xAC00;
+                    a(href='#sentimental_total' role='tab' data-toggle='tab') &#xC804;&#xCCB4; &#xD3C9;&#xAC00;
                   li
-                    a(href='#sentimental_personal', role='tab', data-toggle='tab') &#xAC1C;&#xC778; &#xD3C9;&#xAC00;
+                    a(href='#sentimental_personal' role='tab' data-toggle='tab') &#xAC1C;&#xC778; &#xD3C9;&#xAC00;
               .tab-content
                 // 회의록
                 #meeting_log.tab-pane.fade.in.active
@@ -67,154 +90,262 @@ head
                         .panel-heading
                           h3.panel-title &#xD68C;&#xC758; &#xB0B4;&#xC6A9;
                         #conference_log.panel-body
-                        ul.list-unstyled.activity-timeline
-                          -for(var j=0; j< testdata.length; j++)
-                            li
-                              h4(class=testdata[j].speaker_label) #{testdata[j].speaker_label}
-                              p
-                                span.timestamp
+                          ul.list-unstyled.activity-timeline
+                            -for(var j=0; j<testdata.length;j++)
+                              li
+                                h4(class=speakerdata[j]) #{speakerdata[j]}
+                                p
+                                  span.timestamp
                                   a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
                                     span#start_time  #{testdata[j].start_time}
                                   span#end_time
                                   a#meetinglog_tab_desc_0(href='javascript:', onclick="mediaSeek('news_tab_audio', 0)")
                                     span  #{testdata[j].end_time}
                                 | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;#{testdata[j].result}
-                          h4
-                            //#{JSON.stringify(speakerdata[0])}
-                          //button.btn.btn-primary.btn-bottom.center-block(type='button') Load More
+                        h4
+
                 // END 회의록
                 // 전체 감정 점수
                 #sentimental_total.tab-pane.fade
-                  // 전체 감정 비율
                   .row
-                    .col-md-8
-                      .panel
-                        .card-header
-                          i.fas.fa-chart-pie.mr-1
-                          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                        br
-                        .card-body
-                          canvas#myPieChart(width='100%', height='50')
-                        .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                    .col-md-4
+                    .col-md-6
                       .panel
                         .panel-heading
-                          h3.panel-title &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                          h1  #{emotion_score}&#xC810;
+                          h4(align='center')
+                            span.lnr.lnr-heart
                         .panel-body
-                          p 10&#xC810;
+                          p(align='center')
+                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xBD84;&#xC704;&#xAE30;&#xB294;
+                            b #{emotion_score}&#xC810;
+                            |  &#xC785;&#xB2C8;&#xB2E4;.
+                          hr
+                    .col-md-6
+                      .panel
+                        .panel-heading
+                          h4(align='center')
+                            span.lnr.lnr-user
+                        .panel-body
+                          p(align='center')
+                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xB3C4;&#xB294;
+                            b #{time_score}&#xC810;
+                            |  &#xC785;&#xB2C8;&#xB2E4;.
+                          hr
+                  // 전체 감정 비율
+                  .row
+                    .col-md-12
+                      .panel
+                        .panel-heading
+                          input#total(type='hidden' value=total)
+                          h4(align='center')  &lt; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBD84;&#xC11D;&#xB41C; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728; &gt;
+                        .panel-body
+                          canvas.canvas_item(id='화남' height='150' width='150')
+                          canvas.canvas_item(id='무감정' height='150' width='150')
+                          canvas.canvas_item(id='슬픔' height='150' width='150')
+                          canvas.canvas_item(id='기쁨' height='150' width='150')
+                        .panel-body
+                          hr
+                          p
+                            | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9;
+                            | &#xD68C;&#xC758;&#xB294; &#xD654;&#xB0A8; #{total_emotion[0]}% &#xBB34;&#xAC10;&#xC815; #{total_emotion[1]}% &#xC2AC;&#xD514; #{total_emotion[2]}% &#xAE30;&#xC068; #{total_emotion[3]}% &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;. &#xADF8;&#xB798;&#xC11C; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;&#xB85C;&#xB9CC; &#xACC4;&#xC0B0;&#xD588;&#xC744; &#xB54C;,
+                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xC810;&#xC218;&#xB294;
+                            b 40.1&#xC810;
+                            | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                          hr
+                        //
+                          <div class="panel-body">
+                          <div class="col-md-6">
+                          <canvas id="myPieChart0"  width="100%" height="50"></canvas>
+                          </div>
+                          <div class="col-md-6">
+                          <canvas id="myBarChart_senti"  width="100%" height="50"></canvas>
+                          </div>
+                          </div>
                   // END 전체 감정 비율
                   // 전체 발언 비율
                   .row
-                    .col-md-8
-                      .panel
-                        .card-header
-                          i.fas.fa-chart-bar.mr-1
-                          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xC804;&#xCCB4; &#xC801;&#xADF9;&#xB3C4; &#xC21C;&#xC704;
-                        br
-                        .card-body
-                          canvas#myBarChart(width='100%', height='50')
-                        .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                    .col-md-4
+                    .col-md-12
                       .panel
                         .panel-heading
-                          h3.panel-title &#xD68C;&#xC758; &#xC801;&#xADF9;&#xB3C4; &#xBD84;&#xC11D;
-                          h1  #{time_score}&#xC810;
+                          h4(align='center')  &lt; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBD84;&#xC11D;&#xB41C; &#xCC38;&#xC5EC;&#xC790; &#xBC1C;&#xC5B8; &#xC810;&#xC218; &gt;
                         .panel-body
-                          #demo-line-chart.ct-chart
-                          p  @@ &#xC810;
+                          input#memberdata1(type="hidden" value=speakerdata[0])
+                          input#memberdata2(type="hidden" value=speakerdata[1])
+                          input#memberdata3(type="hidden" value=speakerdata[2])
+                          input#memberdata4(type="hidden" value=speakerdata[3])
+                          input#timedata1(type="hidden" value=timedata[0])
+                          input#timedata2(type="hidden" value=timedata[1])
+                          input#timedata3(type="hidden" value=timedata[2])
+                          input#timedata4(type="hidden" value=timedata[3])
+                          canvas#myBarChart(width='100%' height='40')
                   // END 전체 발언 비율
                 // END 전체 감정 점수
                 // 회의 개인 평가
                 #sentimental_personal.tab-pane.fade
                   // TABBED CONTENT
                   .custom-tabs-line.tabs-line-bottom.center-aligned
-                    ul.nav.nav-pills(role='tablist')
-                      li.active
-                        a(href='#first', sclass='label label-primary', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;1
-                      li
-                        a.label.label-primary(href='#second', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;2
-                      li
-                        a.label.label-primary(href='#third', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;3
-                      li
-                        a.label.label-primary(href='#fourth', role='tab', data-toggle='tab') &#xCC38;&#xC5EC;&#xC790;4
+                    ul#pills-tab.nav.nav-pills.mb-3(role='tablist')
+                      -for(var i=0;i<speakerdata.length;i++)
+                        li.nav-item
+                          a(class=speakerdata[i] data-toggle='pill' href='#user'+(i+1) role='tab' aria-controls=speakerdata[i] aria-selected='true') #{speakerdata[i]}
                   // 참석자 만족도 분석
-                  .tab-content
+                  #personal-Content.tab-content
                     // 참석자1 만족도 분석
-                    #first.tab-pane.fade.in.active
+                    #user1.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자A-tab')
                       .row
-                        .col-md-8
+                        .col-md-12
                           .panel
-                            .card-body
-                              canvas#myPieChart1(width='100%', height='50')
-                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                        .col-md-4
-                          .panel
-                            .panel-heading
-                              h3.panel-title &#xCC38;&#xAC00;&#xC790;1 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                              h1  #{user1_score}&#xC810;
+                            input#member1(type='hidden' value=emotion[0])
+                            .card-title
+                              h4(align='center')  #{speakerdata[0]}  &#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
                             .panel-body
-                              p 10&#xC810;
+                              canvas.canvas_item(id='화남A' height='150' width='150')
+                              canvas.canvas_item(id='무감정A' height='150' width='150')
+                              canvas.canvas_item(id='슬픔A' height='150' width='150')
+                              canvas.canvas_item(id='기쁨A' height='150' width='150')
+                            .panel-body
+                              hr
+                              p
+                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; #{speakerdata[0]}&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[0][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[0][1]}%, &#xC2AC;&#xD514; #{personal_emotion[0][2]}%, &#xAE30;&#xC068;#{personal_emotion[0][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; #{speakerdata[0]}&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                b #{user1_score}&#xC810;
+                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                              hr
+                              .row
+                                .col-md-12
+                                  .panel
+                                    .panel-heading
+                                      h4(align='center')  #{speakerdata[0]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
+                                    .panel-body
+                                      canvas#myBarChart1(width='100%' height='40')
+                                    .panel-body
+                                      hr
+                                      p
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
+                                        b #{avg_time}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    #{speakerdata[0]}&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
+                                        b #{timedata[0]}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
                     // END 참석자1 만족도 분석
                     // 참석자2 만족도 분석
-                    #second.tab-pane.fade
+                    #user2.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자B-tab')
                       .row
-                        .col-md-8
+                        .col-md-12
                           .panel
-                            .card-header
-                              i.fas.fa-chart-pie.mr-1
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;2 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                            br
-                            .card-body
-                              canvas#myPieChart2(width='100%', height='50')
-                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                        .col-md-4
-                          .panel
-                            .panel-heading
-                              h3.panel-title &#xCC38;&#xAC00;&#xC790;2 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                              h1  #{user2_score}&#xC810;
+                            input#member2(type='hidden' value=emotion[1])
+                            .card-title
+                              h4(align='center')  #{speakerdata[1]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
                             .panel-body
-                              p 10&#xC810;
+                              canvas.canvas_item(id='화남B' height='150' width='150')
+                              canvas.canvas_item(id='무감정B' height='150' width='150')
+                              canvas.canvas_item(id='슬픔B' height='150' width='150')
+                              canvas.canvas_item(id='기쁨B' height='150' width='150')
+                            .panel-body
+                              hr
+                              p
+                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; #{speakerdata[1]}&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[1][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[1][1]}%, &#xC2AC;&#xD514; #{personal_emotion[1][2]}%, &#xAE30;&#xC068;#{personal_emotion[1][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; #{speakerdata[2]}&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                b #{user2_score[1]}&#xC810;
+                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                              hr
+                              .row
+                                .col-md-12
+                                  .panel
+                                    .panel-heading
+                                      h4(align='center') #{speakerdata[1]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
+                                    .panel-body
+                                      canvas#myBarChart2(width='100%' height='40')
+                                    .panel-body
+                                      hr
+                                      p
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
+                                        b #{avg_time}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    speakerdata[1]&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
+                                        b #{timedata[1]}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
                     // END 참석자2 만족도 분석
                     // 참석자3 만족도 분석
-                    #third.tab-pane.fade
+                    #user3.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
                       .row
-                        .col-md-8
+                        .col-md-12
                           .panel
-                            .card-header
-                              i.fas.fa-chart-pie.mr-1
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;3 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                            br
-                            .card-body
-                              canvas#myPieChart3(width='100%', height='50')
-                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                        .col-md-4
-                          .panel
-                            .panel-heading
-                              h3.panel-title &#xCC38;&#xAC00;&#xC790;3 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                              h1  #{user3_score}&#xC810;
+                            input#member3(type='hidden' value=emotion[2])
+                            .card-title
+                              h4(align='center')  #{speakerdata[2]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
                             .panel-body
-                              p 10&#xC810;
+                              canvas.canvas_item(id='화남C' height='150' width='150')
+                              canvas.canvas_item(id='무감정C' height='150' width='150')
+                              canvas.canvas_item(id='슬픔C' height='150' width='150')
+                              canvas.canvas_item(id='기쁨C' height='150' width='150')
+                            .panel-body
+                              hr
+                              p
+                                -if (personal_emotion.length >= 3)
+                                  | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; speakerdata[2]&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                  | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[2][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[2][1]}%, &#xC2AC;&#xD514; #{personal_emotion[2][2]}%, &#xAE30;&#xC068;#{personal_emotion[2][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; #{speakerdata[2]}&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                  | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                  b #{user3_score}&#xC810;
+                                  | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                              hr
+                              .row
+                                .col-md-12
+                                  .panel
+                                    .panel-heading
+                                      h4(align='center')  #{speakerdata[2]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D; #{speakerdata[2]}
+                                    .panel-body
+                                      canvas#myBarChart3(width='100%' height='40')
+                                    .panel-body
+                                      hr
+                                      p
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; speakerdata[2]&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
+                                        b #{avg_time}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    speakerdata[2]D&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
+                                        b #{timedata[2]}
+                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
                     // END 참석자3 만족도 분석
                     // 참석자4 만족도 분석
-                    #fourth.tab-pane.fade
+                    #user4.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
                       .row
-                        .col-md-8
+                        .col-md-12
                           .panel
-                            .card-header
-                              i.fas.fa-chart-pie.mr-1
-                              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xCC38;&#xAC00;&#xC790;4 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                            br
-                            .card-body
-                              canvas#myPieChart4(width='100%', height='50')
-                            .card-footer.small.text-muted Updated yesterday at 11:59 PM
-                        .col-md-4
+                            input#member4(type='hidden' value=emotion[3])
+                            .card-title
+                              h4(align='center')  #{speakerdata[3]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC; #{speakerdata[3]}
+                            .panel-body
+                              canvas.canvas_item(id='화남D' height='150' width='150')
+                              canvas.canvas_item(id='무감정D' height='150' width='150')
+                              canvas.canvas_item(id='슬픔D' height='150' width='150')
+                              canvas.canvas_item(id='기쁨D' height='150' width='150')
+                            .panel-body
+                              hr
+                              p
+                                -if (personal_emotion.length >= 4)
+                                  | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; speakerdata[3]&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
+                                  | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[3][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[3][1]}%, &#xC2AC;&#xD514; #{personal_emotion[3][2]}%, &#xAE30;&#xC068;#{personal_emotion[3][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; speakerdatap3[A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
+                                  | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
+                                  b #{user4_score}&#xC810;
+                                  | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                              hr
+                      .row
+                        .col-md-12
                           .panel
                             .panel-heading
-                              h3.panel-title &#xCC38;&#xAC00;&#xC790;4 &#xB9CC;&#xC871;&#xB3C4; &#xBD84;&#xC11D;
-                              h1  #{user4_score}&#xC810;
+                              h4(align='center')  #{speakerdata[3]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D; &gt;
                             .panel-body
-                              p 10&#xC810;
+                              canvas#myBarChart4(width='100%' height='40')
+                            .panel-body
+                              hr
+                              p
+                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
+                                b #{avg_time}
+                                | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
+                                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    speakerdata[3]&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
+                                b #{timedata[3]}
+                                | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
                     // END 참석자4 만족도 분석
                   // END 참석자 만족도 분석
                 // END 회의 개인 평가
@@ -236,7 +367,7 @@ head
                   ul.list-inline.social-icons
                     -for(var j = 0; j < speakerdata.length ; j++)
                       li
-                        span.input.label-info(contenteditable='true' id=speakerdata[j].speaker_label )  #{speakerdata[j].speaker_label}
+                        span.input.label-info(contenteditable='true' id=speakerdata[j] value=speakerdata[j])  #{speakerdata[j]}
                 .profile-info
                   h4.heading &#xD0DC;&#xADF8;
                   ul.list-unstyled.list-justify
@@ -272,24 +403,23 @@ head
   script(src='js/scripts.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js', crossorigin='anonymous')
   script(src='assets/demo/chart-bar-demo.js')
-  script(src='assets/demo/chart-pie-demo.js')
+  script(src='assets/demo/chart-percent-demo.js')
 
 script.
     var i = 0;
     var spk = document.getElementsByClassName('input label-info');
-    var labels = new Array();
     var title = '#{text_title}'
     while(spk[i] != null) {
       spk[i].addEventListener('blur', function() {
-        var j=0;
         var labels = document.getElementsByClassName(this.id);
+        var j=0;
         var form = document.createElement("form");
         form.setAttribute("method", "post");
         form.setAttribute("action", "/sentimental_total/real-time");
         var old_spk = document.createElement("input");
         old_spk.setAttribute("type", "hidden");
         old_spk.setAttribute("name", "old_spk");
-        old_spk.setAttribute("value", labels[0].innerHTML)
+        old_spk.setAttribute("value", this.id);
         form.appendChild(old_spk);
         var new_spk = document.createElement("input");
         new_spk.setAttribute("type", "hidden");
@@ -307,6 +437,7 @@ script.
         form.submit();
         while(labels[j] != null) {
           labels[j].innerHTML = this.innerHTML;
+          labels[j].class = this.innerHTML;
           j += 1;
         }
 
