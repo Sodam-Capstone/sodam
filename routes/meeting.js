@@ -108,7 +108,6 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var hashdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_hashing WHERE meet_index = ${getindex[0].meet_index}`);
   //console.log(getindex[0].meet_index);
   console.log(`${req.body.meet_name}`);
-  console.log('asdfds');
   var speakerdata = await dbPool(`SELECT DISTINCT speaker_label FROM ${process.env.DB_DATABASE}.meet_texts where meet_title = '${req.body.meet_name}'`);
 
   var emotion = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_emotion where meet_index= '${getindex[0].meet_index}'`)
@@ -134,7 +133,6 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
   var people = new Array(i);
   var num = 100 / i;
   var avg_time = total_time / i;
-  console.log('ddddddddddddddddddddddddddddddddddddddddddddd'+avg_time);
   var time_percent = new Array(i);
   var personal_score = new Array(i);
   var v = 0;
@@ -177,6 +175,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
     timedata : timedata,
     personal_emotion : personal_emotion,
     avg_time : avg_time,
+    text_title : req.body.meet_name,
 
     hashdata : hashdata[0],
     testdata : textdata,
@@ -187,7 +186,7 @@ router.post('/sentimental_total', isLoggedIn,  async(req, res, next) => {
 })
 
 router.post('/sentimental_total/real-time', isLoggedIn,  async(req, res, next) => {
-  var dd = await dbPool(`UPDATE ${process.env.DB_DATABASE}.meet_texts SET speaker_label='${req.body.new_spk}' WHERE speaker_label='${req.body.old_spk}' and meet_title='${req.body.meet_title}'`);
+  var dd = await dbPool(`UPDATE ${process.env.DB_DATABASE}.meet_texts SET speaker_label='${req.body.new_spk.trim()}' WHERE speaker_label='${req.body.old_spk.trim()}' and meet_title='${req.body.meet_title}'`);
 
   return false;
 })
