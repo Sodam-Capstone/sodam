@@ -61,9 +61,10 @@ head
                           th 
                             a(href="javascript:send_check()" ) 삭제
                           th &#xC81C;&#xBAA9;
-                          th &#xD0DC;&#xADF8;
+                          th 태그
                           th &#xD30C;&#xC77C;
                           th &#xB0A0;&#xC9DC;
+                          th 상태
                       //- tfoot
                         //- tr
                         //-   th
@@ -89,6 +90,10 @@ head
                                 td  #{'#' + meeting_data[i].meet_hashtag1} #{'#' + meeting_data[i].meet_hashtag2} #{'#' + meeting_data[i].meet_hashtag3}
                               td #{meeting_data[i].meet_voice}
                               td #{meeting_data[i].meet_date}
+                              -if(meeting_data[i].status == 'processing...')
+                                td(style="color:red;") #{meeting_data[i].status}
+                              -else
+                                td(style="color:green;") #{meeting_data[i].status}  
                   //h3 #{JSON.stringify(hashlist[0][0])}
                   //h3 #{JSON.stringify(userlist[0])}
 
