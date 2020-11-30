@@ -212,7 +212,7 @@ router.post('/sentimental_total', isLoggedIn, async (req, res, next) => {
     await python.pythonMain(req, res, meet_name);
     const timeout = setTimeout(()=>{
       emotion_result(req,res);
-    }, 5000);
+    }, 7000);
   }else{
     emotion_result(req, res);
   }

@@ -40,8 +40,8 @@ const pythonRunAws = async(req, res, path) => {
     //meet_information 추가
     var meet_information_query = `
     INSERT INTO
-        ${schema}.meet_information(meet_name,meet_date, meet_voice)
-    VALUES('${req.body.meet_title}','${req.body.meet_date}','${options.args[0]}');
+        ${schema}.meet_information(meet_name,meet_date, meet_voice,status)
+    VALUES('${req.body.meet_title}','${req.body.meet_date}','${options.args[0]}', 'processing...');
     `
     await dbPool(meet_information_query);
 
@@ -98,6 +98,7 @@ const pythonRunAws = async(req, res, path) => {
         console.log("----------파이썬 pythonRunAws 실행 완료---------");
         pythonRunReformat(req, res, path);
     });
+    
 }
 
 /**
@@ -119,6 +120,18 @@ const pythonRunReformat = (req, res, path) => {
             throw err;
         }
         console.log("----------파이썬 pythonRunReformat 실행 완료---------");
+        var meet_information_query = `
+            UPDATE
+                ${process.env.DB_DATABASE}.meet_information c
+            SET status = 'complete'
+            WHERE 1=1
+            AND c.meet_index = (
+                SELECT max_index 
+                    FROM (
+                    SELECT max(a.meet_index) as max_index 
+                        FROM new_sodam_v2.meet_information a)b);
+            `
+        await dbPool(meet_information_query);
         await toDatabaseSync(req, res);
     });
 }

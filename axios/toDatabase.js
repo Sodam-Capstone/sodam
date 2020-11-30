@@ -19,7 +19,6 @@ const toDatabase = async (req, res) => {
         `
         await dbPool(query);
     }
-    
 }
 
 module.exports = {
