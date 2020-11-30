@@ -15,15 +15,7 @@ const sentimentalTotalResult = async (req, res)=>{
 }
 
 const sentimentalTotalMerge = async (req, res) =>{
-    if(req.body.mode === 'update'){
-        console.log("sentimentalTotalResult update 입니다.");
-        const result = await sentimentalTotalService.sentimentalTotalUpdate(req, res);
-        return result;
-    }else if(req.body.mode === 'delete'){
-        console.log("sentimentalTotalResult delete 입니다.");
-        const result = await sentimentalTotalService.sentimentalTotalDelete(req, res);
-        return result;
-    }
+   
 }
 
 module.exports = {
