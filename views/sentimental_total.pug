@@ -173,7 +173,7 @@ head
                             |  &#xC785;&#xB2C8;&#xB2E4;.
                             |  &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790; &#xC801;&#xADF9;&#xB3C4; &#xC801;&#xADF9;&#xB3C4;&#xB97C; &#xBD84;&#xC11D;&#xC744; &#xC704;&#xD574; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC744; &#xACC4;&#xC0B0;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;
                             
-                            -for(var j=0; j<testdata.length;j++)
+                            -for(var j=0; j<speakerdata.length;j++)
                               | ,#{speakerdata[j]}&#xB294; 
                               b #{timedata[j]}&#xCD08;
                             | &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;. 
@@ -259,11 +259,17 @@ head
                             .panel-body
                               hr
                               p.contents
-                                | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; #{speakerdata[1]}&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
-                                | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[1][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[1][1]}%, &#xC2AC;&#xD514; #{personal_emotion[1][2]}%, &#xAE30;&#xC068;#{personal_emotion[1][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; #{speakerdata[2]}&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
-                                | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
-                                b #{user2_score[1]}&#xC810;
-                                | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
+                                | &#xD68C;&#xC758;&#xB294; 
+                                b &#xD654;&#xB0A8; #{personal_emotion[1][0]}%
+                                | , 
+                                b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[1][1]}%
+                                | , 
+                                b &#xC2AC;&#xD514; #{personal_emotion[1][2]}%
+                                | , 
+                                b &#xAE30;&#xC068; #{personal_emotion[1][3]}%
+                                |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+
                               hr
                               .row
                                 .col-md-12
@@ -275,12 +281,14 @@ head
                                     .panel-body
                                       hr
                                       p.contents
-                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
-                                        b #{avg_time}
-                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
-                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    speakerdata[1]&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
-                                        b #{timedata[1]}
-                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
+                                        b #{total_time}&#xCD08;
+                                        |  &#xC785;&#xB2C8;&#xB2E4;.
+                                        |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[1]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
+                                        b #{timedata[1]}&#xCD08;
+                                        | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
+                                        b #{avg_time}&#xCD08;
+                                        |  &#xC785;&#xB2C8;&#xB2E4;.
                     // END 참석자2 만족도 분석
                     // 참석자3 만족도 분석
                     #user3.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
@@ -290,7 +298,7 @@ head
                             input#member3(type='hidden' value=emotion[2])
                             .card-title
                               h4(align='center')  #{speakerdata[2]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
-                            .panel-body
+                            .panel-bodyc
                               canvas.canvas_item(id='화남C' height='150' width='150')
                               canvas.canvas_item(id='무감정C' height='150' width='150')
                               canvas.canvas_item(id='슬픔C' height='150' width='150')
@@ -298,38 +306,45 @@ head
                             .panel-body
                               hr
                               p.contents
-                                -if (personal_emotion.length >= 3)
-                                  | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; speakerdata[2]&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
-                                  | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[2][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[2][1]}%, &#xC2AC;&#xD514; #{personal_emotion[2][2]}%, &#xAE30;&#xC068;#{personal_emotion[2][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; #{speakerdata[2]}&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
-                                  | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
-                                  b #{user3_score}&#xC810;
-                                  | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
+                                | &#xD68C;&#xC758;&#xB294; 
+                                b &#xD654;&#xB0A8; #{personal_emotion[2][0]}%
+                                | , 
+                                b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[2][1]}%
+                                | , 
+                                b &#xC2AC;&#xD514; #{personal_emotion[2][2]}%
+                                | , 
+                                b &#xAE30;&#xC068; #{personal_emotion[2][3]}%
+                                |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+
                               hr
                               .row
                                 .col-md-12
                                   .panel
                                     .panel-heading
-                                      h4(align='center')  #{speakerdata[2]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D; #{speakerdata[2]}
+                                      h4(align='center') #{speakerdata[2]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
                                     .panel-body
                                       canvas#myBarChart3(width='100%' height='40')
                                     .panel-body
                                       hr
                                       p.contents
-                                        | &#xC774; &#xD68C;&#xC758;&#xC758; speakerdata[2]&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
-                                        b #{avg_time}
-                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
-                                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    speakerdata[2]D&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
-                                        b #{timedata[2]}
-                                        | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
+                                        b #{total_time}&#xCD08;
+                                        |  &#xC785;&#xB2C8;&#xB2E4;.
+                                        |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[2]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
+                                        b #{timedata[2]}&#xCD08;
+                                        | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
+                                        b #{avg_time}&#xCD08;
+                                        |  &#xC785;&#xB2C8;&#xB2E4;.
                     // END 참석자3 만족도 분석
                     // 참석자4 만족도 분석
-                    #user4.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
+                    #user4.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자D-tab')
                       .row
                         .col-md-12
                           .panel
                             input#member4(type='hidden' value=emotion[3])
                             .card-title
-                              h4(align='center')  #{speakerdata[3]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC; #{speakerdata[3]}
+                              h4(align='center')  #{speakerdata[3]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
                             .panel-body
                               canvas.canvas_item(id='화남D' height='150' width='150')
                               canvas.canvas_item(id='무감정D' height='150' width='150')
@@ -338,29 +353,36 @@ head
                             .panel-body
                               hr
                               p.contents
-                                -if (personal_emotion.length >= 4)
-                                  | &#xC774; &#xD68C;&#xC758;&#xC5D0;&#xC11C;&#xC758; speakerdata[3]&#xC758; &#xBC1C;&#xC5B8;&#xC5D0;&#xC11C;&#xC758; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815; &#xBE44;&#xC728;&#xC744; &#xBD84;&#xC11D;&#xD55C; &#xACB0;&#xACFC; &#xC785;&#xB2C8;&#xB2E4;.
-                                  | &#xD654;&#xB0A8; &#xAC10;&#xC815; #{personal_emotion[3][0]}%, &#xBB34;&#xAC10;&#xC815; #{personal_emotion[3][1]}%, &#xC2AC;&#xD514; #{personal_emotion[3][2]}%, &#xAE30;&#xC068;#{personal_emotion[3][3]}%&#xB85C; &#xBD84;&#xC11D;&#xC774; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xACB0;&#xACFC;&#xB97C; &#xD1A0;&#xB300;&#xB85C; speakerdatap3[A&#xC758; &#xD68C;&#xC758; &#xB9CC;&#xC871;&#xB3C4;&#xB97C;
-                                  | &#xBD84;&#xC11D;&#xD574; &#xBCF4;&#xC558;&#xC744; &#xB54C;,
-                                  b #{user4_score}&#xC810;
-                                  | &#xC774;&#xB77C;&#xACE0; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
+                                | &#xD68C;&#xC758;&#xB294; 
+                                b &#xD654;&#xB0A8; #{personal_emotion[3][0]}%
+                                | , 
+                                b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[3][1]}%
+                                | , 
+                                b &#xC2AC;&#xD514; #{personal_emotion[3][2]}%
+                                | , 
+                                b &#xAE30;&#xC068; #{personal_emotion[3][3]}%
+                                |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+
                               hr
-                      .row
-                        .col-md-12
-                          .panel
-                            .panel-heading
-                              h4(align='center')  #{speakerdata[3]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D; &gt;
-                            .panel-body
-                              canvas#myBarChart4(width='100%' height='40')
-                            .panel-body
-                              hr
-                              p.contents
-                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xC790;&#xB4E4;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740;
-                                b #{avg_time}
-                                | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D; &#xB429;&#xB2C8;&#xB2E4;.
-                                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    speakerdata[3]&#xC758; &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC5D0;&#xC11C; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; &#xCD1D;
-                                b #{timedata[3]}
-                                | &#xBD84; &#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+                              .row
+                                .col-md-12
+                                  .panel
+                                    .panel-heading
+                                      h4(align='center') #{speakerdata[3]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
+                                    .panel-body
+                                      canvas#myBarChart4(width='100%' height='40')
+                                    .panel-body
+                                      hr
+                                      p.contents
+                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
+                                        b #{total_time}&#xCD08;
+                                        |  &#xC785;&#xB2C8;&#xB2E4;.
+                                        |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[3]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
+                                        b #{timedata[3]}&#xCD08;
+                                        | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
+                                        b #{avg_time}&#xCD08;
+                                        |  &#xC785;&#xB2C8;&#xB2E4;.
                     // END 참석자4 만족도 분석
                   // END 참석자 만족도 분석
                 // END 회의 개인 평가

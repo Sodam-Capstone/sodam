@@ -20,7 +20,7 @@ data_total[3] = document.getElementById("timedata4").value;
 var avg = 0;
 var max = 0;
 var i = 0;
-while(people[i]!='') {
+while(people[i]!=''&& people[i]!=undefined) {
   avg+=data_total[i]*1.0;
   if(max < data_total[i])
     max = data_total[i]*1.0;
