@@ -41,7 +41,7 @@ const pythonRunAws = async(req, res, path) => {
     var meet_information_query = `
     INSERT INTO
         ${schema}.meet_information(meet_name,meet_date, meet_voice,status)
-    VALUES('${req.body.meet_title}','${req.body.meet_date}','${options.args[0]}', 'processing...');
+    VALUES('${req.body.meet_title}','${req.body.meet_date}','${options.args[0]}', 'processing');
     `
     await dbPool(meet_information_query);
 
