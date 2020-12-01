@@ -34,22 +34,18 @@
             //-             a.more(href='#') See all notifications
             li.dropdown
                 a.dropdown-toggle(href='#' data-toggle='dropdown')
-                    img.img-circle(src='assets/img/user_prof.png' alt='Avatar') 
+                    img.img-circle(src='assets/img/user_prof.png' alt='Avatar' style='margin-right:2px')
                     span #{user_id}
-                    i.icon-submenu.lnr.lnr-chevron-down
+                    i.icon-submenu.lnr.lnr-chevron-down(style='margin-right:2px')
                 ul.dropdown-menu
                     li
                         a(href='/page-profile')
                             i.lnr.lnr-user
-                            span My Profile
-                    li
-                        a(href='#')
-                            i.lnr.lnr-envelope
-                            span Message
+                            span 프로필
                     li
                         a(href='/auth/logout')
                             i.lnr.lnr-exit
-                            span Logout
+                            span 로그아웃
         else
             li.dropdown
                 a.dropdown-toggle(href='#' data-toggle='dropdown')

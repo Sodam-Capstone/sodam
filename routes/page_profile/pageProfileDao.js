@@ -13,7 +13,8 @@ const pageProfileSelect = async (req, res) => {
             user_name,
             user_email
         FROM ${process.env.DB_DATABASE}.user_information
-        WHERE user_index = ${req.user[0].user_index}
+        WHERE 1=1 
+            AND user_index = ${req.user[0].user_index}
     `);
     return result;
 }

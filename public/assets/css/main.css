@@ -189,7 +189,9 @@ html.fullscreen-bg #wrapper {
 
 .navbar-btn {
   float: left;
-  padding: 16px 0; }
+  padding: 16px 0; 
+  margin-top: 12px;
+}
   .navbar-btn button {
     font-size: 24px;
     padding: 4px 8px;
@@ -299,7 +301,7 @@ float: left; }
       .navbar-nav > li > a .icon-submenu {
         display: none; }
       .navbar-nav > li > a .icon-submenu {
-        margin-top: 2%;
+        margin-top: 5px;
         display: block;
       }
     .navbar-nav .open .dropdown-menu {
@@ -1526,7 +1528,7 @@ ul.activity-list > li {
       display: none; } }
 
 .profile-detail {
-  padding-bottom: 30px; }
+  padding-bottom: 0px; }
 
 .profile-info {
   padding: 0 20px;
@@ -2194,4 +2196,39 @@ ul.activity-timeline > li {
 }
 .listcheck{
   display: none;
+}
+#tag{
+  width: 30%;
+  margin-right: 2%;
+}
+/*group-canvas css*/
+.group-canvas {
+  display: inline;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.canvas_item {
+  float : left;
+  width: 25%;
+  /* margin-left: 2%;
+  margin-right: 1%;
+  margin-top : 2%;
+  margin-bottom : 2%; */
+  vertical-align: top; 
+}
+
+
+.dropdown-toggle{
+  margin-top: 6px;
+}
+
+.score{
+  font-size: 25px;
+}
+.contents{
+  font-size: 20px;
+}
+.line{
+  display: inline;
 }

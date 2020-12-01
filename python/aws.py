@@ -1,8 +1,22 @@
 from __future__ import print_function
 import time
 import boto3
+import os.path
 import requests
 import sys
+from pydub import AudioSegment
+from pydub.utils import mediainfo
+
+### 로컬 파일 전처리
+# local_file = sys.argv[1]
+# sound = AudioSegment.from_file(local_file)
+
+# if sound.frame_rate != 16000:
+#     sound = sound.set_frame_rate(16000)
+
+# if '.wav' not in local_file:
+#     sound.export(sys.argv[1], format = "wav")
+#     local_file = sys.argv[1]
 
 ### 로컬 파일을 버킷에 업로드하기
 # s3 = boto3.client('s3')
@@ -12,6 +26,16 @@ import sys
 
 # 로컬 파일 이름, 버킷 이름, 버킷 파일 이름
 # s3.upload_file(local_file, bucket_name, bucket_file)
+
+### 로컬 파일을 버킷에 다운로드하기
+s3 = boto3.client('s3')
+local_file = sys.argv[2] + '/python/content/' + sys.argv[1]
+bucket_name = 'speech.to.text'
+bucket_file = sys.argv[1]
+
+# 로컬 파일 이름, 버킷 이름, 버킷 파일 이름
+s3.download_file(bucket_name, bucket_file, local_file)
+
 
 ### 버킷 파일 텍스트화 하기
 transcribe = boto3.client('transcribe')
