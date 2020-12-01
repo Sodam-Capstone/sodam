@@ -183,6 +183,18 @@ router.post('/sentimental_total', isLoggedIn, async (req, res, next) => {
     console.log(time_score);
     emotion_score = ((total_happy / total_time * 1.0) + (total_neutral / total_time * 0.67) + (total_sad / total_time * 0.33)) * 100;
     emotion_score = emotion_score.toFixed(1);
+    var emotion_score_text = "";
+    if(80<=emotion_score && emotion_score <=100)emotion_score_text='아주 좋음';
+    else if(60<=emotion_score && emotion_score <80)emotion_score_text='좋음';
+    else if(40<=emotion_score && emotion_score <60)emotion_score_text='보통';
+    else if(20<=emotion_score && emotion_score <40)emotion_score_text='나쁨';
+    else if(0<=emotion_score && emotion_score <20)emotion_score_text='아주 나쁨';
+    var time_score_text = "";
+    if(80<=time_score && time_score <=100)time_score_text='아주 좋음'
+    else if(60<=time_score && time_score <80)time_score_text='좋음'
+    else if(40<=time_score && time_score <60)time_score_text='보통'
+    else if(20<=time_score && time_score <40)time_score_text='나쁨'
+    else if(0<=time_score && time_score <20)time_score_text='아주 나쁨'
     res.render('sentimental_total', {
       user_id: req.user[0].user_id,
       user1_score: personal_score[0],
@@ -197,7 +209,8 @@ router.post('/sentimental_total', isLoggedIn, async (req, res, next) => {
       avg_time: avg_time,
       text_title: req.body.meet_name,
       total_time: tt,
-
+      emotion_score_text,
+      time_score_text,
       hashdata: hashdata[0],
       testdata: textdata,
       speakerdata: people,

@@ -93,9 +93,9 @@ head
                             span.lnr.lnr-heart
                         .panel-body
                           p(align='center')
-                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xBD84;&#xC704;&#xAE30;&#xB294;
-                            b #{emotion_score}&#xC810;
-                            |  &#xC785;&#xB2C8;&#xB2E4;.
+                            | 만족도 점수는<br>
+                            b #{emotion_score}점(#{emotion_score_text})
+                            |  입니다.
                           hr
                     .col-md-6
                       .panel.score
@@ -104,9 +104,9 @@ head
                             span.lnr.lnr-user
                         .panel-body
                           p(align='center')
-                            | &#xD574;&#xB2F9; &#xD68C;&#xC758;&#xC758; &#xCC38;&#xC5EC;&#xB3C4;&#xB294;
-                            b #{time_score}&#xC810;
-                            |  &#xC785;&#xB2C8;&#xB2E4;.
+                            | 적극도 점수는<br>
+                            b #{time_score}점(#{time_score_text})
+                            |  입니다.
                           hr
                   // 전체 감정 비율
                   .row
@@ -244,145 +244,148 @@ head
 
                     // END 참석자1 만족도 분석
                     // 참석자2 만족도 분석
-                    #user2.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자B-tab')
-                      .row
-                        .col-md-12
-                          .panel
-                            input#member2(type='hidden' value=emotion[1])
-                            .card-title
-                              h4(align='center')  #{speakerdata[1]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
-                            .panel-body
-                              canvas.canvas_item(id='화남B' height='150' width='150')
-                              canvas.canvas_item(id='무감정B' height='150' width='150')
-                              canvas.canvas_item(id='슬픔B' height='150' width='150')
-                              canvas.canvas_item(id='기쁨B' height='150' width='150')
-                            .panel-body
-                              hr
-                              p.contents
-                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
-                                | &#xD68C;&#xC758;&#xB294; 
-                                b &#xD654;&#xB0A8; #{personal_emotion[1][0]}%
-                                | , 
-                                b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[1][1]}%
-                                | , 
-                                b &#xC2AC;&#xD514; #{personal_emotion[1][2]}%
-                                | , 
-                                b &#xAE30;&#xC068; #{personal_emotion[1][3]}%
-                                |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+                    -if(personal_emotion[1])
+                      #user2.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자B-tab')
+                        .row
+                          .col-md-12
+                            .panel
+                              input#member2(type='hidden' value=emotion[1])
+                              .card-title
+                                h4(align='center')  #{speakerdata[1]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
+                              .panel-body
+                                canvas.canvas_item(id='화남B' height='150' width='150')
+                                canvas.canvas_item(id='무감정B' height='150' width='150')
+                                canvas.canvas_item(id='슬픔B' height='150' width='150')
+                                canvas.canvas_item(id='기쁨B' height='150' width='150')
+                              .panel-body
+                                hr
+                                p.contents
+                                  | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
+                                  | &#xD68C;&#xC758;&#xB294; 
+                                  b &#xD654;&#xB0A8; #{personal_emotion[1][0]}%
+                                  | , 
+                                  b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[1][1]}%
+                                  | , 
+                                  b &#xC2AC;&#xD514; #{personal_emotion[1][2]}%
+                                  | , 
+                                  b &#xAE30;&#xC068; #{personal_emotion[1][3]}%
+                                  |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
 
-                              hr
-                              .row
-                                .col-md-12
-                                  .panel
-                                    .panel-heading
-                                      h4(align='center') #{speakerdata[1]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
-                                    .panel-body
-                                      canvas#myBarChart2(width='100%' height='40')
-                                    .panel-body
-                                      hr
-                                      p.contents
-                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
-                                        b #{total_time}&#xCD08;
-                                        |  &#xC785;&#xB2C8;&#xB2E4;.
-                                        |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[1]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
-                                        b #{timedata[1]}&#xCD08;
-                                        | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
-                                        b #{avg_time}&#xCD08;
-                                        |  &#xC785;&#xB2C8;&#xB2E4;.
+                                hr
+                                .row
+                                  .col-md-12
+                                    .panel
+                                      .panel-heading
+                                        h4(align='center') #{speakerdata[1]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
+                                      .panel-body
+                                        canvas#myBarChart2(width='100%' height='40')
+                                      .panel-body
+                                        hr
+                                        p.contents
+                                          | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
+                                          b #{total_time}&#xCD08;
+                                          |  &#xC785;&#xB2C8;&#xB2E4;.
+                                          |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[1]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
+                                          b #{timedata[1]}&#xCD08;
+                                          | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
+                                          b #{avg_time}&#xCD08;
+                                          |  &#xC785;&#xB2C8;&#xB2E4;.
                     // END 참석자2 만족도 분석
                     // 참석자3 만족도 분석
-                    #user3.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
-                      .row
-                        .col-md-12
-                          .panel
-                            input#member3(type='hidden' value=emotion[2])
-                            .card-title
-                              h4(align='center')  #{speakerdata[2]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
-                            .panel-bodyc
-                              canvas.canvas_item(id='화남C' height='150' width='150')
-                              canvas.canvas_item(id='무감정C' height='150' width='150')
-                              canvas.canvas_item(id='슬픔C' height='150' width='150')
-                              canvas.canvas_item(id='기쁨C' height='150' width='150')
-                            .panel-body
-                              hr
-                              p.contents
-                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
-                                | &#xD68C;&#xC758;&#xB294; 
-                                b &#xD654;&#xB0A8; #{personal_emotion[2][0]}%
-                                | , 
-                                b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[2][1]}%
-                                | , 
-                                b &#xC2AC;&#xD514; #{personal_emotion[2][2]}%
-                                | , 
-                                b &#xAE30;&#xC068; #{personal_emotion[2][3]}%
-                                |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+                    -if(personal_emotion[2])
+                      #user3.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자C-tab')
+                        .row
+                          .col-md-12
+                            .panel
+                              input#member3(type='hidden' value=emotion[2])
+                              .card-title
+                                h4(align='center')  #{speakerdata[2]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
+                              .panel-bodyc
+                                canvas.canvas_item(id='화남C' height='150' width='150')
+                                canvas.canvas_item(id='무감정C' height='150' width='150')
+                                canvas.canvas_item(id='슬픔C' height='150' width='150')
+                                canvas.canvas_item(id='기쁨C' height='150' width='150')
+                              .panel-body
+                                hr
+                                p.contents
+                                  | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
+                                  | &#xD68C;&#xC758;&#xB294; 
+                                  b &#xD654;&#xB0A8; #{personal_emotion[2][0]}%
+                                  | , 
+                                  b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[2][1]}%
+                                  | , 
+                                  b &#xC2AC;&#xD514; #{personal_emotion[2][2]}%
+                                  | , 
+                                  b &#xAE30;&#xC068; #{personal_emotion[2][3]}%
+                                  |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
 
-                              hr
-                              .row
-                                .col-md-12
-                                  .panel
-                                    .panel-heading
-                                      h4(align='center') #{speakerdata[2]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
-                                    .panel-body
-                                      canvas#myBarChart3(width='100%' height='40')
-                                    .panel-body
-                                      hr
-                                      p.contents
-                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
-                                        b #{total_time}&#xCD08;
-                                        |  &#xC785;&#xB2C8;&#xB2E4;.
-                                        |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[2]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
-                                        b #{timedata[2]}&#xCD08;
-                                        | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
-                                        b #{avg_time}&#xCD08;
-                                        |  &#xC785;&#xB2C8;&#xB2E4;.
+                                hr
+                                .row
+                                  .col-md-12
+                                    .panel
+                                      .panel-heading
+                                        h4(align='center') #{speakerdata[2]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
+                                      .panel-body
+                                        canvas#myBarChart3(width='100%' height='40')
+                                      .panel-body
+                                        hr
+                                        p.contents
+                                          | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
+                                          b #{total_time}&#xCD08;
+                                          |  &#xC785;&#xB2C8;&#xB2E4;.
+                                          |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[2]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
+                                          b #{timedata[2]}&#xCD08;
+                                          | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
+                                          b #{avg_time}&#xCD08;
+                                          |  &#xC785;&#xB2C8;&#xB2E4;.
                     // END 참석자3 만족도 분석
                     // 참석자4 만족도 분석
-                    #user4.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자D-tab')
-                      .row
-                        .col-md-12
-                          .panel
-                            input#member4(type='hidden' value=emotion[3])
-                            .card-title
-                              h4(align='center')  #{speakerdata[3]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
-                            .panel-body
-                              canvas.canvas_item(id='화남D' height='150' width='150')
-                              canvas.canvas_item(id='무감정D' height='150' width='150')
-                              canvas.canvas_item(id='슬픔D' height='150' width='150')
-                              canvas.canvas_item(id='기쁨D' height='150' width='150')
-                            .panel-body
-                              hr
-                              p.contents
-                                | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
-                                | &#xD68C;&#xC758;&#xB294; 
-                                b &#xD654;&#xB0A8; #{personal_emotion[3][0]}%
-                                | , 
-                                b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[3][1]}%
-                                | , 
-                                b &#xC2AC;&#xD514; #{personal_emotion[3][2]}%
-                                | , 
-                                b &#xAE30;&#xC068; #{personal_emotion[3][3]}%
-                                |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
+                    -if(personal_emotion[3])
+                      #user4.tab-pane.fade(role='tabpanel' aria-labelledby='pills-참여자D-tab')
+                        .row
+                          .col-md-12
+                            .panel
+                              input#member4(type='hidden' value=emotion[3])
+                              .card-title
+                                h4(align='center')  #{speakerdata[3]}&#xC758; &#xAC10;&#xC815; &#xBD84;&#xC11D; &#xACB0;&#xACFC;
+                              .panel-body
+                                canvas.canvas_item(id='화남D' height='150' width='150')
+                                canvas.canvas_item(id='무감정D' height='150' width='150')
+                                canvas.canvas_item(id='슬픔D' height='150' width='150')
+                                canvas.canvas_item(id='기쁨D' height='150' width='150')
+                              .panel-body
+                                hr
+                                p.contents
+                                  | &#xC774; &#xD68C;&#xC758;&#xC758; &#xB300;&#xD654;&#xC5D0;&#xC11C;&#xC758; &#xAC10;&#xC815;&#xC744; &#xD654;&#xB0A8;, &#xBB34;&#xAC10;&#xC815;, &#xC2AC;&#xD514;, &#xAE30;&#xC068; &#xC758; &#xCD1D; 4&#xAC00;&#xC9C0; &#xAC10;&#xC815;&#xC73C;&#xB85C; &#xBD84;&#xC11D;&#xD558;&#xC600;&#xC744; &#xB54C;, &#xD574;&#xB2F9; 
+                                  | &#xD68C;&#xC758;&#xB294; 
+                                  b &#xD654;&#xB0A8; #{personal_emotion[3][0]}%
+                                  | , 
+                                  b &#xBB34;&#xAC10;&#xC815; #{personal_emotion[3][1]}%
+                                  | , 
+                                  b &#xC2AC;&#xD514; #{personal_emotion[3][2]}%
+                                  | , 
+                                  b &#xAE30;&#xC068; #{personal_emotion[3][3]}%
+                                  |  &#xC758; &#xBE44;&#xC728;&#xB85C; &#xBD84;&#xC11D;&#xB429;&#xB2C8;&#xB2E4;.
 
-                              hr
-                              .row
-                                .col-md-12
-                                  .panel
-                                    .panel-heading
-                                      h4(align='center') #{speakerdata[3]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
-                                    .panel-body
-                                      canvas#myBarChart4(width='100%' height='40')
-                                    .panel-body
-                                      hr
-                                      p.contents
-                                        | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
-                                        b #{total_time}&#xCD08;
-                                        |  &#xC785;&#xB2C8;&#xB2E4;.
-                                        |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[3]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
-                                        b #{timedata[3]}&#xCD08;
-                                        | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
-                                        b #{avg_time}&#xCD08;
-                                        |  &#xC785;&#xB2C8;&#xB2E4;.
+                                hr
+                                .row
+                                  .col-md-12
+                                    .panel
+                                      .panel-heading
+                                        h4(align='center') #{speakerdata[3]}&#xC758; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04; &#xBD84;&#xC11D;
+                                      .panel-body
+                                        canvas#myBarChart4(width='100%' height='40')
+                                      .panel-body
+                                        hr
+                                        p.contents
+                                          | &#xC774; &#xD68C;&#xC758;&#xC758; &#xCD1D; &#xD68C;&#xC758; &#xC2DC;&#xAC04;&#xC740; &#xCD08; &#xB2E8;&#xC704; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xBCFC; &#xB54C;, 
+                                          b #{total_time}&#xCD08;
+                                          |  &#xC785;&#xB2C8;&#xB2E4;.
+                                          |  &#xCC38;&#xC5EC;&#xC790; #{speakerdata[3]}&#xC758; &#xCD1D; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;&#xC740; 
+                                          b #{timedata[3]}&#xCD08;
+                                          | , &#xD68C;&#xC758; &#xD3C9;&#xADE0; &#xBC1C;&#xC5B8; &#xC2DC;&#xAC04;은 
+                                          b #{avg_time}&#xCD08;
+                                          |  &#xC785;&#xB2C8;&#xB2E4;.
                     // END 참석자4 만족도 분석
                   // END 참석자 만족도 분석
                 // END 회의 개인 평가

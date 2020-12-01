@@ -161,9 +161,17 @@ script.
   });
   $(()=>{
     $('#update_btn').click((e)=>{
-      if($('.new_pw').val() == '' || $('.new_pw_chk').val() == '' || $('.old_pw').val() == ''){
+      if($('.old_pw').val() == ''){
         alert("비밀번호 변경에서 비밀번호를 입력해주세요.");
       }else{
+        var new_pw = $('.old_pw').val();
+        if($('.new_pw').val() != ''){
+          if($('.new_pw').val() === $('.new_pw_chk').val()){
+            new_pw = $('.new_pw').val();
+          }else{
+            alert("새 비밀번호가 서로 다릅니다.");
+          }
+        }
         if($('.new_pw').val() === $('.new_pw_chk').val()){
           $.ajax({
             type : 'POST',
@@ -173,7 +181,7 @@ script.
               user_name : $('#user_name').val(),
               user_email : $('#user_email').val(),
               old_pw : $('.old_pw').val(),
-              new_pw : $('.new_pw').val(),
+              new_pw : new_pw,
             },
             success : function(res){
               if(res.result){
@@ -188,7 +196,7 @@ script.
             }
           });
         }else{
-          alert("새 비밀번호가 서로 다릅니다.");
+          alert("수정이 되지 않았습니다.");
         }
       }
     });
