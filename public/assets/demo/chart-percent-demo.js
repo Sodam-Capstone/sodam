@@ -334,7 +334,7 @@ if (Bctx) {
   });
 }
 // 참여자 C의 4가지 감정
-var ActC = document.getElementById("화남C");
+var Cctx = document.getElementById("화남C");
 if (Cctx) {
   var Cctx2 = document.getElementById("무감정C");
   var Cctx3 = document.getElementById("슬픔C");

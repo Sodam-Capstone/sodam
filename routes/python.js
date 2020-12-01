@@ -21,7 +21,7 @@ const pythonRunAws = async(req, res, path) => {
     const schema = process.env.DB_DATABASE;
 
     //이름 겹치는게 있으면 작동하지 않음
-    var findmeet = await dbPool(`SELECT * FROM ${schema}.meet_share as m_s join ${schema}.meet_information as m_i ON (m_s.meet_index = m_i.meet_index) WHERE m_s.user1_index =  ${req.user[0].user_index}`);
+    var findmeet = await dbPool(`SELECT * FROM ${schema}.meet_information`);
     var len =  findmeet.length;
     for(var i = 0 ; i < len; i++){
         if(findmeet[i].meet_name == req.body.meet_title){

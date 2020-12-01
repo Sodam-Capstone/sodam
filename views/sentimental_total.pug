@@ -407,7 +407,12 @@ head
                   ul.list-inline.social-icons
                     -for(var j = 0; j < spk_num ; j++)
                       li
-                        span.input.label-info(contenteditable='true' id=speakerdata[j] value=speakerdata[j])  #{speakerdata[j]}
+                        //- span.input.label-info(contenteditable='true' id=speakerdata[j] value=speakerdata[j])  #{speakerdata[j]}
+                        .input-group
+                          span.input-group-addon
+                            i.fa.fa-user
+                          input.form-control(id=speakerdata[j] value = speakerdata[j])
+
                 .profile-info
                   h4.heading &#xD0DC;&#xADF8;
                   ul.list-unstyled.list-justify
@@ -447,7 +452,7 @@ head
 
 script.
     var i = 0;
-    var spk = document.getElementsByClassName('input label-info');
+    var spk = document.getElementsByClassName('form-control');
     var title = '#{text_title}'
     while(spk[i] != null) {
       spk[i].addEventListener('blur', function() {
@@ -464,7 +469,7 @@ script.
         var new_spk = document.createElement("input");
         new_spk.setAttribute("type", "hidden");
         new_spk.setAttribute("name", "new_spk");
-        new_spk.setAttribute("value", this.innerHTML)
+        new_spk.setAttribute("value", this.value)
         form.appendChild(new_spk);
         var meet_title = document.createElement("input");
         meet_title.setAttribute("type", "hidden");
@@ -476,8 +481,8 @@ script.
 
         form.submit();
         while(labels[j] != null) {
-          labels[j].innerHTML = this.innerHTML;
-          labels[j].class = this.innerHTML;
+          labels[j].innerHTML = this.value;
+          labels[j].class = this.value;
           j += 1;
         }
 
