@@ -3,7 +3,7 @@ var router = express.Router();
 const dbPool = require('../config/config.js') //DB 연결
 const passport = require('passport');
 const pageProfile = require('./page_profile/pageProfile');
-const sentimentalTotal = require('./sentimental_total/sentimentalTotal');
+// const sentimentalTotal = require('./sentimental_total/sentimentalTotal');
 const python = require('./python');
 const path = require('path');
 const {
@@ -42,6 +42,7 @@ router.get('/meeting-list', isLoggedIn, async (req, res, next) => {
   });
 })
 
+//회의 삭제
 router.post('/meeting-list', isLoggedIn, async (req, res) => {
   console.log("받음");
   console.log(`${req.body.send_data}`);
@@ -104,12 +105,13 @@ router.post('/page-profile/update', isLoggedIn, async (req, res, next) => {
 
 router.post('/sentimental_total', isLoggedIn, async (req, res, next) => {
   var meet_name = req.body.meet_name;
-  const duplicate_check = await sentimentalTotal.sentimentalTotalResult(req, res);
+  // const duplicate_check = await sentimentalTotal.sentimentalTotalResult(req, res);
+  const duplicate_check = true;
 
   var emotion_result = async (req, res) => {
     //user id의 목록에서만 select 해서 회의이름 중복 예외처리
-    var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '${req.body.meet_name}' && reg_mber = '${req.user[0].user_id}'`);
-
+    var textdata = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_texts WHERE meet_title = '${req.body.meet_name}'`);
+    console.log(textdata);
     //user index의 목록에서만 select 해서 회의이름 중복 예외처리
     var getindex = await dbPool(`SELECT * FROM ${process.env.DB_DATABASE}.meet_information as m_i join ${process.env.DB_DATABASE}.meet_share 
   as m_s ON (m_i.meet_index = m_s.meet_index) WHERE user1_index = '${req.user[0].user_index}' and meet_name = '${req.body.meet_name}'`);
@@ -166,6 +168,7 @@ router.post('/sentimental_total', isLoggedIn, async (req, res, next) => {
       personal_score[i] = personal_score[i].toFixed(1);
     }
     var spk_num = speakerdata.length;
+    console.log(spk_num);
     for (i = 0; i < spk_num; i++) {
       people[i] = speakerdata[i].speaker_label;
     }
@@ -176,6 +179,7 @@ router.post('/sentimental_total', isLoggedIn, async (req, res, next) => {
     for (i = 0; i < speakerlist.length; i++) {
       spklist[i] = speakerlist[i].speaker_label;
     }
+    console.log(people);
 
     v /= i;
     time_score = 100 - (Math.sqrt(v) * 2);
